@@ -42,7 +42,7 @@
             <a href="../index.html" class="icon icon-home"> DoWhy
           </a>
               <div class="version">
-                0.8
+                v0.8
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -542,43 +542,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
-      <td>-1.786126</td>
-      <td>-0.855920</td>
-      <td>6.225251</td>
-      <td>57.264464</td>
+      <td>0.0</td>
+      <td>-0.231465</td>
+      <td>0.366042</td>
+      <td>-1.983751</td>
+      <td>-19.980271</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
-      <td>0.599842</td>
-      <td>-0.994020</td>
-      <td>9.981632</td>
-      <td>97.002656</td>
+      <td>0.0</td>
+      <td>-0.029753</td>
+      <td>1.186609</td>
+      <td>0.814452</td>
+      <td>10.409807</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
-      <td>1.055711</td>
-      <td>-1.671170</td>
-      <td>11.172697</td>
-      <td>107.056296</td>
+      <td>0.0</td>
+      <td>1.120879</td>
+      <td>1.084042</td>
+      <td>5.260091</td>
+      <td>59.028206</td>
     </tr>
     <tr>
       <th>3</th>
       <td>0.0</td>
-      <td>-0.914920</td>
-      <td>-0.331401</td>
-      <td>-3.638204</td>
-      <td>-38.561376</td>
+      <td>-1.130608</td>
+      <td>0.913412</td>
+      <td>-5.601574</td>
+      <td>-58.474279</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0.0</td>
-      <td>-0.990892</td>
-      <td>-0.623074</td>
-      <td>-3.450514</td>
-      <td>-37.804744</td>
+      <td>0.838252</td>
+      <td>1.631123</td>
+      <td>4.235766</td>
+      <td>48.784235</td>
     </tr>
   </tbody>
 </table>
@@ -633,9 +633,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W0])
+─────(E[y|W0,W1])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,U) = P(y|v0,W1,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W1,U) = P(y|v0,W0,W1)
 
 ### Estimand : 2
 Estimand name: iv
@@ -704,7 +704,7 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome y is 
 Target units: ate
 
 ## Estimate
-Mean value: 10.001545924912868
+Mean value: 10.015118632962952
 
 </pre></div></div>
 </div>
@@ -733,7 +733,7 @@ Mean value: 10.001545924912868
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:-4.187568174599579e-06
+New effect:-6.715577975918821e-05
 p value:0.96
 
 </pre></div></div>
@@ -778,8 +778,8 @@ p value:0.96
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:-5.3757830301008924e-05
-p value:0.94
+New effect:0.00024308390438730534
+p value:0.84
 
 </pre></div></div>
 </div>

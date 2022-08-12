@@ -41,6 +41,9 @@
         <div class="wy-side-nav-search" >
             <a href="../index.html" class="icon icon-home"> DoWhy
           </a>
+              <div class="version">
+                v0.8.0-test
+              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -519,43 +522,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.0</td>
-      <td>1.946048</td>
-      <td>1.140316</td>
-      <td>8.277438</td>
-      <td>96.988954</td>
+      <td>1.0</td>
+      <td>1.368239</td>
+      <td>0.168170</td>
+      <td>13.919308</td>
+      <td>145.835237</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.0</td>
-      <td>1.389926</td>
-      <td>-0.734314</td>
-      <td>-0.267098</td>
-      <td>-0.233347</td>
+      <td>1.0</td>
+      <td>-0.530678</td>
+      <td>0.626002</td>
+      <td>7.522538</td>
+      <td>75.237795</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1.0</td>
-      <td>-0.592699</td>
-      <td>0.693365</td>
-      <td>15.319706</td>
-      <td>154.040459</td>
+      <td>-0.848533</td>
+      <td>-0.212870</td>
+      <td>9.075212</td>
+      <td>86.210101</td>
     </tr>
     <tr>
       <th>3</th>
       <td>1.0</td>
-      <td>2.516795</td>
-      <td>0.550846</td>
-      <td>17.589965</td>
-      <td>189.664832</td>
+      <td>0.689404</td>
+      <td>-0.686776</td>
+      <td>10.334113</td>
+      <td>103.797663</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.0</td>
-      <td>1.718656</td>
-      <td>0.579910</td>
-      <td>6.698230</td>
-      <td>77.387734</td>
+      <td>1.0</td>
+      <td>-0.689551</td>
+      <td>-1.755672</td>
+      <td>6.368156</td>
+      <td>54.051239</td>
     </tr>
   </tbody>
 </table>
@@ -610,9 +613,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W0])
+─────(E[y|W0,W1])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,U) = P(y|v0,W1,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W1,U) = P(y|v0,W0,W1)
 
 ### Estimand : 2
 Estimand name: iv
@@ -681,7 +684,7 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome y is 
 Target units: ate
 
 ## Estimate
-Mean value: 10.002732550220294
+Mean value: 9.99814476692301
 
 </pre></div></div>
 </div>
@@ -710,8 +713,8 @@ Mean value: 10.002732550220294
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:2.76988407479217e-05
-p value:0.98
+New effect:1.346377672903737e-05
+p value:0.96
 
 </pre></div></div>
 </div>
@@ -755,8 +758,8 @@ p value:0.98
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:-1.3240228774531891e-05
-p value:0.98
+New effect:-0.00015046933444433103
+p value:0.96
 
 </pre></div></div>
 </div>
