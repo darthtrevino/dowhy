@@ -822,7 +822,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Fitting causal mechanism of node smcol: 100%|██████████| 18/18 [00:06&lt;00:00,  2.68it/s]
+Fitting causal mechanism of node smcol: 100%|██████████| 18/18 [00:07&lt;00:00,  2.39it/s]
 </pre></div></div>
 </div>
 <p>Before computing CATE, we first divide households into equi-width bins of income percentiles. This allows us to study the impact on various income groups.</p>
@@ -879,7 +879,7 @@ Fitting causal mechanism of node smcol: 100%|██████████| 18/
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Estimating boostrap interval...: 100%|██████████| 100/100 [00:55&lt;00:00,  1.79it/s]
+Estimating boostrap interval...: 100%|██████████| 100/100 [01:04&lt;00:00,  1.54it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -887,8 +887,8 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;ate&#39;: 6589.59403790563, &#39;0%-20%&#39;: 4033.621672819731, &#39;20%-40%&#39;: 3341.1715737453396, &#39;40%-60%&#39;: 5610.669658523713, &#39;60%-80%&#39;: 7536.516663458591, &#39;80%-100%&#39;: 12177.40229674373}
-{&#39;ate&#39;: array([4756.45970039, 8491.76826408]), &#39;0%-20%&#39;: array([2633.47938922, 5603.29803925]), &#39;20%-40%&#39;: array([1359.563155  , 5447.00940809]), &#39;40%-60%&#39;: array([3415.10404104, 8089.27464093]), &#39;60%-80%&#39;: array([ 4989.55804748, 10647.92173613]), &#39;80%-100%&#39;: array([ 5482.96745267, 19129.09096221])}
+{&#39;ate&#39;: 6656.548370799593, &#39;0%-20%&#39;: 4272.661912302319, &#39;20%-40%&#39;: 3374.4002329170103, &#39;40%-60%&#39;: 5654.628667295683, &#39;60%-80%&#39;: 7747.821569444993, &#39;80%-100%&#39;: 12059.73178070621}
+{&#39;ate&#39;: array([5018.22320424, 8498.04446196]), &#39;0%-20%&#39;: array([2934.05769312, 5895.46263791]), &#39;20%-40%&#39;: array([1505.54411627, 5761.36331478]), &#39;40%-60%&#39;: array([3693.48750518, 8185.44976318]), &#39;60%-80%&#39;: array([ 5078.66967154, 11082.35213106]), &#39;80%-100%&#39;: array([ 5489.18459112, 19034.47957491])}
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -923,7 +923,7 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/tmp/ipykernel_20727/1344202636.py:4: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &#34;ro-&#34; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
+/tmp/ipykernel_20719/1344202636.py:4: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &#34;ro-&#34; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
   plt.plot((x, x), (ci[0], ci[1]), &#39;ro-&#39;, color=&#39;orange&#39;)
 </pre></div></div>
 </div>
