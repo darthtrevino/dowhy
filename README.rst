@@ -544,4 +544,4 @@ This project welcomes contributions and suggestions. For a guide to contributing
 
 .. |discord| image:: https://img.shields.io/discord/818456847551168542
 .. _discord: https://discord.gg/cSBGb3vsZb
-
+.
