@@ -488,63 +488,63 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>-1.136156</td>
-      <td>-2.001280</td>
-      <td>0.732769</td>
-      <td>-1.122385</td>
+      <td>1.954639</td>
+      <td>-0.467023</td>
+      <td>-1.757339</td>
+      <td>-1.087305</td>
       <td>0</td>
-      <td>0</td>
-      <td>1.621147</td>
-      <td>-1.449016</td>
-      <td>17.265821</td>
+      <td>3</td>
+      <td>6.061142</td>
+      <td>-5.509189</td>
+      <td>-198.968402</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.356850</td>
-      <td>-0.002264</td>
-      <td>3.210134</td>
-      <td>1.861004</td>
+      <td>0.786488</td>
+      <td>-0.198843</td>
+      <td>1.018751</td>
+      <td>0.973496</td>
       <td>3</td>
-      <td>0</td>
-      <td>7.393302</td>
-      <td>28.130010</td>
-      <td>170.996246</td>
+      <td>1</td>
+      <td>15.941421</td>
+      <td>15.992653</td>
+      <td>965.360766</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.682961</td>
-      <td>0.442797</td>
-      <td>-0.779058</td>
-      <td>-0.235084</td>
-      <td>1</td>
-      <td>3</td>
-      <td>12.905237</td>
-      <td>5.277204</td>
-      <td>94.472461</td>
+      <td>2.095922</td>
+      <td>-1.918518</td>
+      <td>0.159064</td>
+      <td>-0.358827</td>
+      <td>2</td>
+      <td>2</td>
+      <td>11.021961</td>
+      <td>11.164939</td>
+      <td>958.635386</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-1.117754</td>
-      <td>0.475935</td>
-      <td>1.148338</td>
-      <td>-0.130979</td>
+      <td>1.250625</td>
+      <td>-0.510443</td>
+      <td>0.140724</td>
+      <td>-0.449232</td>
+      <td>2</td>
       <td>3</td>
-      <td>1</td>
-      <td>7.325942</td>
-      <td>16.031163</td>
-      <td>-42.493957</td>
+      <td>15.299151</td>
+      <td>9.297103</td>
+      <td>804.360631</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.467470</td>
-      <td>-0.480513</td>
-      <td>0.202245</td>
-      <td>-1.201212</td>
-      <td>1</td>
-      <td>0</td>
-      <td>-0.834454</td>
-      <td>-0.956979</td>
-      <td>-17.926166</td>
+      <td>0.704733</td>
+      <td>-1.688955</td>
+      <td>1.445061</td>
+      <td>0.088503</td>
+      <td>3</td>
+      <td>3</td>
+      <td>20.242610</td>
+      <td>19.850864</td>
+      <td>1021.510231</td>
     </tr>
   </tbody>
 </table>
@@ -597,9 +597,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W2,W3,W0,W1])
+─────────(E[y|W0,W3,W2,W1])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W2,W3,W0,W1,U) = P(y|v0,v1,W2,W3,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W3,W2,W1,U) = P(y|v0,v1,W0,W3,W2,W1)
 
 ### Estimand : 2
 Estimand name: iv
@@ -633,8 +633,6 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-linear_regression
-{&#39;control_value&#39;: (0, 0), &#39;treatment_value&#39;: (1, 1), &#39;test_significance&#39;: None, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [&#39;X1&#39;, &#39;X0&#39;], &#39;need_conditional_estimates&#39;: False}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -644,16 +642,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W2,W3,W0,W1])
+─────────(E[y|W0,W3,W2,W1])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W2,W3,W0,W1,U) = P(y|v0,v1,W2,W3,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W3,W2,W1,U) = P(y|v0,v1,W0,W3,W2,W1)
 
 ## Realized estimand
-b: y~v0+v1+W2+W3+W0+W1+v0*X1+v0*X0+v1*X1+v1*X0
+b: y~v0+v1+W0+W3+W2+W1+v0*X0+v0*X1+v1*X0+v1*X1
 Target units: ate
 
 ## Estimate
-Mean value: 2.345332358807447
+Mean value: 26.348442051530903
 
 </pre></div></div>
 </div>
@@ -675,8 +673,6 @@ Mean value: 2.345332358807447
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-linear_regression
-{&#39;control_value&#39;: (0, 0), &#39;treatment_value&#39;: (1, 1), &#39;test_significance&#39;: None, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [&#39;X1&#39;, &#39;X0&#39;]}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -686,43 +682,43 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W2,W3,W0,W1])
+─────────(E[y|W0,W3,W2,W1])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W2,W3,W0,W1,U) = P(y|v0,v1,W2,W3,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W3,W2,W1,U) = P(y|v0,v1,W0,W3,W2,W1)
 
 ## Realized estimand
-b: y~v0+v1+W2+W3+W0+W1+v0*X1+v0*X0+v1*X1+v1*X0
+b: y~v0+v1+W0+W3+W2+W1+v0*X0+v0*X1+v1*X0+v1*X1
 Target units: ate
 
 ## Estimate
-Mean value: 2.345332358807447
+Mean value: 26.348442051530903
 ### Conditional Estimates
-__categorical__X1  __categorical__X0
-(-3.338, -0.599]   (-4.574000000000001, -1.479]   -61.660516
-                   (-1.479, -0.884]               -35.718002
-                   (-0.884, -0.371]               -18.472620
-                   (-0.371, 0.216]                 -2.463770
-                   (0.216, 3.602]                  23.245462
-(-0.599, -0.0168]  (-4.574000000000001, -1.479]   -48.724537
-                   (-1.479, -0.884]               -21.981418
-                   (-0.884, -0.371]                -5.345986
-                   (-0.371, 0.216]                 10.320136
-                   (0.216, 3.602]                  36.891811
-(-0.0168, 0.482]   (-4.574000000000001, -1.479]   -40.594021
-                   (-1.479, -0.884]               -13.815828
-                   (-0.884, -0.371]                 2.433659
-                   (-0.371, 0.216]                 18.435027
-                   (0.216, 3.602]                  44.686553
-(0.482, 1.074]     (-4.574000000000001, -1.479]   -31.350979
-                   (-1.479, -0.884]                -6.556158
-                   (-0.884, -0.371]                10.737655
-                   (-0.371, 0.216]                 26.724741
-                   (0.216, 3.602]                  53.660343
-(1.074, 4.003]     (-4.574000000000001, -1.479]   -17.634386
-                   (-1.479, -0.884]                 7.302651
-                   (-0.884, -0.371]                23.933422
-                   (-0.371, 0.216]                 38.931792
-                   (0.216, 3.602]                  65.542569
+__categorical__X0  __categorical__X1
+(-4.152, -0.707]   (-4.128, -1.278]    -47.725148
+                   (-1.278, -0.661]    -40.947796
+                   (-0.661, -0.171]    -37.933472
+                   (-0.171, 0.41]      -36.068140
+                   (0.41, 3.445]       -29.322865
+(-0.707, -0.121]   (-4.128, -1.278]     -7.791545
+                   (-1.278, -0.661]     -1.183655
+                   (-0.661, -0.171]      2.458572
+                   (-0.171, 0.41]        5.828106
+                   (0.41, 3.445]        10.974805
+(-0.121, 0.389]    (-4.128, -1.278]     18.027807
+                   (-1.278, -0.661]     22.794299
+                   (-0.661, -0.171]     26.881288
+                   (-0.171, 0.41]       29.726815
+                   (0.41, 3.445]        35.245888
+(0.389, 0.957]     (-4.128, -1.278]     42.048506
+                   (-1.278, -0.661]     47.717942
+                   (-0.661, -0.171]     50.825770
+                   (-0.171, 0.41]       54.973117
+                   (0.41, 3.445]        60.381891
+(0.957, 3.434]     (-4.128, -1.278]     80.196930
+                   (-1.278, -0.661]     85.606678
+                   (-0.661, -0.171]     90.819664
+                   (-0.171, 0.41]       95.374392
+                   (0.41, 3.445]        99.721905
 dtype: float64
 </pre></div></div>
 </div>

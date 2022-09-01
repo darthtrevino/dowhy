@@ -43,6 +43,7 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -801,9 +802,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W1,W4])
+─────(E[y|W3,W4,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W1,W4,U) = P(y|v0,W0,W3,W2,W1,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W0,W1,W2,U) = P(y|v0,W3,W4,W0,W1,W2)
 
 ### Estimand : 2
 Estimand name: iv
@@ -850,16 +851,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W1,W4])
+─────(E[y|W3,W4,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W1,W4,U) = P(y|v0,W0,W3,W2,W1,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W0,W1,W2,U) = P(y|v0,W3,W4,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W2+W1+W4
+b: y~v0+W3+W4+W0+W1+W2
 Target units: ate
 
 ## Estimate
-Mean value: 10.020890980320532
+Mean value: 9.978829086049998
 
 </pre></div></div>
 </div>
@@ -883,6 +884,15 @@ Mean value: 10.020890980320532
 </pre></div>
 </div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-09-01 18:30:49.093521: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-09-01 18:30:49.093562: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+</pre></div></div>
+</div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
@@ -897,17 +907,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W1,W4])
+─────(E[y|W3,W4,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W1,W4,U) = P(y|v0,W0,W3,W2,W1,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W0,W1,W2,U) = P(y|v0,W3,W4,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W2+W1+W4 |
+b: y~v0+W3+W4+W0+W1+W2 |
 Target units: ate
 
 ## Estimate
-Mean value: 9.975291119967496
-Effect estimates: [9.97529112 9.97529112 9.97529112 ... 9.97529112 9.97529112 9.97529112]
+Mean value: 10.050748393662209
+Effect estimates: [10.05074839 10.05074839 10.05074839 ... 10.05074839 10.05074839
+ 10.05074839]
 
 </pre></div></div>
 </div>
@@ -931,9 +942,9 @@ estimate value of 0 when the action variable is replaced by a random variable, i
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:10.020890980320532
-New effect:-0.01006442462166341
-p value:0.8
+Estimated effect:9.978829086049998
+New effect:0.0024792643021889823
+p value:0.8200000000000001
 
 </pre></div></div>
 </div>
@@ -985,11 +996,11 @@ than learning a new toolkit. The power of EconML is that you can now implement t
 <div class="output_area docutils container">
 <div class="highlight"><pre>
    Treatment    Outcome        w0         s        w1
-0  19.077455  38.576808 -3.631003  6.392549  1.574474
-1  12.709333  25.603525 -2.579606  5.808197 -0.032406
-2  17.576387  34.845581 -3.380658  7.786983  0.711548
-3  11.479135  22.235496  2.203007  9.490584  0.693038
-4   6.424901  13.057945  0.707744  1.185542 -0.050719
+0  14.180018  28.075073 -2.825525  8.083732 -0.297127
+1   7.698566  15.378164 -1.191743  5.324214  0.627609
+2  29.215286  60.052937 -4.762310  0.039880  2.213293
+3  16.357923  33.308977  3.174590  9.678543  0.898971
+4  20.584554  39.986532 -3.914657  7.292135 -2.028058
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1038,9 +1049,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ### Estimand : 2
 Estimand name: iv
@@ -1075,8 +1086,6 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-linear_regression
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: None, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: []}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -1086,18 +1095,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ## Realized estimand
-b: Outcome~Treatment+w1+w0
+b: Outcome~Treatment+w0+w1
 Target units: ate
 
 ## Estimate
-Mean value: 1.9983247260157397
+Mean value: 1.9987746481091417
 
-Causal Estimate is 1.9983247260157397
+Causal Estimate is 1.9987746481091417
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1144,17 +1153,17 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ## Realized estimand
-b: Outcome~Treatment+w1+w0 |
+b: Outcome~Treatment+w0+w1 |
 Target units: ate
 
 ## Estimate
-Mean value: 0.9554490095278326
-Effect estimates: [0.95544901 0.95544901 0.95544901 ... 0.95544901 0.95544901 0.95544901]
+Mean value: 1.1605530879213322
+Effect estimates: [1.16055309 1.16055309 1.16055309 ... 1.16055309 1.16055309 1.16055309]
 
 </pre></div></div>
 </div>
@@ -1177,9 +1186,9 @@ Effect estimates: [0.95544901 0.95544901 0.95544901 ... 0.95544901 0.95544901 0.
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:0.9554490095278326
-New effect:1.0306378422046392
-p value:0.0
+Estimated effect:1.1605530879213322
+New effect:1.148425631982246
+p value:0.6399999999999999
 
 </pre></div></div>
 </div>
@@ -1200,9 +1209,9 @@ p value:0.0
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:0.9554490095278326
-New effect:-0.00010675921140908295
-p value:0.39653570014579165
+Estimated effect:1.1605530879213322
+New effect:-2.3396633403042436e-05
+p value:0.48589905131624633
 
 </pre></div></div>
 </div>
@@ -1214,23 +1223,23 @@ p value:0.39653570014579165
 <p>In practice, as the data becomes high-dimensional, simple estimators will not estimate the correct causal effect. More advanced supervised machine learning models also do not work and often are worse than simple regression, because they include additional regularization techniques that help in minimizing predictive error, but can have unwanted effects on estimating the causal effect. Therefore, we need methods targeted to estimate the causal effect. At the same time, we also need suitable
 refutation methods that can check the robustness of the estimate.</p>
 <p>Here is an example of using DoWhy+EconML for a high-dimensional dataset.</p>
-<p>More details are in this <a class="reference external" href="https://github.com/microsoft/dowhy/blob/master/docs/source/example_notebooks/dowhy-conditional-treatment-effects.ipynb">notebook</a>.</p>
+<p>More details are in this <a class="reference external" href="https://github.com/microsoft/dowhy/blob/main/docs/source/example_notebooks/dowhy-conditional-treatment-effects.ipynb">notebook</a>.</p>
 <p>Below we provide links to case studies that illustrate the use of DoWhy+EconML.</p>
 <section id="Estimating-the-impact-of-a-customer-loyalty-program">
 <h3>Estimating the impact of a customer loyalty program<a class="headerlink" href="#Estimating-the-impact-of-a-customer-loyalty-program" title="Permalink to this heading"></a></h3>
-<p><a class="reference external" href="https://github.com/microsoft/dowhy/blob/master/docs/source/example_notebooks/dowhy_example_effect_of_memberrewards_program.ipynb">Link to full notebook</a></p>
+<p><a class="reference external" href="https://github.com/microsoft/dowhy/blob/main/docs/source/example_notebooks/dowhy_example_effect_of_memberrewards_program.ipynb">Link to full notebook</a></p>
 </section>
 <section id="Recommendation-A/B-testing-at-an-online-company">
 <h3>Recommendation A/B testing at an online company<a class="headerlink" href="#Recommendation-A/B-testing-at-an-online-company" title="Permalink to this heading"></a></h3>
-<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/master/notebooks/CustomerScenarios/Case%20Study%20-%20Recommendation%20AB%20Testing%20at%20An%20Online%20Travel%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
+<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/main/notebooks/CustomerScenarios/Case%20Study%20-%20Recommendation%20AB%20Testing%20at%20An%20Online%20Travel%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
 </section>
 <section id="User-segmentation-for-targeting-interventions">
 <h3>User segmentation for targeting interventions<a class="headerlink" href="#User-segmentation-for-targeting-interventions" title="Permalink to this heading"></a></h3>
-<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/master/notebooks/CustomerScenarios/Case%20Study%20-%20Customer%20Segmentation%20at%20An%20Online%20Media%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
+<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/main/notebooks/CustomerScenarios/Case%20Study%20-%20Customer%20Segmentation%20at%20An%20Online%20Media%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
 </section>
 <section id="Multi-investment-attribution-at-a-software-company">
 <h3>Multi-investment attribution at a software company<a class="headerlink" href="#Multi-investment-attribution-at-a-software-company" title="Permalink to this heading"></a></h3>
-<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/master/notebooks/CustomerScenarios/Case%20Study%20-%20Multi-investment%20Attribution%20at%20A%20Software%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
+<p><a class="reference external" href="https://github.com/microsoft/EconML/blob/main/notebooks/CustomerScenarios/Case%20Study%20-%20Multi-investment%20Attribution%20at%20A%20Software%20Company%20-%20EconML%20%2B%20DoWhy.ipynb">Link to full notebook</a></p>
 </section>
 </section>
 <section id="Connections-to-fundamental-machine-learning-challenges">
@@ -1244,9 +1253,9 @@ refutation methods that can check the robustness of the estimate.</p>
 <section id="DoWhy+EconML-libraries">
 <h3>DoWhy+EconML libraries<a class="headerlink" href="#DoWhy+EconML-libraries" title="Permalink to this heading"></a></h3>
 <p>DoWhy code: <a class="reference external" href="https://github.com/microsoft/dowhy">https://github.com/microsoft/dowhy</a></p>
-<p>DoWhy notebooks: <a class="reference external" href="https://github.com/microsoft/dowhy/tree/master/docs/source/example_notebooks">https://github.com/microsoft/dowhy/tree/master/docs/source/example_notebooks</a></p>
+<p>DoWhy notebooks: <a class="reference external" href="https://github.com/microsoft/dowhy/tree/main/docs/source/example_notebooks">https://github.com/microsoft/dowhy/tree/main/docs/source/example_notebooks</a></p>
 <p>EconML code: <a class="reference external" href="https://github.com/microsoft/econml">https://github.com/microsoft/econml</a></p>
-<p>EconML notebooks: <a class="reference external" href="https://github.com/microsoft/EconML/tree/master/notebooks">https://github.com/microsoft/EconML/tree/master/notebooks</a></p>
+<p>EconML notebooks: <a class="reference external" href="https://github.com/microsoft/EconML/tree/main/notebooks">https://github.com/microsoft/EconML/tree/main/notebooks</a></p>
 </section>
 <section id="Video-Lecture-on-causal-inference-and-its-connections-to-machine-learning">
 <h3>Video Lecture on causal inference and its connections to machine learning<a class="headerlink" href="#Video-Lecture-on-causal-inference-and-its-connections-to-machine-learning" title="Permalink to this heading"></a></h3>

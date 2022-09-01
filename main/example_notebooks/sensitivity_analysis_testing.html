@@ -43,6 +43,7 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -858,9 +859,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W5,W0,W6,W1,W3,W2])
+─────(E[y|W2,W3,W5,W1,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W5,W0,W6,W1,W3,W2,U) = P(y|v0,W5,W0,W6,W1,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W3,W5,W1,W6,W0,U) = P(y|v0,W2,W3,W5,W1,W6,W0)
 
 ### Estimand : 2
 Estimand name: iv
@@ -890,8 +891,6 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-linear_regression
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: None, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: []}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -901,16 +900,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W5,W0,W6,W1,W3,W2])
+─────(E[y|W2,W3,W5,W1,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W5,W0,W6,W1,W3,W2,U) = P(y|v0,W5,W0,W6,W1,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W3,W5,W1,W6,W0,U) = P(y|v0,W2,W3,W5,W1,W6,W0)
 
 ## Realized estimand
-b: y~v0+W5+W0+W6+W1+W3+W2
+b: y~v0+W2+W3+W5+W1+W6+W0
 Target units: ate
 
 ## Estimate
-Mean value: 10.697677486880915
+Mean value: 10.697677486880922
 
 </pre></div></div>
 </div>
@@ -956,14 +955,14 @@ sensitivity analysis. (default = True). To override the setting, set plot_estima
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;estimate&#39;: 10.697677486880915,
+{&#39;estimate&#39;: 10.697677486880924,
  &#39;standard_error&#39;: 0.5938735661282949,
  &#39;degree of freedom&#39;: 492,
- &#39;t_statistic&#39;: 18.013392238727608,
- &#39;r2yt_w&#39;: 0.3974149837266678,
- &#39;partial_f2&#39;: 0.6595168698094552,
- &#39;robustness_value&#39;: 0.5467445572181007,
- &#39;robustness_value_alpha&#39;: 0.5076289101030923}
+ &#39;t_statistic&#39;: 18.013392238727626,
+ &#39;r2yt_w&#39;: 0.39741498372666817,
+ &#39;partial_f2&#39;: 0.6595168698094567,
+ &#39;robustness_value&#39;: 0.5467445572181009,
+ &#39;robustness_value_alpha&#39;: 0.5076289101030926}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1079,15 +1078,15 @@ position of the legend (default = (1.6, 0.6))</p>
 Sensitivity Analysis to Unobserved Confounding using R^2 paramterization
 
 Unadjusted Estimates of Treatment [&#39;v0&#39;] :
-Coefficient Estimate : 10.697677486880915
+Coefficient Estimate : 10.697677486880924
 Degree of Freedom : 492
 Standard Error : 0.5938735661282949
-t-value : 18.013392238727608
-F^2 value : 0.6595168698094552
+t-value : 18.013392238727626
+F^2 value : 0.6595168698094567
 
 Sensitivity Statistics :
-Partial R2 of treatment with outcome : 0.3974149837266678
-Robustness Value : 0.5467445572181007
+Partial R2 of treatment with outcome : 0.39741498372666817
+Robustness Value : 0.5467445572181009
 
 Interpretation of results :
 Any confounder explaining less than 54.67% percent of the residual variance of both the treatment and the outcome would not be strong enough to explain away the observed effect i.e bring down the estimate to 0
@@ -1260,9 +1259,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W5,W0,W6,W1,W4,W3,W2])
+─────(E[y|W2,W3,W5,W1,W4,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W5,W0,W6,W1,W4,W3,W2,U) = P(y|v0,W5,W0,W6,W1,W4,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W3,W5,W1,W4,W6,W0,U) = P(y|v0,W2,W3,W5,W1,W4,W6,W0)
 
 ### Estimand : 2
 Estimand name: iv
@@ -1288,8 +1287,6 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-linear_regression
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: None, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: []}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -1299,12 +1296,12 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W5,W0,W6,W1,W4,W3,W2])
+─────(E[y|W2,W3,W5,W1,W4,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W5,W0,W6,W1,W4,W3,W2,U) = P(y|v0,W5,W0,W6,W1,W4,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W3,W5,W1,W4,W6,W0,U) = P(y|v0,W2,W3,W5,W1,W4,W6,W0)
 
 ## Realized estimand
-b: y~v0+W5+W0+W6+W1+W4+W3+W2
+b: y~v0+W2+W3+W5+W1+W4+W6+W0
 Target units: ate
 
 ## Estimate
@@ -1329,10 +1326,10 @@ Mean value: 10.081924375588308
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/__w/dowhy/dowhy/dowhy/causal_refuters/linear_sensitivity_analyzer.py:178: RuntimeWarning: divide by zero encountered in divide
+/__w/dowhy/dowhy/dowhy/causal_refuters/linear_sensitivity_analyzer.py:200: RuntimeWarning: divide by zero encountered in divide
   bias_adjusted_t = (bias_adjusted_estimate - self.null_hypothesis_effect) / bias_adjusted_se
-/__w/dowhy/dowhy/dowhy/causal_refuters/linear_sensitivity_analyzer.py:180: RuntimeWarning: invalid value encountered in divide
-  bias_adjusted_partial_r2 = bias_adjusted_t ** 2 / (bias_adjusted_t ** 2 + (self.degree_of_freedom - 1)) #partial r2 formula used with new t value and dof - 1
+/__w/dowhy/dowhy/dowhy/causal_refuters/linear_sensitivity_analyzer.py:202: RuntimeWarning: invalid value encountered in divide
+  bias_adjusted_partial_r2 = bias_adjusted_t**2 / (
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1375,13 +1372,13 @@ Sensitivity Analysis to Unobserved Confounding using R^2 paramterization
 Unadjusted Estimates of Treatment [&#39;v0&#39;] :
 Coefficient Estimate : 10.081924375588308
 Degree of Freedom : 491
-Standard Error : 0.10446229543424757
-t-value : 96.51256784735546
-F^2 value : 18.970826379817495
+Standard Error : 0.10446229543424751
+t-value : 96.5125678473555
+F^2 value : 18.970826379817513
 
 Sensitivity Statistics :
 Partial R2 of treatment with outcome : 0.9499269594066173
-Robustness Value : 0.9522057801012398
+Robustness Value : 0.952205780101238
 
 Interpretation of results :
 Any confounder explaining less than 95.22% percent of the residual variance of both the treatment and the outcome would not be strong enough to explain away the observed effect i.e bring down the estimate to 0
@@ -1407,12 +1404,12 @@ If confounders explained 100% of the residual variance of the outcome, they woul
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 {&#39;estimate&#39;: 10.081924375588308,
- &#39;standard_error&#39;: 0.10446229543424757,
+ &#39;standard_error&#39;: 0.10446229543424751,
  &#39;degree of freedom&#39;: 491,
- &#39;t_statistic&#39;: 96.51256784735546,
+ &#39;t_statistic&#39;: 96.5125678473555,
  &#39;r2yt_w&#39;: 0.9499269594066173,
- &#39;partial_f2&#39;: 18.970826379817495,
- &#39;robustness_value&#39;: 0.9522057801012398,
+ &#39;partial_f2&#39;: 18.970826379817513,
+ &#39;robustness_value&#39;: 0.952205780101238,
  &#39;robustness_value_alpha&#39;: 0.950386691319526}
 </pre></div></div>
 </div>

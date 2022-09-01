@@ -455,12 +455,12 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-        FD0        W0        v0         y
-0  1.867740 -0.155089  0.516222 -0.073152
-1 -1.283256  1.430231 -0.912170  2.173013
-2  1.150222  1.049180  0.199322  1.792476
-3  1.396679 -0.122452  1.098871 -0.064294
-4  2.136381  1.056613  0.674893  1.883450
+         FD0        W0        v0          y
+0  -5.282398 -0.807465 -3.092668  -8.000440
+1   8.080023  1.152786  4.296762  12.213609
+2  16.493241  2.652010  9.652756  24.953034
+3   6.900352  0.767212  3.355623  10.379694
+4  -4.292594 -0.492253 -1.359438  -6.465387
 </pre></div></div>
 </div>
 </section>
@@ -585,9 +585,6 @@ Estimand assumption 3, Second-stage-unconfoundedness: If U→{FD0} and U→y the
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-two_stage_regression
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: False, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [], &#39;first_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;, &#39;second_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;}
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: False, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [], &#39;first_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;, &#39;second_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -608,7 +605,7 @@ Estimand assumption 3, Second-stage-unconfoundedness: If U→{FD0} and U→y the
 Target units: ate
 
 ## Estimate
-Mean value: 0.26168294281537424
+Mean value: 2.8131388412778433
 
 </pre></div></div>
 </div>
@@ -626,7 +623,7 @@ Mean value: 0.26168294281537424
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.26168294281537424 0.2623284987545254
+2.8131388412778433 2.829722865790982
 </pre></div></div>
 </div>
 <p>The parameter is called <code class="docutils literal notranslate"><span class="pre">ate</span></code> because in the simulated dataset, the direct effect is set to be zero.</p>
@@ -656,10 +653,6 @@ Mean value: 0.26168294281537424
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-two_stage_regression
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: False, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [], &#39;first_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;, &#39;second_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;}
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: False, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [], &#39;first_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;, &#39;second_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;}
-{&#39;control_value&#39;: 0, &#39;treatment_value&#39;: 1, &#39;test_significance&#39;: False, &#39;evaluate_effect_strength&#39;: False, &#39;confidence_intervals&#39;: False, &#39;target_units&#39;: &#39;ate&#39;, &#39;effect_modifiers&#39;: [], &#39;first_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;, &#39;second_stage_model&#39;: &lt;class &#39;dowhy.causal_estimators.linear_regression_estimator.LinearRegressionEstimator&#39;&gt;}
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -680,7 +673,7 @@ Estimand assumption 3, Second-stage-unconfoundedness: If U→{FD0} and U→y the
 Target units: ate
 
 ## Estimate
-Mean value: 2.3871143836229347e-05
+Mean value: 1.6169274972277492e-06
 
 </pre></div></div>
 </div>

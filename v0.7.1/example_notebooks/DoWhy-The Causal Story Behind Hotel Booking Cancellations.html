@@ -1177,7 +1177,7 @@ definite conclusion at this stage. Thus assigning rooms different to what a cust
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 588.7929$</div></div>
+$\displaystyle 588.8468$</div></div>
 </div>
 <p>We now consider the scenario when there were no booking changes and recalculate the expected count.</p>
 <div class="nbinput docutils container">
@@ -1201,7 +1201,7 @@ $\displaystyle 588.7929$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 572.673$</div></div>
+$\displaystyle 572.6367$</div></div>
 </div>
 <p>In the 2nd case, we take the scenario when there were booking changes(&gt;0) and recalculate the expected count.</p>
 <div class="nbinput docutils container">
@@ -1225,7 +1225,7 @@ $\displaystyle 572.673$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 665.8026$</div></div>
+$\displaystyle 665.9595$</div></div>
 </div>
 <p>There is definitely some change happening when the number of booking changes are non-zero. So it gives us a hint that <em>Booking Changes</em> may be affecting room cancellation.</p>
 <p>But is <em>Booking Changes</em> the only confounding variable? What if there were some unobserved confounders, regarding which we have no information(feature) present in our dataset. Would we still be able to make the same claims as before?</p>
@@ -1339,17 +1339,17 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
             d
-──────────────────────────(E[is_canceled|days_in_waiting_list,total_of_special
+──────────────────────────(E[is_canceled|is_repeated_guest,guests,lead_time,bo
 d[different_room_assigned]
 
 
-_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_sp
+oking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,tota
 
 
 
-aces,guests,lead_time,hotel])
+l_of_special_requests,hotel])
 
-Estimand assumption 1, Unconfoundedness: If U→{different_room_assigned} and U→is_canceled then P(is_canceled|different_room_assigned,days_in_waiting_list,total_of_special_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_spaces,guests,lead_time,hotel,U) = P(is_canceled|different_room_assigned,days_in_waiting_list,total_of_special_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_spaces,guests,lead_time,hotel)
+Estimand assumption 1, Unconfoundedness: If U→{different_room_assigned} and U→is_canceled then P(is_canceled|different_room_assigned,is_repeated_guest,guests,lead_time,booking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,total_of_special_requests,hotel,U) = P(is_canceled|different_room_assigned,is_repeated_guest,guests,lead_time,booking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,total_of_special_requests,hotel)
 
 ### Estimand : 2
 Estimand name: iv
@@ -1382,7 +1382,6 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-propensity_score_weighting
 *** Causal Estimate ***
 
 ## Identified estimand
@@ -1392,24 +1391,24 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
             d
-──────────────────────────(E[is_canceled|days_in_waiting_list,total_of_special
+──────────────────────────(E[is_canceled|is_repeated_guest,guests,lead_time,bo
 d[different_room_assigned]
 
 
-_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_sp
+oking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,tota
 
 
 
-aces,guests,lead_time,hotel])
+l_of_special_requests,hotel])
 
-Estimand assumption 1, Unconfoundedness: If U→{different_room_assigned} and U→is_canceled then P(is_canceled|different_room_assigned,days_in_waiting_list,total_of_special_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_spaces,guests,lead_time,hotel,U) = P(is_canceled|different_room_assigned,days_in_waiting_list,total_of_special_requests,total_stay,booking_changes,is_repeated_guest,required_car_parking_spaces,guests,lead_time,hotel)
+Estimand assumption 1, Unconfoundedness: If U→{different_room_assigned} and U→is_canceled then P(is_canceled|different_room_assigned,is_repeated_guest,guests,lead_time,booking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,total_of_special_requests,hotel,U) = P(is_canceled|different_room_assigned,is_repeated_guest,guests,lead_time,booking_changes,total_stay,days_in_waiting_list,required_car_parking_spaces,total_of_special_requests,hotel)
 
 ## Realized estimand
-b: is_canceled~different_room_assigned+days_in_waiting_list+total_of_special_requests+total_stay+booking_changes+is_repeated_guest+required_car_parking_spaces+guests+lead_time+hotel
+b: is_canceled~different_room_assigned+is_repeated_guest+guests+lead_time+booking_changes+total_stay+days_in_waiting_list+required_car_parking_spaces+total_of_special_requests+hotel
 Target units: ate
 
 ## Estimate
-Mean value: -0.262203917957131
+Mean value: -0.2622548852776856
 
 </pre></div></div>
 </div>
@@ -1440,9 +1439,9 @@ Mean value: -0.262203917957131
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:-0.262203917957131
-New effect:-0.26222317428746034
-p value:0.78
+Estimated effect:-0.2622548852776856
+New effect:-0.26219866238759904
+p value:0.64
 
 </pre></div></div>
 </div>
@@ -1466,8 +1465,8 @@ p value:0.78
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:-0.262203917957131
-New effect:-0.00026098149260781465
+Estimated effect:-0.2622548852776856
+New effect:0.0001993695172009985
 p value:0.98
 
 </pre></div></div>
@@ -1492,8 +1491,8 @@ p value:0.98
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a subset of data
-Estimated effect:-0.262203917957131
-New effect:-0.2619554716792357
+Estimated effect:-0.2622548852776856
+New effect:-0.2620177863358857
 p value:0.84
 
 </pre></div></div>
