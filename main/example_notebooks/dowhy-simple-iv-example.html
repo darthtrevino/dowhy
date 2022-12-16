@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Simple example on using Instrumental Variables method for estimation &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,14 +45,18 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Different ways to load an input graph" href="load_graph_example.html" />
-    <link rel="prev" title="Testing Assumptions in model with DoWhy: A simple example" href="graph_conditional_independence_refuter.html" />
+    <link rel="next" title="Testing Assumptions in model with DoWhy: A simple example" href="graph_conditional_independence_refuter.html" />
+    <link rel="prev" title="Basic Example for generating samples from a GCM" href="gcm_draw_samples.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="dowhy-simple-iv-example.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -498,10 +523,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -650,8 +676,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%load_ext autoreload
+%autoreload 2
 </pre></div>
 </div>
 </div>
@@ -659,13 +685,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">patsy</span> <span class="k">as</span> <span class="nn">ps</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+import patsy as ps
 
-<span class="kn">from</span> <span class="nn">statsmodels.sandbox.regression.gmm</span> <span class="kn">import</span> <span class="n">IV2SLS</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">dowhy</span> <span class="kn">import</span> <span class="n">CausalModel</span>
+from statsmodels.sandbox.regression.gmm import IV2SLS
+import os, sys
+from dowhy import CausalModel
 </pre></div>
 </div>
 </div>
@@ -676,30 +702,30 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_points</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="n">education_abilty</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">education_voucher</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">income_abilty</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">income_education</span> <span class="o">=</span> <span class="mi">4</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>n_points = 1000
+education_abilty = 1
+education_voucher = 2
+income_abilty = 2
+income_education = 4
 
 
-<span class="c1"># confounder</span>
-<span class="n">ability</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
+# confounder
+ability = np.random.normal(0, 3, size=n_points)
 
-<span class="c1"># instrument</span>
-<span class="n">voucher</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span>
+# instrument
+voucher = np.random.normal(2, 1, size=n_points)
 
-<span class="c1"># treatment</span>
-<span class="n">education</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span> <span class="o">+</span> <span class="n">education_abilty</span> <span class="o">*</span> <span class="n">ability</span> <span class="o">+</span>\
-            <span class="n">education_voucher</span> <span class="o">*</span> <span class="n">voucher</span>
+# treatment
+education = np.random.normal(5, 1, size=n_points) + education_abilty * ability +\
+            education_voucher * voucher
 
-<span class="c1"># outcome</span>
-<span class="n">income</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n_points</span><span class="p">)</span> <span class="o">+</span>\
-         <span class="n">income_abilty</span> <span class="o">*</span> <span class="n">ability</span> <span class="o">+</span> <span class="n">income_education</span> <span class="o">*</span> <span class="n">education</span>
+# outcome
+income = np.random.normal(10, 3, size=n_points) +\
+         income_abilty * ability + income_education * education
 
-<span class="c1"># build dataset (exclude confounder `ability` which we assume to be unobserved)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">education</span><span class="p">,</span> <span class="n">income</span><span class="p">,</span> <span class="n">voucher</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;education&#39;</span><span class="p">,</span> <span class="s1">&#39;income&#39;</span><span class="p">,</span> <span class="s1">&#39;voucher&#39;</span><span class="p">])</span>
+# build dataset (exclude confounder `ability` which we assume to be unobserved)
+data = np.stack([education, income, voucher]).T
+df = pd.DataFrame(data, columns = [&#39;education&#39;, &#39;income&#39;, &#39;voucher&#39;])
 </pre></div>
 </div>
 </div>
@@ -716,17 +742,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Step 1: Model</span>
-<span class="n">model</span><span class="o">=</span><span class="n">CausalModel</span><span class="p">(</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span>
-        <span class="n">treatment</span><span class="o">=</span><span class="s1">&#39;education&#39;</span><span class="p">,</span>
-        <span class="n">outcome</span><span class="o">=</span><span class="s1">&#39;income&#39;</span><span class="p">,</span>
-        <span class="n">common_causes</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;U&#39;</span><span class="p">],</span>
-        <span class="n">instruments</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;voucher&#39;</span><span class="p">]</span>
-        <span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">view_model</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;causal_model.png&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>#Step 1: Model
+model=CausalModel(
+        data = df,
+        treatment=&#39;education&#39;,
+        outcome=&#39;income&#39;,
+        common_causes=[&#39;U&#39;],
+        instruments=[&#39;voucher&#39;]
+        )
+model.view_model()
+from IPython.display import Image, display
+display(Image(filename=&quot;causal_model.png&quot;))
 </pre></div>
 </div>
 </div>
@@ -741,9 +767,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 2: Identify</span>
-<span class="n">identified_estimand</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">identify_effect</span><span class="p">(</span><span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Step 2: Identify
+identified_estimand = model.identify_effect(proceed_when_unidentifiable=True)
+print(identified_estimand)
 </pre></div>
 </div>
 </div>
@@ -752,7 +778,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
@@ -778,12 +804,12 @@ No such variable(s) found!
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 3: Estimate</span>
-<span class="c1">#Choose the second estimand: using IV</span>
-<span class="n">estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span>
-        <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;iv.instrumental_variable&quot;</span><span class="p">,</span> <span class="n">test_significance</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Step 3: Estimate
+#Choose the second estimand: using IV
+estimate = model.estimate_effect(identified_estimand,
+        method_name=&quot;iv.instrumental_variable&quot;, test_significance=True)
 
-<span class="nb">print</span><span class="p">(</span><span class="n">estimate</span><span class="p">)</span>
+print(estimate)
 </pre></div>
 </div>
 </div>
@@ -795,7 +821,7 @@ No such variable(s) found!
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: iv
@@ -809,7 +835,7 @@ Estimand assumption 2, Exclusion: If we remove {voucher}→{education}, then ¬(
 
 ## Realized estimand
 Realized estimand: Wald Estimator
-Realized estimand type: nonparametric-ate
+Realized estimand type: EstimandType.NONPARAMETRIC_ATE
 Estimand expression:
  ⎡   d            ⎤  -1⎡   d               ⎤
 E⎢────────(income)⎥⋅E  ⎢────────(education)⎥
@@ -822,8 +848,7 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome incom
 Target units: ate
 
 ## Estimate
-Mean value: 4.049498613405828
-p-value: [0, 0.001]
+Mean value: 3.959972362654865
 
 </pre></div></div>
 </div>
@@ -833,9 +858,9 @@ p-value: [0, 0.001]
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Step 4: Refute</span>
-<span class="n">ref</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">estimate</span><span class="p">,</span> <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;placebo_treatment_refuter&quot;</span><span class="p">,</span> <span class="n">placebo_type</span><span class="o">=</span><span class="s2">&quot;permute&quot;</span><span class="p">)</span> <span class="c1"># only permute placebo_type works with IV estimate</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Step 4: Refute
+ref = model.refute_estimate(identified_estimand, estimate, method_name=&quot;placebo_treatment_refuter&quot;, placebo_type=&quot;permute&quot;) # only permute placebo_type works with IV estimate
+print(ref)
 </pre></div>
 </div>
 </div>
@@ -845,9 +870,9 @@ p-value: [0, 0.001]
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:4.049498613405828
-New effect:-0.06840629823033918
-p value:0.8799999999999999
+Estimated effect:3.959972362654865
+New effect:0.04924991185553233
+p value:0.88
 
 </pre></div></div>
 </div>
@@ -858,11 +883,11 @@ p value:0.8799999999999999
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">income_vec</span><span class="p">,</span> <span class="n">endog</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">dmatrices</span><span class="p">(</span><span class="s2">&quot;income ~ education&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
-<span class="n">exog</span> <span class="o">=</span> <span class="n">ps</span><span class="o">.</span><span class="n">dmatrix</span><span class="p">(</span><span class="s2">&quot;voucher&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>income_vec, endog = ps.dmatrices(&quot;income ~ education&quot;, data=df)
+exog = ps.dmatrix(&quot;voucher&quot;, data=df)
 
-<span class="n">m</span> <span class="o">=</span> <span class="n">IV2SLS</span><span class="p">(</span><span class="n">income_vec</span><span class="p">,</span> <span class="n">endog</span><span class="p">,</span> <span class="n">exog</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">m</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+m = IV2SLS(income_vec, endog, exog).fit()
+m.summary()
 </pre></div>
 </div>
 </div>
@@ -874,22 +899,22 @@ p value:0.8799999999999999
 <table class="simpletable">
 <caption>IV2SLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>         <td>income</td>      <th>  R-squared:         </th> <td>   0.896</td>
+  <th>Dep. Variable:</th>         <td>income</td>      <th>  R-squared:         </th> <td>   0.889</td>
 </tr>
 <tr>
-  <th>Model:</th>                 <td>IV2SLS</td>      <th>  Adj. R-squared:    </th> <td>   0.896</td>
+  <th>Model:</th>                 <td>IV2SLS</td>      <th>  Adj. R-squared:    </th> <td>   0.888</td>
 </tr>
 <tr>
-  <th>Method:</th>               <td>Two Stage</td>    <th>  F-statistic:       </th> <td>   1759.</td>
+  <th>Method:</th>               <td>Two Stage</td>    <th>  F-statistic:       </th> <td>   1365.</td>
 </tr>
 <tr>
-  <th></th>                    <td>Least Squares</td>  <th>  Prob (F-statistic):</th> <td>1.94e-222</td>
+  <th></th>                    <td>Least Squares</td>  <th>  Prob (F-statistic):</th> <td>5.24e-189</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 01 Sep 2022</td> <th>                     </th>     <td> </td>
+  <th>Date:</th>             <td>Fri, 16 Dec 2022</td> <th>                     </th>     <td> </td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:33:49</td>     <th>                     </th>     <td> </td>
+  <th>Time:</th>                 <td>19:37:15</td>     <th>                     </th>     <td> </td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>  1000</td>      <th>                     </th>     <td> </td>
@@ -906,24 +931,24 @@ p value:0.8799999999999999
       <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>
 </tr>
 <tr>
-  <th>Intercept</th> <td>    9.7540</td> <td>    0.900</td> <td>   10.832</td> <td> 0.000</td> <td>    7.987</td> <td>   11.521</td>
+  <th>Intercept</th> <td>   10.1134</td> <td>    0.980</td> <td>   10.321</td> <td> 0.000</td> <td>    8.191</td> <td>   12.036</td>
 </tr>
 <tr>
-  <th>education</th> <td>    4.0495</td> <td>    0.097</td> <td>   41.941</td> <td> 0.000</td> <td>    3.860</td> <td>    4.239</td>
+  <th>education</th> <td>    3.9600</td> <td>    0.107</td> <td>   36.947</td> <td> 0.000</td> <td>    3.750</td> <td>    4.170</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td> 2.169</td> <th>  Durbin-Watson:     </th> <td>   2.160</td>
+  <th>Omnibus:</th>       <td> 0.260</td> <th>  Durbin-Watson:     </th> <td>   2.118</td>
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th> <td> 0.338</td> <th>  Jarque-Bera (JB):  </th> <td>   2.042</td>
+  <th>Prob(Omnibus):</th> <td> 0.878</td> <th>  Jarque-Bera (JB):  </th> <td>   0.206</td>
 </tr>
 <tr>
-  <th>Skew:</th>          <td> 0.104</td> <th>  Prob(JB):          </th> <td>   0.360</td>
+  <th>Skew:</th>          <td>-0.033</td> <th>  Prob(JB):          </th> <td>   0.902</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td> 3.076</td> <th>  Cond. No.          </th> <td>    26.1</td>
+  <th>Kurtosis:</th>      <td> 3.026</td> <th>  Cond. No.          </th> <td>    25.1</td>
 </tr>
 </table></div>
 </div>
@@ -938,17 +963,17 @@ p value:0.8799999999999999
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="graph_conditional_independence_refuter.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="gcm_draw_samples.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Testing Assumptions in model with DoWhy: A simple example</p>
+          <p class="prev-next-title">Basic Example for generating samples from a GCM</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="load_graph_example.html" title="next page">
+  <a class='right-next' id="next-link" href="graph_conditional_independence_refuter.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Different ways to load an input graph</p>
+      <p class="prev-next-title">Testing Assumptions in model with DoWhy: A simple example</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -975,7 +1000,7 @@ p value:0.8799999999999999
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

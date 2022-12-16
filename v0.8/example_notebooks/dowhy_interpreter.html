@@ -15,6 +15,7 @@
   <title>DoWhy: Interpreters for Causal Estimators &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -473,7 +476,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-7281
+8289
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -513,63 +516,63 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.0</td>
-      <td>0.224967</td>
-      <td>0.099029</td>
-      <td>1.115651</td>
-      <td>-0.296528</td>
-      <td>-1.819372</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>0.947246</td>
+      <td>0.502349</td>
+      <td>0.427980</td>
+      <td>0.300791</td>
+      <td>-1.134919</td>
+      <td>0</td>
       <td>True</td>
-      <td>-0.480638</td>
+      <td>1.145415</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
-      <td>0.221862</td>
-      <td>0.190895</td>
-      <td>0.761515</td>
-      <td>-1.706115</td>
-      <td>0.075749</td>
+      <td>0.0</td>
+      <td>0.982777</td>
+      <td>1.144795</td>
+      <td>-0.037570</td>
+      <td>-0.962036</td>
+      <td>0.236906</td>
       <td>1</td>
       <td>True</td>
-      <td>0.046753</td>
+      <td>1.393176</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
-      <td>0.217359</td>
-      <td>-1.152603</td>
-      <td>-0.417890</td>
-      <td>-0.510213</td>
-      <td>-0.834229</td>
+      <td>0.0</td>
+      <td>0.834327</td>
+      <td>2.318838</td>
+      <td>-1.939185</td>
+      <td>0.894969</td>
+      <td>0.524028</td>
       <td>3</td>
       <td>True</td>
-      <td>-0.825946</td>
+      <td>3.052936</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
-      <td>0.233402</td>
-      <td>-0.984144</td>
-      <td>-0.382519</td>
-      <td>-0.150954</td>
-      <td>-0.206893</td>
-      <td>2</td>
+      <td>0.0</td>
+      <td>0.719354</td>
+      <td>1.083163</td>
+      <td>-0.242560</td>
+      <td>1.458485</td>
+      <td>2.151621</td>
+      <td>1</td>
       <td>True</td>
-      <td>0.127417</td>
+      <td>2.839988</td>
     </tr>
     <tr>
       <th>4</th>
       <td>0.0</td>
-      <td>0.421303</td>
-      <td>-0.273579</td>
-      <td>0.475612</td>
-      <td>-0.026139</td>
-      <td>-0.615046</td>
-      <td>2</td>
-      <td>False</td>
-      <td>-0.570251</td>
+      <td>0.520906</td>
+      <td>0.572114</td>
+      <td>-0.526788</td>
+      <td>0.108098</td>
+      <td>0.625915</td>
+      <td>1</td>
+      <td>True</td>
+      <td>1.713802</td>
     </tr>
     <tr>
       <th>...</th>
@@ -586,62 +589,62 @@ div.rendered_html tbody tr:hover {
     <tr>
       <th>9995</th>
       <td>0.0</td>
-      <td>0.849821</td>
-      <td>-0.582940</td>
-      <td>0.734590</td>
-      <td>-0.713484</td>
-      <td>0.173716</td>
-      <td>1</td>
+      <td>0.193484</td>
+      <td>-0.545459</td>
+      <td>1.457446</td>
+      <td>-1.099237</td>
+      <td>-0.209514</td>
+      <td>3</td>
       <td>True</td>
-      <td>0.394826</td>
+      <td>3.247333</td>
     </tr>
     <tr>
       <th>9996</th>
-      <td>0.0</td>
-      <td>0.343327</td>
-      <td>-1.797571</td>
-      <td>2.833123</td>
-      <td>-2.028356</td>
-      <td>-0.572913</td>
-      <td>3</td>
+      <td>1.0</td>
+      <td>0.542468</td>
+      <td>1.760411</td>
+      <td>1.270923</td>
+      <td>0.218403</td>
+      <td>-1.466247</td>
+      <td>2</td>
       <td>True</td>
-      <td>-1.626944</td>
+      <td>3.023016</td>
     </tr>
     <tr>
       <th>9997</th>
       <td>0.0</td>
-      <td>0.335899</td>
-      <td>0.577508</td>
-      <td>1.156163</td>
-      <td>-0.674082</td>
-      <td>-1.148776</td>
-      <td>0</td>
-      <td>False</td>
-      <td>-1.041731</td>
+      <td>0.043362</td>
+      <td>-1.058642</td>
+      <td>-0.411854</td>
+      <td>-1.871888</td>
+      <td>0.601943</td>
+      <td>2</td>
+      <td>True</td>
+      <td>1.391015</td>
     </tr>
     <tr>
       <th>9998</th>
       <td>0.0</td>
-      <td>0.677161</td>
-      <td>1.504029</td>
-      <td>1.550204</td>
-      <td>0.248388</td>
-      <td>1.949093</td>
-      <td>1</td>
+      <td>0.512677</td>
+      <td>-0.836475</td>
+      <td>1.634418</td>
+      <td>-0.727657</td>
+      <td>0.375322</td>
+      <td>0</td>
       <td>True</td>
-      <td>4.345882</td>
+      <td>1.404239</td>
     </tr>
     <tr>
       <th>9999</th>
       <td>0.0</td>
-      <td>0.339896</td>
-      <td>-0.260883</td>
-      <td>-0.209219</td>
-      <td>0.593438</td>
-      <td>-2.125535</td>
-      <td>3</td>
-      <td>True</td>
-      <td>-0.548383</td>
+      <td>0.966687</td>
+      <td>0.188475</td>
+      <td>-1.813045</td>
+      <td>-1.690992</td>
+      <td>1.121351</td>
+      <td>1</td>
+      <td>False</td>
+      <td>-0.691164</td>
     </tr>
   </tbody>
 </table>
@@ -712,9 +715,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W1,W4,W2,W0])
+─────(E[y|W2,W0,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W1,W4,W2,W0,U) = P(y|v0,W3,W1,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W0,W4,W1,W3,U) = P(y|v0,W2,W0,W4,W1,W3)
 
 ### Estimand : 2
 Estimand name: iv
@@ -762,18 +765,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W1,W4,W2,W0])
+─────(E[y|W2,W0,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W1,W4,W2,W0,U) = P(y|v0,W3,W1,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W0,W4,W1,W3,U) = P(y|v0,W2,W0,W4,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W1+W4+W2+W0
+b: y~v0+W2+W0+W4+W1+W3
 Target units: att
 
 ## Estimate
-Mean value: 1.0127774383976944
+Mean value: 0.9877648223593878
 
-Causal Estimate is 1.0127774383976944
+Causal Estimate is 0.9877648223593878
 </pre></div></div>
 </div>
 <section id="Textual-Interpreter">
@@ -793,7 +796,7 @@ Causal Estimate is 1.0127774383976944
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.0127774383976944 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
+Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 0.9877648223593878 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
 </pre></div></div>
 </div>
 </section>
@@ -850,18 +853,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W1,W4,W2,W0])
+─────(E[y|W2,W0,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W1,W4,W2,W0,U) = P(y|v0,W3,W1,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W0,W4,W1,W3,U) = P(y|v0,W2,W0,W4,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W1+W4+W2+W0
+b: y~v0+W2+W0+W4+W1+W3
 Target units: atc
 
 ## Estimate
-Mean value: 1.0020496421795702
+Mean value: 1.0185514837403649
 
-Causal Estimate is 1.0020496421795702
+Causal Estimate is 1.0185514837403649
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -878,7 +881,7 @@ Causal Estimate is 1.0020496421795702
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.0020496421795702 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
+Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.0185514837403649 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
 </pre></div></div>
 </div>
 <p>Cannot use propensity balance interpretor here since the interpreter method only supports propensity score stratification estimator.</p>
@@ -913,18 +916,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W1,W4,W2,W0])
+─────(E[y|W2,W0,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W1,W4,W2,W0,U) = P(y|v0,W3,W1,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W2,W0,W4,W1,W3,U) = P(y|v0,W2,W0,W4,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W1+W4+W2+W0
+b: y~v0+W2+W0+W4+W1+W3
 Target units: ate
 
 ## Estimate
-Mean value: 1.0529279008355268
+Mean value: 1.0449970110480185
 
-Causal Estimate is 1.0529279008355268
+Causal Estimate is 1.0449970110480185
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -941,7 +944,7 @@ Causal Estimate is 1.0529279008355268
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.0529279008355268 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
+Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.0449970110480185 in the expected value of the outcome [y], over the data distribution/population represented by the dataset.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1013,7 +1016,6 @@ Increasing the treatment variable(s) [v0] from 0 to 1 causes an increase of 1.05
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="dowhy_interpreter.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

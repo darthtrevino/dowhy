@@ -15,6 +15,7 @@
   <title>Getting started with DoWhy: A simple example &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -469,18 +472,18 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
          X0   Z0        Z1        W0        W1        W2        W3 W4     v0  \
-0 -1.350362  0.0  0.632658  0.201117 -0.701459 -1.607553  0.484112  1   True
-1 -0.337313  0.0  0.449535 -0.730523 -1.561263 -2.187239 -0.927602  2  False
-2 -1.143656  0.0  0.179533  0.364593  0.372244 -2.417841 -0.053600  1  False
-3 -1.505281  0.0  0.968205 -0.858388 -0.128134 -0.617132  0.173943  0  False
-4 -0.886394  0.0  0.748210 -1.804029 -0.064210  0.677658 -0.059808  0   True
+0 -0.383167  1.0  0.424245  0.724007 -0.527145 -0.081458 -1.101590  1   True
+1 -0.526705  1.0  0.496017 -0.186435 -1.757697 -1.248695  0.872779  0  False
+2  1.011898  0.0  0.624481 -0.981452 -1.235221 -0.401634 -0.006441  1   True
+3  0.931292  1.0  0.662028 -2.764538 -0.675813 -0.797018 -0.550329  3   True
+4  0.004487  1.0  0.690129 -0.225898 -1.713424 -1.721258  0.438408  1   True
 
            y
-0   1.596305
-1 -11.544286
-2  -4.016079
-3  -3.543792
-4   4.578804
+0  12.520336
+1  -5.766734
+2   6.892594
+3   3.511675
+4   4.755691
 digraph {v0-&gt;y;W0-&gt; v0; W1-&gt; v0; W2-&gt; v0; W3-&gt; v0; W4-&gt; v0;Z0-&gt; v0; Z1-&gt; v0;W0-&gt; y; W1-&gt; y; W2-&gt; y; W3-&gt; y; W4-&gt; y;X0-&gt; y;}
 
 
@@ -556,9 +559,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W4,W2,W0,W1])
+─────(E[y|W0,W4,W2,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W2,W0,W1,U) = P(y|v0,W3,W4,W2,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W4,W2,W1,W3,U) = P(y|v0,W0,W4,W2,W1,W3)
 
 ### Estimand : 2
 Estimand name: iv
@@ -566,9 +569,9 @@ Estimand expression:
  ⎡                              -1⎤
  ⎢    d        ⎛    d          ⎞  ⎥
 E⎢─────────(y)⋅⎜─────────([v₀])⎟  ⎥
- ⎣d[Z₁  Z₀]    ⎝d[Z₁  Z₀]      ⎠  ⎦
-Estimand assumption 1, As-if-random: If U→→y then ¬(U →→{Z1,Z0})
-Estimand assumption 2, Exclusion: If we remove {Z1,Z0}→{v0}, then ¬({Z1,Z0}→y)
+ ⎣d[Z₀  Z₁]    ⎝d[Z₀  Z₁]      ⎠  ⎦
+Estimand assumption 1, As-if-random: If U→→y then ¬(U →→{Z0,Z1})
+Estimand assumption 2, Exclusion: If we remove {Z0,Z1}→{v0}, then ¬({Z0,Z1}→y)
 
 ### Estimand : 3
 Estimand name: frontdoor
@@ -605,18 +608,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W4,W2,W0,W1])
+─────(E[y|W0,W4,W2,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W2,W0,W1,U) = P(y|v0,W3,W4,W2,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W4,W2,W1,W3,U) = P(y|v0,W0,W4,W2,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W4+W2+W0+W1
+b: y~v0+W0+W4+W2+W1+W3
 Target units: ate
 
 ## Estimate
-Mean value: 6.285214031028571
+Mean value: 10.116890992343205
 
-Causal Estimate is 6.285214031028571
+Causal Estimate is 10.116890992343205
 </pre></div></div>
 </div>
 <p>You can input additional parameters to the estimate_effect method. For instance, to estimate the effect on any subset of the units, you can specify the “target_units” parameter which can be a string (“ate”, “att”, or “atc”), lambda function that filters rows of the data frame, or a new dataframe on which to compute the effect. You can also specify “effect modifiers” to estimate heterogeneous effects across these variables. See <code class="docutils literal notranslate"><span class="pre">help(CausalModel.estimate_effect)</span></code>.</p>
@@ -647,18 +650,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W4,W2,W0,W1])
+─────(E[y|W0,W4,W2,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W2,W0,W1,U) = P(y|v0,W3,W4,W2,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W4,W2,W1,W3,U) = P(y|v0,W0,W4,W2,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W4+W2+W0+W1
+b: y~v0+W0+W4+W2+W1+W3
 Target units: atc
 
 ## Estimate
-Mean value: 6.189858676016801
+Mean value: 10.207883675757886
 
-Causal Estimate is 6.189858676016801
+Causal Estimate is 10.207883675757886
 </pre></div></div>
 </div>
 </section>
@@ -746,18 +749,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W3,W4,W2,W0,W1])
+─────(E[y|W0,W4,W2,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W3,W4,W2,W0,W1,U) = P(y|v0,W3,W4,W2,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W4,W2,W1,W3,U) = P(y|v0,W0,W4,W2,W1,W3)
 
 ## Realized estimand
-b: y~v0+W3+W4+W2+W0+W1
+b: y~v0+W0+W4+W2+W1+W3
 Target units: ate
 
 ## Estimate
-Mean value: 6.285214031028571
+Mean value: 10.116890992343205
 
-Causal Estimate is 6.285214031028571
+Causal Estimate is 10.116890992343205
 </pre></div></div>
 </div>
 </section>
@@ -792,9 +795,9 @@ Causal Estimate is 6.285214031028571
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:6.285214031028571
-New effect:6.191733032444957
-p value:0.19999999999999996
+Estimated effect:10.116890992343205
+New effect:10.136759490483055
+p value:0.68
 
 </pre></div></div>
 </div>
@@ -817,9 +820,9 @@ p value:0.19999999999999996
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:6.285214031028571
-New effect:-0.022462586912096252
-p value:0.78
+Estimated effect:10.116890992343205
+New effect:-0.009460973059543831
+p value:0.94
 
 </pre></div></div>
 </div>
@@ -842,9 +845,9 @@ p value:0.78
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a subset of data
-Estimated effect:6.285214031028571
-New effect:6.162329760041185
-p value:0.1200000000000001
+Estimated effect:10.116890992343205
+New effect:10.131276861302855
+p value:0.74
 
 </pre></div></div>
 </div>
@@ -865,9 +868,9 @@ p value:0.1200000000000001
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a subset of data
-Estimated effect:6.285214031028571
-New effect:6.167469749956163
-p value:0.08000000000000007
+Estimated effect:10.116890992343205
+New effect:10.143750562295175
+p value:0.52
 
 </pre></div></div>
 </div>
@@ -897,8 +900,8 @@ unobserved common cause’s effect.</p>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add an Unobserved Common Cause
-Estimated effect:6.285214031028571
-New effect:6.149003355196878
+Estimated effect:10.116890992343205
+New effect:9.785998903650809
 
 </pre></div></div>
 </div>
@@ -927,8 +930,8 @@ New effect:6.149003355196878
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add an Unobserved Common Cause
-Estimated effect:6.285214031028571
-New effect:(5.733783341617515, 6.17876288152448)
+Estimated effect:10.116890992343205
+New effect:(8.86787814107183, 10.121873691567501)
 
 </pre></div></div>
 </div>
@@ -959,8 +962,8 @@ New effect:(5.733783341617515, 6.17876288152448)
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add an Unobserved Common Cause
-Estimated effect:6.285214031028571
-New effect:(4.070951228884454, 6.199904611780888)
+Estimated effect:10.116890992343205
+New effect:(6.912527791624671, 10.068797070673353)
 
 </pre></div></div>
 </div>
@@ -989,8 +992,8 @@ strength of observed confounders. There is an additional optional parameter sign
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add an Unobserved Common Cause
-Estimated effect:6.285214031028571
-New effect:(-0.38787224544670607, 6.124774730212556)
+Estimated effect:10.116890992343205
+New effect:(-0.005160310768605011, 10.117000518037802)
 
 </pre></div></div>
 </div>
@@ -1042,7 +1045,6 @@ New effect:(-0.38787224544670607, 6.124774730212556)
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="dowhy_simple_example.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

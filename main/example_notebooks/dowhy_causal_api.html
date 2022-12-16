@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Demo for the DoWhy causal API &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,6 +45,10 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -49,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Do-sampler Introduction" href="do_sampler_demo.html" />
-    <link rel="prev" title="DoWhy: Interpreters for Causal Estimators" href="dowhy_interpreter.html" />
+    <link rel="prev" title="Iterating over multiple refutation tests" href="dowhy_refuter_notebook.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="dowhy_causal_api.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -493,10 +518,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -646,13 +672,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">dowhy.datasets</span>
-<span class="kn">import</span> <span class="nn">dowhy.api</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import dowhy.datasets
+import dowhy.api
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+import numpy as np
+import pandas as pd
 
-<span class="kn">from</span> <span class="nn">statsmodels.api</span> <span class="kn">import</span> <span class="n">OLS</span>
+from statsmodels.api import OLS
 </pre></div>
 </div>
 </div>
@@ -660,19 +686,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dowhy</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">linear_dataset</span><span class="p">(</span><span class="n">beta</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-        <span class="n">num_common_causes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-        <span class="n">num_instruments</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="n">num_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
-        <span class="n">treatment_is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span>
-<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="c1"># Adding noise to data. Without noise, the variance in Y|X, Z is zero, and mcmc fails.</span>
-<span class="c1">#data[&#39;dot_graph&#39;] = &#39;digraph { v -&gt;y;X0-&gt; v;X0-&gt; y;}&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = dowhy.datasets.linear_dataset(beta=5,
+        num_common_causes=1,
+        num_instruments = 0,
+        num_samples=1000,
+        treatment_is_binary=True)
+df = data[&#39;df&#39;]
+df[&#39;y&#39;] = df[&#39;y&#39;] + np.random.normal(size=len(df)) # Adding noise to data. Without noise, the variance in Y|X, Z is zero, and mcmc fails.
+#data[&#39;dot_graph&#39;] = &#39;digraph { v -&gt;y;X0-&gt; v;X0-&gt; y;}&#39;
 
-<span class="n">treatment</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">outcome</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">common_cause</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;common_causes_names&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">df</span>
+treatment= data[&quot;treatment_name&quot;][0]
+outcome = data[&quot;outcome_name&quot;][0]
+common_cause = data[&quot;common_causes_names&quot;][0]
+df
 </pre></div>
 </div>
 </div>
@@ -707,33 +733,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.109943</td>
+      <td>0.076236</td>
       <td>True</td>
-      <td>7.305573</td>
+      <td>5.553473</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2.705252</td>
-      <td>True</td>
-      <td>8.099747</td>
+      <td>0.060844</td>
+      <td>False</td>
+      <td>0.368952</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.097364</td>
+      <td>-0.028633</td>
       <td>False</td>
-      <td>0.618054</td>
+      <td>-0.494726</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.270309</td>
+      <td>-1.427719</td>
       <td>True</td>
-      <td>5.591181</td>
+      <td>5.404953</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.792076</td>
-      <td>True</td>
-      <td>6.566470</td>
+      <td>-0.671959</td>
+      <td>False</td>
+      <td>-1.001133</td>
     </tr>
     <tr>
       <th>...</th>
@@ -743,33 +769,33 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>1.613902</td>
+      <td>0.700718</td>
       <td>True</td>
-      <td>6.323625</td>
+      <td>5.251570</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>2.075258</td>
+      <td>0.946380</td>
       <td>True</td>
-      <td>6.477758</td>
+      <td>7.180262</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>0.731176</td>
+      <td>-0.004310</td>
       <td>True</td>
-      <td>6.368071</td>
+      <td>4.482246</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>2.685021</td>
+      <td>0.618509</td>
       <td>True</td>
-      <td>8.476229</td>
+      <td>4.455502</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>2.474660</td>
-      <td>True</td>
-      <td>8.420663</td>
+      <td>-1.381954</td>
+      <td>False</td>
+      <td>-0.086505</td>
     </tr>
   </tbody>
 </table>
@@ -780,12 +806,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># data[&#39;df&#39;] is just a regular pandas.DataFrame</span>
-<span class="n">df</span><span class="o">.</span><span class="n">causal</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">treatment</span><span class="p">,</span>
-                     <span class="n">variable_types</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">common_cause</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span>
-                     <span class="n">outcome</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span>
-                     <span class="n">common_causes</span><span class="o">=</span><span class="p">[</span><span class="n">common_cause</span><span class="p">],</span>
-                     <span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">treatment</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># data[&#39;df&#39;] is just a regular pandas.DataFrame
+df.causal.do(x=treatment,
+                     variable_types={treatment: &#39;b&#39;, outcome: &#39;c&#39;, common_cause: &#39;c&#39;},
+                     outcome=outcome,
+                     common_causes=[common_cause],
+                     proceed_when_unidentifiable=True).groupby(treatment).mean().plot(y=outcome, kind=&#39;bar&#39;)
 </pre></div>
 </div>
 </div>
@@ -795,7 +821,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;AxesSubplot:xlabel=&#39;v0&#39;&gt;
+&lt;AxesSubplot: xlabel=&#39;v0&#39;&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -809,12 +835,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">causal</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-              <span class="n">variable_types</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">common_cause</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span>
-              <span class="n">outcome</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span>
-              <span class="n">method</span><span class="o">=</span><span class="s1">&#39;weighting&#39;</span><span class="p">,</span>
-              <span class="n">common_causes</span><span class="o">=</span><span class="p">[</span><span class="n">common_cause</span><span class="p">],</span>
-              <span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">treatment</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.causal.do(x={treatment: 1},
+              variable_types={treatment:&#39;b&#39;, outcome: &#39;c&#39;, common_cause: &#39;c&#39;},
+              outcome=outcome,
+              method=&#39;weighting&#39;,
+              common_causes=[common_cause],
+              proceed_when_unidentifiable=True).groupby(treatment).mean().plot(y=outcome, kind=&#39;bar&#39;)
 </pre></div>
 </div>
 </div>
@@ -824,7 +850,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;AxesSubplot:xlabel=&#39;v0&#39;&gt;
+&lt;AxesSubplot: xlabel=&#39;v0&#39;&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -838,17 +864,17 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">causal</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
-              <span class="n">variable_types</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">common_cause</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span>
-              <span class="n">outcome</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span>
-              <span class="n">dot_graph</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dot_graph&#39;</span><span class="p">],</span>
-              <span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cdf_1 = df.causal.do(x={treatment: 1},
+              variable_types={treatment: &#39;b&#39;, outcome: &#39;c&#39;, common_cause: &#39;c&#39;},
+              outcome=outcome,
+              dot_graph=data[&#39;dot_graph&#39;],
+              proceed_when_unidentifiable=True)
 
-<span class="n">cdf_0</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">causal</span><span class="o">.</span><span class="n">do</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
-              <span class="n">variable_types</span><span class="o">=</span><span class="p">{</span><span class="n">treatment</span><span class="p">:</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">outcome</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">common_cause</span><span class="p">:</span> <span class="s1">&#39;c&#39;</span><span class="p">},</span>
-              <span class="n">outcome</span><span class="o">=</span><span class="n">outcome</span><span class="p">,</span>
-              <span class="n">dot_graph</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;dot_graph&#39;</span><span class="p">],</span>
-              <span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+cdf_0 = df.causal.do(x={treatment: 0},
+              variable_types={treatment: &#39;b&#39;, outcome: &#39;c&#39;, common_cause: &#39;c&#39;},
+              outcome=outcome,
+              dot_graph=data[&#39;dot_graph&#39;],
+              proceed_when_unidentifiable=True)
 <br/></pre></div>
 </div>
 </div>
@@ -856,7 +882,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_0</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cdf_0
 </pre></div>
 </div>
 </div>
@@ -893,43 +919,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.465805</td>
+      <td>-0.352919</td>
       <td>False</td>
-      <td>0.681638</td>
-      <td>0.295449</td>
-      <td>3.384674</td>
+      <td>0.446923</td>
+      <td>0.584806</td>
+      <td>1.709968</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.380222</td>
+      <td>0.814069</td>
       <td>False</td>
-      <td>1.067696</td>
-      <td>0.073165</td>
-      <td>13.667814</td>
+      <td>0.333252</td>
+      <td>0.282563</td>
+      <td>3.539036</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.525696</td>
+      <td>-2.343394</td>
       <td>False</td>
-      <td>2.362515</td>
-      <td>0.273201</td>
-      <td>3.660307</td>
+      <td>1.050524</td>
+      <td>0.925262</td>
+      <td>1.080776</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2.242716</td>
+      <td>0.828998</td>
       <td>False</td>
-      <td>2.756181</td>
-      <td>0.016076</td>
-      <td>62.205619</td>
+      <td>-0.382004</td>
+      <td>0.279270</td>
+      <td>3.580766</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-0.132358</td>
+      <td>1.064405</td>
       <td>False</td>
-      <td>0.667550</td>
-      <td>0.555610</td>
-      <td>1.799823</td>
+      <td>0.701340</td>
+      <td>0.230561</td>
+      <td>4.337242</td>
     </tr>
     <tr>
       <th>...</th>
@@ -941,43 +967,43 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>0.734039</td>
+      <td>0.895503</td>
       <td>False</td>
-      <td>1.406573</td>
-      <td>0.204413</td>
-      <td>4.892056</td>
+      <td>0.163814</td>
+      <td>0.264889</td>
+      <td>3.775160</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>1.501630</td>
+      <td>2.014276</td>
       <td>False</td>
-      <td>1.230339</td>
-      <td>0.059480</td>
-      <td>16.812366</td>
+      <td>-0.379485</td>
+      <td>0.096009</td>
+      <td>10.415706</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>0.228203</td>
+      <td>-0.376085</td>
       <td>False</td>
-      <td>1.128085</td>
-      <td>0.392902</td>
-      <td>2.545163</td>
+      <td>-0.769199</td>
+      <td>0.590935</td>
+      <td>1.692233</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>2.047324</td>
+      <td>1.836714</td>
       <td>False</td>
-      <td>2.413841</td>
-      <td>0.022812</td>
-      <td>43.836657</td>
+      <td>1.371098</td>
+      <td>0.114205</td>
+      <td>8.756149</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>-1.542733</td>
+      <td>0.428957</td>
       <td>False</td>
-      <td>-2.431663</td>
-      <td>0.942629</td>
-      <td>1.060863</td>
+      <td>-0.634386</td>
+      <td>0.374900</td>
+      <td>2.667378</td>
     </tr>
   </tbody>
 </table>
@@ -988,7 +1014,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdf_1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>cdf_1
 </pre></div>
 </div>
 </div>
@@ -1025,43 +1051,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.183828</td>
+      <td>1.303760</td>
       <td>True</td>
-      <td>6.385451</td>
-      <td>0.587608</td>
-      <td>1.701814</td>
+      <td>5.675314</td>
+      <td>0.812527</td>
+      <td>1.230728</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-0.819853</td>
+      <td>1.436695</td>
       <td>True</td>
-      <td>4.395469</td>
-      <td>0.185588</td>
-      <td>5.388283</td>
+      <td>6.111159</td>
+      <td>0.833644</td>
+      <td>1.199553</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.838557</td>
+      <td>0.631619</td>
       <td>True</td>
-      <td>6.368579</td>
-      <td>0.824888</td>
-      <td>1.212286</td>
+      <td>6.052427</td>
+      <td>0.675366</td>
+      <td>1.480680</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.819416</td>
+      <td>0.354007</td>
       <td>True</td>
-      <td>6.528172</td>
-      <td>0.965814</td>
-      <td>1.035396</td>
+      <td>6.152660</td>
+      <td>0.605733</td>
+      <td>1.650893</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.245936</td>
+      <td>-2.741986</td>
       <td>True</td>
-      <td>6.679730</td>
-      <td>0.908364</td>
-      <td>1.100881</td>
+      <td>2.913577</td>
+      <td>0.049674</td>
+      <td>20.131449</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1073,43 +1099,43 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>-0.310125</td>
+      <td>0.721921</td>
       <td>True</td>
-      <td>5.876104</td>
-      <td>0.366324</td>
-      <td>2.729827</td>
+      <td>5.594780</td>
+      <td>0.696601</td>
+      <td>1.435543</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>0.044863</td>
+      <td>1.337709</td>
       <td>True</td>
-      <td>5.820469</td>
-      <td>0.525053</td>
-      <td>1.904571</td>
+      <td>3.280717</td>
+      <td>0.818109</td>
+      <td>1.222331</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>-0.263780</td>
+      <td>-2.741986</td>
       <td>True</td>
-      <td>4.675442</td>
-      <td>0.386184</td>
-      <td>2.589438</td>
+      <td>2.913577</td>
+      <td>0.049674</td>
+      <td>20.131449</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>0.561118</td>
+      <td>1.812561</td>
       <td>True</td>
-      <td>6.408892</td>
-      <td>0.739454</td>
-      <td>1.352349</td>
+      <td>5.540571</td>
+      <td>0.883099</td>
+      <td>1.132376</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>1.260049</td>
+      <td>0.124867</td>
       <td>True</td>
-      <td>7.060954</td>
-      <td>0.910487</td>
-      <td>1.098314</td>
+      <td>5.605328</td>
+      <td>0.544679</td>
+      <td>1.835943</td>
     </tr>
   </tbody>
 </table>
@@ -1123,7 +1149,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">cdf_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cdf_0</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>(cdf_1[&#39;y&#39;] - cdf_0[&#39;y&#39;]).mean()
 </pre></div>
 </div>
 </div>
@@ -1133,13 +1159,13 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 5.09016324245403$</div></div>
+$\displaystyle 5.06489946748145$</div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mf">1.96</span><span class="o">*</span><span class="p">(</span><span class="n">cdf_1</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cdf_0</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>1.96*(cdf_1[&#39;y&#39;] - cdf_0[&#39;y&#39;]).std() / np.sqrt(len(df))
 </pre></div>
 </div>
 </div>
@@ -1149,16 +1175,16 @@ $\displaystyle 5.09016324245403$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 0.13813961837253$</div></div>
+$\displaystyle 0.0887509312439617$</div></div>
 </div>
 <p>Comparing to the estimate from OLS.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">OLS</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">outcome</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="n">common_cause</span><span class="p">,</span> <span class="n">treatment</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="n">result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model = OLS(np.asarray(df[outcome]), np.asarray(df[[common_cause, treatment]], dtype=np.float64))
+result = model.fit()
+result.summary()
 </pre></div>
 </div>
 </div>
@@ -1170,25 +1196,25 @@ $\displaystyle 0.13813961837253$</div></div>
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.972</td>
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.942</td>
 </tr>
 <tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.972</td>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.941</td>
 </tr>
 <tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>1.760e+04</td>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>   8038.</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 01 Sep 2022</td> <th>  Prob (F-statistic):</th>           <td>  0.00</td>
+  <th>Date:</th>             <td>Fri, 16 Dec 2022</td> <th>  Prob (F-statistic):</th>           <td>  0.00</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>18:33:54</td>     <th>  Log-Likelihood:    </th>          <td> -1396.9</td>
+  <th>Time:</th>                 <td>19:37:21</td>     <th>  Log-Likelihood:    </th>          <td> -1410.4</td>
 </tr>
 <tr>
-  <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th>          <td>   2798.</td>
+  <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th>          <td>   2825.</td>
 </tr>
 <tr>
-  <th>Df Residuals:</th>          <td>   998</td>      <th>  BIC:               </th>          <td>   2808.</td>
+  <th>Df Residuals:</th>          <td>   998</td>      <th>  BIC:               </th>          <td>   2835.</td>
 </tr>
 <tr>
   <th>Df Model:</th>              <td>     2</td>      <th>                     </th>              <td> </td>
@@ -1202,24 +1228,24 @@ $\displaystyle 0.13813961837253$</div></div>
    <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>
 </tr>
 <tr>
-  <th>x1</th> <td>    1.3620</td> <td>    0.038</td> <td>   36.106</td> <td> 0.000</td> <td>    1.288</td> <td>    1.436</td>
+  <th>x1</th> <td>    0.2405</td> <td>    0.036</td> <td>    6.761</td> <td> 0.000</td> <td>    0.171</td> <td>    0.310</td>
 </tr>
 <tr>
-  <th>x2</th> <td>    5.1017</td> <td>    0.056</td> <td>   90.628</td> <td> 0.000</td> <td>    4.991</td> <td>    5.212</td>
+  <th>x2</th> <td>    5.0122</td> <td>    0.048</td> <td>  104.315</td> <td> 0.000</td> <td>    4.918</td> <td>    5.106</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td> 1.422</td> <th>  Durbin-Watson:     </th> <td>   1.936</td>
+  <th>Omnibus:</th>       <td> 1.561</td> <th>  Durbin-Watson:     </th> <td>   1.932</td>
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th> <td> 0.491</td> <th>  Jarque-Bera (JB):  </th> <td>   1.345</td>
+  <th>Prob(Omnibus):</th> <td> 0.458</td> <th>  Jarque-Bera (JB):  </th> <td>   1.428</td>
 </tr>
 <tr>
-  <th>Skew:</th>          <td>-0.001</td> <th>  Prob(JB):          </th> <td>   0.510</td>
+  <th>Skew:</th>          <td>-0.062</td> <th>  Prob(JB):          </th> <td>   0.490</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td> 3.180</td> <th>  Cond. No.          </th> <td>    3.04</td>
+  <th>Kurtosis:</th>      <td> 3.137</td> <th>  Cond. No.          </th> <td>    1.94</td>
 </tr>
 </table><br/><br/>Notes:<br/>[1] R² is computed without centering (uncentered) since the model does not contain a constant.<br/>[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div>
 </div>
@@ -1234,11 +1260,11 @@ $\displaystyle 0.13813961837253$</div></div>
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="dowhy_interpreter.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="dowhy_refuter_notebook.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">DoWhy: Interpreters for Causal Estimators</p>
+          <p class="prev-next-title">Iterating over multiple refutation tests</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="do_sampler_demo.html" title="next page">
@@ -1271,7 +1297,7 @@ $\displaystyle 0.13813961837253$</div></div>
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

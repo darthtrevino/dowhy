@@ -15,6 +15,7 @@
   <title>Sensitivity Analysis for Linear Regression Models &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -712,9 +715,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W6,W1,W2,W0,W3,W5])
+─────(E[y|W1,W2,W5,W3,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W6,W1,W2,W0,W3,W5,U) = P(y|v0,W6,W1,W2,W0,W3,W5)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W5,W3,W6,W0,U) = P(y|v0,W1,W2,W5,W3,W6,W0)
 
 ### Estimand : 2
 Estimand name: iv
@@ -753,16 +756,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W6,W1,W2,W0,W3,W5])
+─────(E[y|W1,W2,W5,W3,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W6,W1,W2,W0,W3,W5,U) = P(y|v0,W6,W1,W2,W0,W3,W5)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W5,W3,W6,W0,U) = P(y|v0,W1,W2,W5,W3,W6,W0)
 
 ## Realized estimand
-b: y~v0+W6+W1+W2+W0+W3+W5
+b: y~v0+W1+W2+W5+W3+W6+W0
 Target units: ate
 
 ## Estimate
-Mean value: 10.69767748688091
+Mean value: 10.697677486880918
 
 </pre></div></div>
 </div>
@@ -808,14 +811,14 @@ sensitivity analysis. (default = True). To override the setting, set plot_estima
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;estimate&#39;: 10.69767748688091,
- &#39;standard_error&#39;: 0.5938735661282941,
+{&#39;estimate&#39;: 10.697677486880917,
+ &#39;standard_error&#39;: 0.5938735661282948,
  &#39;degree of freedom&#39;: 492,
- &#39;t_statistic&#39;: 18.013392238727622,
- &#39;r2yt_w&#39;: 0.3974149837266682,
- &#39;partial_f2&#39;: 0.6595168698094563,
- &#39;robustness_value&#39;: 0.5467445572181009,
- &#39;robustness_value_alpha&#39;: 0.5076289101030926}
+ &#39;t_statistic&#39;: 18.013392238727615,
+ &#39;r2yt_w&#39;: 0.39741498372666795,
+ &#39;partial_f2&#39;: 0.6595168698094559,
+ &#39;robustness_value&#39;: 0.5467445572181008,
+ &#39;robustness_value_alpha&#39;: 0.5076289101030925}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -931,15 +934,15 @@ position of the legend (default = (1.6, 0.6))</p>
 Sensitivity Analysis to Unobserved Confounding using R^2 paramterization
 
 Unadjusted Estimates of Treatment [&#39;v0&#39;] :
-Coefficient Estimate : 10.69767748688091
+Coefficient Estimate : 10.697677486880917
 Degree of Freedom : 492
-Standard Error : 0.5938735661282941
-t-value : 18.013392238727622
-F^2 value : 0.6595168698094563
+Standard Error : 0.5938735661282948
+t-value : 18.013392238727615
+F^2 value : 0.6595168698094559
 
 Sensitivity Statistics :
-Partial R2 of treatment with outcome : 0.3974149837266682
-Robustness Value : 0.5467445572181009
+Partial R2 of treatment with outcome : 0.39741498372666795
+Robustness Value : 0.5467445572181008
 
 Interpretation of results :
 Any confounder explaining less than 54.67% percent of the residual variance of both the treatment and the outcome would not be strong enough to explain away the observed effect i.e bring down the estimate to 0
@@ -1112,9 +1115,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W6,W1,W2,W0,W3,W4,W5])
+─────(E[y|W1,W2,W5,W4,W3,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W6,W1,W2,W0,W3,W4,W5,U) = P(y|v0,W6,W1,W2,W0,W3,W4,W5)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W5,W4,W3,W6,W0,U) = P(y|v0,W1,W2,W5,W4,W3,W6,W0)
 
 ### Estimand : 2
 Estimand name: iv
@@ -1149,16 +1152,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W6,W1,W2,W0,W3,W4,W5])
+─────(E[y|W1,W2,W5,W4,W3,W6,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W6,W1,W2,W0,W3,W4,W5,U) = P(y|v0,W6,W1,W2,W0,W3,W4,W5)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W5,W4,W3,W6,W0,U) = P(y|v0,W1,W2,W5,W4,W3,W6,W0)
 
 ## Realized estimand
-b: y~v0+W6+W1+W2+W0+W3+W4+W5
+b: y~v0+W1+W2+W5+W4+W3+W6+W0
 Target units: ate
 
 ## Estimate
-Mean value: 10.081924375588306
+Mean value: 10.081924375588311
 
 </pre></div></div>
 </div>
@@ -1223,11 +1226,11 @@ Mean value: 10.081924375588306
 Sensitivity Analysis to Unobserved Confounding using R^2 paramterization
 
 Unadjusted Estimates of Treatment [&#39;v0&#39;] :
-Coefficient Estimate : 10.081924375588306
+Coefficient Estimate : 10.081924375588311
 Degree of Freedom : 491
-Standard Error : 0.10446229543424747
-t-value : 96.51256784735553
-F^2 value : 18.970826379817524
+Standard Error : 0.10446229543424758
+t-value : 96.51256784735547
+F^2 value : 18.970826379817503
 
 Sensitivity Statistics :
 Partial R2 of treatment with outcome : 0.9499269594066173
@@ -1256,14 +1259,14 @@ If confounders explained 100% of the residual variance of the outcome, they woul
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;estimate&#39;: 10.081924375588306,
- &#39;standard_error&#39;: 0.10446229543424747,
+{&#39;estimate&#39;: 10.081924375588311,
+ &#39;standard_error&#39;: 0.10446229543424758,
  &#39;degree of freedom&#39;: 491,
- &#39;t_statistic&#39;: 96.51256784735553,
+ &#39;t_statistic&#39;: 96.51256784735547,
  &#39;r2yt_w&#39;: 0.9499269594066173,
- &#39;partial_f2&#39;: 18.970826379817524,
+ &#39;partial_f2&#39;: 18.970826379817503,
  &#39;robustness_value&#39;: 0.9522057801012398,
- &#39;robustness_value_alpha&#39;: 0.9503866913195278}
+ &#39;robustness_value_alpha&#39;: 0.950386691319526}
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1402,7 +1405,6 @@ If confounders explained 100% of the residual variance of the outcome, they woul
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="sensitivity_analysis_testing.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

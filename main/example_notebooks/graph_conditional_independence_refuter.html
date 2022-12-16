@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Testing Assumptions in model with DoWhy: A simple example &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,14 +45,18 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Simple example on using Instrumental Variables method for estimation" href="dowhy-simple-iv-example.html" />
-    <link rel="prev" title="DoWhy: Different estimation methods for causal inference" href="dowhy_estimation_methods.html" />
+    <link rel="next" title="A Simple Example on Creating a Custom Refutation Using User-Defined Outcome Functions" href="dowhy_demo_dummy_outcome_refuter.html" />
+    <link rel="prev" title="Simple example on using Instrumental Variables method for estimation" href="dowhy-simple-iv-example.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="graph_conditional_independence_refuter.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -211,24 +219,24 @@
    DoWhy: Different estimation methods for causal inference
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -520,10 +545,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -674,8 +700,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%load_ext autoreload
+%autoreload 2
 </pre></div>
 </div>
 </div>
@@ -683,13 +709,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s2">&quot;../../../&quot;</span><span class="p">))</span>
-<span class="kn">import</span> <span class="nn">dowhy</span>
-<span class="kn">from</span> <span class="nn">dowhy</span> <span class="kn">import</span> <span class="n">CausalModel</span>
-<span class="kn">import</span> <span class="nn">dowhy.datasets</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+import os, sys
+sys.path.append(os.path.abspath(&quot;../../../&quot;))
+import dowhy
+from dowhy import CausalModel
+import dowhy.datasets
 </pre></div>
 </div>
 </div>
@@ -701,14 +727,14 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dowhy</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">dataset_from_random_graph</span><span class="p">(</span><span class="n">num_vars</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
-                                                <span class="n">num_samples</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">,</span>
-                                                <span class="n">prob_edge</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
-                                                <span class="n">random_seed</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-                                                <span class="n">prob_type_of_data</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.333</span><span class="p">,</span> <span class="mf">0.334</span><span class="p">))</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;df&quot;</span><span class="p">]</span> <span class="c1">#Insert dataset here</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;discrete_columns&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;continuous_columns&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;binary_columns&quot;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = dowhy.datasets.dataset_from_random_graph(num_vars = 10,
+                                                num_samples = 5000,
+                                                prob_edge = 0.3,
+                                                random_seed = 100,
+                                                prob_type_of_data = (0.333, 0.333, 0.334))
+df = data[&quot;df&quot;] #Insert dataset here
+print(data[&quot;discrete_columns&quot;], data[&quot;continuous_columns&quot;], data[&quot;binary_columns&quot;])
+print(df.head())
 </pre></div>
 </div>
 </div>
@@ -735,99 +761,99 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;graph [</span>
-<span class="s2">  directed 1</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 0</span>
-<span class="s2">    label &quot;a&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 1</span>
-<span class="s2">    label &quot;b&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 2</span>
-<span class="s2">    label &quot;c&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 3</span>
-<span class="s2">    label &quot;d&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 4</span>
-<span class="s2">    label &quot;e&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 5</span>
-<span class="s2">    label &quot;f&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 6</span>
-<span class="s2">    label &quot;g&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 7</span>
-<span class="s2">    label &quot;h&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 8</span>
-<span class="s2">    label &quot;i&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  node [</span>
-<span class="s2">    id 9</span>
-<span class="s2">    label &quot;j&quot;</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 0</span>
-<span class="s2">    target 1</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 0</span>
-<span class="s2">    target 8</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 1</span>
-<span class="s2">    target 2</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 1</span>
-<span class="s2">    target 5</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 2</span>
-<span class="s2">    target 3</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 2</span>
-<span class="s2">    target 4</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 3</span>
-<span class="s2">    target 4</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 4</span>
-<span class="s2">    target 5</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 5</span>
-<span class="s2">    target 6</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 6</span>
-<span class="s2">    target 7</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 7</span>
-<span class="s2">    target 8</span>
-<span class="s2">  ]</span>
-<span class="s2">  edge [</span>
-<span class="s2">    source 8</span>
-<span class="s2">    target 9</span>
-<span class="s2">  ]</span>
-<span class="s2">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>graph_string = &quot;&quot;&quot;graph [
+  directed 1
+  node [
+    id 0
+    label &quot;a&quot;
+  ]
+  node [
+    id 1
+    label &quot;b&quot;
+  ]
+  node [
+    id 2
+    label &quot;c&quot;
+  ]
+  node [
+    id 3
+    label &quot;d&quot;
+  ]
+  node [
+    id 4
+    label &quot;e&quot;
+  ]
+  node [
+    id 5
+    label &quot;f&quot;
+  ]
+  node [
+    id 6
+    label &quot;g&quot;
+  ]
+  node [
+    id 7
+    label &quot;h&quot;
+  ]
+  node [
+    id 8
+    label &quot;i&quot;
+  ]
+  node [
+    id 9
+    label &quot;j&quot;
+  ]
+  edge [
+    source 0
+    target 1
+  ]
+  edge [
+    source 0
+    target 8
+  ]
+  edge [
+    source 1
+    target 2
+  ]
+  edge [
+    source 1
+    target 5
+  ]
+  edge [
+    source 2
+    target 3
+  ]
+  edge [
+    source 2
+    target 4
+  ]
+  edge [
+    source 3
+    target 4
+  ]
+  edge [
+    source 4
+    target 5
+  ]
+  edge [
+    source 5
+    target 6
+  ]
+  edge [
+    source 6
+    target 7
+  ]
+  edge [
+    source 7
+    target 8
+  ]
+  edge [
+    source 8
+    target 9
+  ]
+]
 
-<span class="s2">&quot;&quot;&quot;</span>
+&quot;&quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -838,12 +864,12 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="n">CausalModel</span><span class="p">(</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span>
-        <span class="n">treatment</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">],</span>
-        <span class="n">outcome</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">],</span>
-        <span class="n">graph</span><span class="o">=</span><span class="n">graph_string</span>
-        <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model=CausalModel(
+        data = df,
+        treatment=data[&quot;treatment_name&quot;],
+        outcome=data[&quot;outcome_name&quot;],
+        graph=graph_string
+        )
 </pre></div>
 </div>
 </div>
@@ -851,7 +877,7 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">view_model</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.view_model()
 </pre></div>
 </div>
 </div>
@@ -859,8 +885,8 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;causal_model.png&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image, display
+display(Image(filename=&quot;causal_model.png&quot;))
 </pre></div>
 </div>
 </div>
@@ -880,7 +906,7 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refuter_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">refute_graph</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">independence_test</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test_for_continuous&#39;</span><span class="p">:</span> <span class="s1">&#39;partial_correlation&#39;</span><span class="p">,</span> <span class="s1">&#39;test_for_discrete&#39;</span> <span class="p">:</span> <span class="s1">&#39;conditional_mutual_information&#39;</span><span class="p">})</span> <span class="c1">#Change k parameter to test conditional independence given different number of variables</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refuter_object = model.refute_graph(k=1, independence_test = {&#39;test_for_continuous&#39;: &#39;partial_correlation&#39;, &#39;test_for_discrete&#39; : &#39;conditional_mutual_information&#39;}) #Change k parameter to test conditional independence given different number of variables
 </pre></div>
 </div>
 </div>
@@ -888,7 +914,7 @@ generating random graph - prob_type_of_data : 3-element tuple containing the pro
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">refuter_object</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(refuter_object)
 </pre></div>
 </div>
 </div>
@@ -912,15 +938,15 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refuter_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">refute_graph</span><span class="p">(</span><span class="n">independence_constraints</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span> <span class="p">,</span> <span class="p">(</span><span class="s1">&#39;g&#39;</span><span class="p">,)),</span> <span class="c1"># c and e - binary, g - continuous</span>
-                                                                <span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span> <span class="p">,</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,)),</span> <span class="c1"># f and h - discrete, b - continuous</span>
-                                                                <span class="p">(</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span> <span class="p">,</span> <span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">,)),</span> <span class="c1"># e - binary, g - continuous, h - discrete</span>
-                                                                <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span> <span class="p">,</span> <span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">,)),</span> <span class="c1"># c and a - discrete, b - continuous</span>
-                                                                <span class="p">(</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span> <span class="p">,</span> <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,)),</span> <span class="c1"># d and i - continuous, c - binary</span>
-                                                                <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;j&#39;</span> <span class="p">,</span> <span class="p">())</span>      <span class="c1"># a - discrete, j - continuous</span>
-                                                               <span class="p">],</span>
-                         <span class="n">independence_test</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;test_for_continuous&#39;</span><span class="p">:</span> <span class="s1">&#39;partial_correlation&#39;</span><span class="p">,</span> <span class="s1">&#39;test_for_discrete&#39;</span> <span class="p">:</span> <span class="s1">&#39;conditional_mutual_information&#39;</span><span class="p">}</span>
-                        <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refuter_object = model.refute_graph(independence_constraints = [(&#39;c&#39;, &#39;e&#39; , (&#39;g&#39;,)), # c and e - binary, g - continuous
+                                                                (&#39;f&#39;, &#39;h&#39; , (&#39;b&#39;,)), # f and h - discrete, b - continuous
+                                                                (&#39;e&#39;, &#39;g&#39; , (&#39;h&#39;,)), # e - binary, g - continuous, h - discrete
+                                                                (&#39;c&#39;, &#39;a&#39; , (&#39;b&#39;,)), # c and a - discrete, b - continuous
+                                                                (&#39;d&#39;, &#39;i&#39; , (&#39;c&#39;,)), # d and i - continuous, c - binary
+                                                                (&#39;a&#39;, &#39;j&#39; , ())      # a - discrete, j - continuous
+                                                               ],
+                         independence_test = {&#39;test_for_continuous&#39;: &#39;partial_correlation&#39;, &#39;test_for_discrete&#39; : &#39;conditional_mutual_information&#39;}
+                        )
 </pre></div>
 </div>
 </div>
@@ -928,7 +954,7 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">refuter_object</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(refuter_object)
 </pre></div>
 </div>
 </div>
@@ -953,98 +979,98 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">graph_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;graph [</span>
-<span class="s2">        directed 1</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 0</span>
-<span class="s2">            label &quot;a&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 1</span>
-<span class="s2">            label &quot;b&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 2</span>
-<span class="s2">            label &quot;c&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 3</span>
-<span class="s2">            label &quot;d&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 4</span>
-<span class="s2">            label &quot;e&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 5</span>
-<span class="s2">            label &quot;f&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 6</span>
-<span class="s2">            label &quot;g&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 7</span>
-<span class="s2">            label &quot;h&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 8</span>
-<span class="s2">            label &quot;i&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        node [</span>
-<span class="s2">            id 9</span>
-<span class="s2">            label &quot;j&quot;</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 0</span>
-<span class="s2">            target 1</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 0</span>
-<span class="s2">            target 2</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 0</span>
-<span class="s2">            target 3</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 1</span>
-<span class="s2">            target 4</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 1</span>
-<span class="s2">            target 5</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 2</span>
-<span class="s2">            target 3</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 4</span>
-<span class="s2">            target 2</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 4</span>
-<span class="s2">            target 5</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 4</span>
-<span class="s2">            target 6</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 4</span>
-<span class="s2">            target 7</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge [</span>
-<span class="s2">            source 8</span>
-<span class="s2">            target 6</span>
-<span class="s2">        ]</span>
-<span class="s2">        edge</span>
-<span class="s2">        [</span>
-<span class="s2">        source 9</span>
-<span class="s2">        target 0</span>
-<span class="s2">        ]</span>
-<span class="s2">        ]&quot;&quot;&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>graph_string = &quot;&quot;&quot;graph [
+        directed 1
+        node [
+            id 0
+            label &quot;a&quot;
+        ]
+        node [
+            id 1
+            label &quot;b&quot;
+        ]
+        node [
+            id 2
+            label &quot;c&quot;
+        ]
+        node [
+            id 3
+            label &quot;d&quot;
+        ]
+        node [
+            id 4
+            label &quot;e&quot;
+        ]
+        node [
+            id 5
+            label &quot;f&quot;
+        ]
+        node [
+            id 6
+            label &quot;g&quot;
+        ]
+        node [
+            id 7
+            label &quot;h&quot;
+        ]
+        node [
+            id 8
+            label &quot;i&quot;
+        ]
+        node [
+            id 9
+            label &quot;j&quot;
+        ]
+        edge [
+            source 0
+            target 1
+        ]
+        edge [
+            source 0
+            target 2
+        ]
+        edge [
+            source 0
+            target 3
+        ]
+        edge [
+            source 1
+            target 4
+        ]
+        edge [
+            source 1
+            target 5
+        ]
+        edge [
+            source 2
+            target 3
+        ]
+        edge [
+            source 4
+            target 2
+        ]
+        edge [
+            source 4
+            target 5
+        ]
+        edge [
+            source 4
+            target 6
+        ]
+        edge [
+            source 4
+            target 7
+        ]
+        edge [
+            source 8
+            target 6
+        ]
+        edge
+        [
+        source 9
+        target 0
+        ]
+        ]&quot;&quot;&quot;
 </pre></div>
 </div>
 </div>
@@ -1052,12 +1078,12 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CausalModel</span><span class="p">(</span>
-            <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-            <span class="n">treatment</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">],</span>
-            <span class="n">outcome</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">],</span>
-            <span class="n">graph</span><span class="o">=</span><span class="n">graph_string</span><span class="p">,</span>
-        <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model = CausalModel(
+            data=df,
+            treatment=data[&quot;treatment_name&quot;],
+            outcome=data[&quot;outcome_name&quot;],
+            graph=graph_string,
+        )
 </pre></div>
 </div>
 </div>
@@ -1065,7 +1091,7 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">view_model</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.view_model()
 </pre></div>
 </div>
 </div>
@@ -1073,8 +1099,8 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;causal_model.png&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import Image, display
+display(Image(filename=&quot;causal_model.png&quot;))
 </pre></div>
 </div>
 </div>
@@ -1089,7 +1115,7 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refuter_object</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">refute_graph</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refuter_object = model.refute_graph(k=2)
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1124,7 @@ Test passed:True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">refuter_object</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(refuter_object)
 </pre></div>
 </div>
 </div>
@@ -1134,17 +1160,17 @@ Test passed:False
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="dowhy_estimation_methods.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="dowhy-simple-iv-example.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">DoWhy: Different estimation methods for causal inference</p>
+          <p class="prev-next-title">Simple example on using Instrumental Variables method for estimation</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="dowhy-simple-iv-example.html" title="next page">
+  <a class='right-next' id="next-link" href="dowhy_demo_dummy_outcome_refuter.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Simple example on using Instrumental Variables method for estimation</p>
+      <p class="prev-next-title">A Simple Example on Creating a Custom Refutation Using User-Defined Outcome Functions</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -1171,7 +1197,7 @@ Test passed:False
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

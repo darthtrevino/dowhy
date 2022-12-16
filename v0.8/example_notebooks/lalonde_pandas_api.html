@@ -15,6 +15,7 @@
   <title>Lalonde Pandas API Example &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -696,82 +699,82 @@ R[write to console]: ##
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>8551.530</td>
-      <td>1</td>
-      <td>1</td>
+      <td>989.268</td>
+      <td>165.208</td>
+      <td>4251.13</td>
       <td>0</td>
-      <td>0.649916</td>
-      <td>1.538661</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.649913</td>
+      <td>1.538668</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>19</td>
-      <td>8</td>
-      <td>1</td>
+      <td>17</td>
+      <td>10</td>
       <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>2657.06</td>
-      <td>9970.680</td>
       <td>1</td>
       <td>0</td>
       <td>1</td>
-      <td>0.388546</td>
-      <td>2.573699</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>8469.28</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0.741753</td>
+      <td>1.348158</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>22</td>
+      <td>20</td>
       <td>11</td>
       <td>1</td>
       <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>1698.300</td>
-      <td>1</td>
-      <td>1</td>
       <td>0</td>
-      <td>0.592670</td>
-      <td>1.687280</td>
+      <td>1</td>
+      <td>16318.600</td>
+      <td>1484.990</td>
+      <td>6943.34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0.354679</td>
+      <td>2.819452</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>27</td>
+      <td>26</td>
       <td>11</td>
       <td>1</td>
       <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.000</td>
+      <td>1392.850</td>
+      <td>1460.36</td>
+      <td>1</td>
       <td>0</td>
       <td>1</td>
-      <td>0.00</td>
-      <td>0.00</td>
-      <td>549.298</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0.365489</td>
-      <td>2.736063</td>
+      <td>0.413818</td>
+      <td>2.416524</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>29</td>
-      <td>9</td>
-      <td>0</td>
+      <td>23</td>
+      <td>10</td>
       <td>1</td>
       <td>0</td>
+      <td>0</td>
       <td>1</td>
-      <td>9594.31</td>
-      <td>16341.20</td>
-      <td>16900.300</td>
+      <td>0.000</td>
+      <td>0.000</td>
+      <td>0.00</td>
+      <td>1</td>
+      <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.715873</td>
-      <td>1.396896</td>
+      <td>0.628980</td>
+      <td>1.589877</td>
     </tr>
   </tbody>
 </table>
@@ -812,7 +815,7 @@ $\displaystyle 1794.34308487526$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 2065.73831267953$</div></div>
+$\displaystyle 1737.05548247214$</div></div>
 </div>
 <p>We could get some rough error bars on the outcome using the normal approximation for a 95% confidence interval, like</p>
 <div class="nbinput docutils container">
@@ -831,7 +834,7 @@ $\displaystyle 2065.73831267953$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 1188.86735986116$</div></div>
+$\displaystyle 1087.83474328975$</div></div>
 </div>
 <p>but note that these DO NOT contain propensity score estimation error. For that, a bootstrapping procedure might be more appropriate.</p>
 <p>This is just one statistic we can compute from the interventional distribution of <code class="docutils literal notranslate"><span class="pre">'re78'</span></code>. We can get all of the interventional moments as well, including functions of <code class="docutils literal notranslate"><span class="pre">'re78'</span></code>. We can leverage the full power of pandas, like</p>
@@ -850,12 +853,12 @@ $\displaystyle 1188.86735986116$</div></div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 count      445.000000
-mean      5640.584654
-std       6575.569216
+mean      4788.719461
+std       5787.192738
 min          0.000000
 25%          0.000000
-50%       4032.710000
-75%       8329.820000
+50%       3418.100000
+75%       7343.960000
 max      36647.000000
 Name: re78, dtype: float64
 </pre></div></div>
@@ -1011,88 +1014,88 @@ Name: re78, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>22</td>
-      <td>11</td>
-      <td>1</td>
+      <td>27</td>
+      <td>13</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>6456.70</td>
+      <td>0</td>
+      <td>9381.57</td>
+      <td>853.723</td>
+      <td>0.00</td>
+      <td>0</td>
+      <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0.357750</td>
-      <td>2.795249</td>
+      <td>0.620449</td>
+      <td>1.611736</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>23</td>
-      <td>8</td>
-      <td>0</td>
+      <td>25</td>
+      <td>11</td>
       <td>1</td>
       <td>0</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>3881.28</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>9897.05</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>0.286243</td>
-      <td>3.493534</td>
+      <td>0.362391</td>
+      <td>2.759449</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>44</td>
-      <td>11</td>
+      <td>27</td>
+      <td>8</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0.0</td>
-      <td>0.0</td>
+      <td>0.00</td>
+      <td>0.000</td>
       <td>0.00</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>0.392304</td>
-      <td>2.549045</td>
+      <td>0.401344</td>
+      <td>2.491628</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>18</td>
+      <td>28</td>
       <td>11</td>
       <td>1</td>
       <td>0</td>
       <td>0</td>
       <td>1</td>
-      <td>0.0</td>
-      <td>0.0</td>
       <td>0.00</td>
+      <td>1284.080</td>
+      <td>60307.90</td>
       <td>1</td>
+      <td>0</td>
       <td>1</td>
-      <td>1</td>
-      <td>0.351612</td>
-      <td>2.844048</td>
+      <td>0.367053</td>
+      <td>2.724401</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>18</td>
-      <td>12</td>
+      <td>31</td>
+      <td>11</td>
       <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2321.11</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.00</td>
+      <td>0.000</td>
+      <td>8087.49</td>
       <td>1</td>
       <td>1</td>
       <td>1</td>
-      <td>0.527071</td>
-      <td>1.897278</td>
+      <td>0.421975</td>
+      <td>2.369809</td>
     </tr>
   </tbody>
 </table>
@@ -1207,7 +1210,6 @@ do(x, method=&#39;weighting&#39;, num_cores=1, variable_types={}, outcome=None, 
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="lalonde_pandas_api.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

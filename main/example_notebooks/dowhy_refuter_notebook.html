@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Iterating over multiple refutation tests &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,14 +45,18 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Identifying Effect using ID Algorithm" href="identifying_effects_using_id_algorithm.html" />
-    <link rel="prev" title="Estimating effect of multiple treatments" href="dowhy_multiple_treatments.html" />
+    <link rel="next" title="Demo for the DoWhy causal API" href="dowhy_causal_api.html" />
+    <link rel="prev" title="Mediation analysis with DoWhy: Direct and Indirect Effects" href="dowhy_mediation_analysis.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="dowhy_refuter_notebook.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -305,34 +355,9 @@
    Estimating effect of multiple treatments
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Iterating over multiple refutation tests
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -558,10 +583,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -713,27 +739,27 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dowhy.datasets</span> <span class="kn">import</span> <span class="n">linear_dataset</span>
-<span class="kn">from</span> <span class="nn">dowhy</span> <span class="kn">import</span> <span class="n">CausalModel</span>
-<span class="kn">import</span> <span class="nn">econml</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from dowhy.datasets import linear_dataset
+from dowhy import CausalModel
+import econml
 
-<span class="c1"># Config dict to set the logging level</span>
-<span class="kn">import</span> <span class="nn">logging.config</span>
-<span class="n">DEFAULT_LOGGING</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="s1">&#39;disable_existing_loggers&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">&#39;loggers&#39;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;level&#39;</span><span class="p">:</span> <span class="s1">&#39;WARN&#39;</span><span class="p">,</span>
-        <span class="p">},</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+# Config dict to set the logging level
+import logging.config
+DEFAULT_LOGGING = {
+    &#39;version&#39;: 1,
+    &#39;disable_existing_loggers&#39;: False,
+    &#39;loggers&#39;: {
+        &#39;&#39;: {
+            &#39;level&#39;: &#39;WARN&#39;,
+        },
+    }
+}
 
-<span class="n">logging</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">dictConfig</span><span class="p">(</span><span class="n">DEFAULT_LOGGING</span><span class="p">)</span>
-<span class="c1"># Disabling warnings output</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">sklearn.exceptions</span> <span class="kn">import</span> <span class="n">DataConversionWarning</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">DataConversionWarning</span><span class="p">)</span>
+logging.config.dictConfig(DEFAULT_LOGGING)
+# Disabling warnings output
+import warnings
+from sklearn.exceptions import DataConversionWarning
+warnings.filterwarnings(action=&#39;ignore&#39;, category=DataConversionWarning)
 </pre></div>
 </div>
 </div>
@@ -745,11 +771,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inspect_datasets</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">inspect_models</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">inspect_identified_estimands</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">inspect_estimates</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">inspect_refutations</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>inspect_datasets = True
+inspect_models = True
+inspect_identified_estimands = True
+inspect_estimates = True
+inspect_refutations = True
 </pre></div>
 </div>
 </div>
@@ -761,16 +787,16 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LassoCV
+from sklearn.ensemble import GradientBoostingRegressor
 
-<span class="n">estimator_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;backdoor.propensity_score_matching&quot;</span><span class="p">,</span> <span class="s2">&quot;backdoor.propensity_score_weighting&quot;</span><span class="p">,</span> <span class="s2">&quot;backdoor.econml.dml.DML&quot;</span><span class="p">]</span>
-<span class="n">method_params</span><span class="o">=</span> <span class="p">[</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;model_y&#39;</span><span class="p">:</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;model_t&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s2">&quot;model_final&quot;</span><span class="p">:</span><span class="n">LassoCV</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-                                                              <span class="s1">&#39;featurizer&#39;</span><span class="p">:</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}}</span> <span class="p">]</span>
+estimator_list = [&quot;backdoor.propensity_score_matching&quot;, &quot;backdoor.propensity_score_weighting&quot;, &quot;backdoor.econml.dml.DML&quot;]
+method_params= [ None, None, {&quot;init_params&quot;:{&#39;model_y&#39;:GradientBoostingRegressor(),
+                                                              &#39;model_t&#39;: GradientBoostingRegressor(),
+                                                              &quot;model_final&quot;:LassoCV(fit_intercept=False),
+                                                              &#39;featurizer&#39;:PolynomialFeatures(degree=1, include_bias=False)},
+                                               &quot;fit_params&quot;:{}} ]
 </pre></div>
 </div>
 </div>
@@ -782,7 +808,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refuter_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;bootstrap_refuter&quot;</span><span class="p">,</span> <span class="s2">&quot;data_subset_refuter&quot;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refuter_list = [&quot;bootstrap_refuter&quot;, &quot;data_subset_refuter&quot;]
 </pre></div>
 </div>
 </div>
@@ -793,28 +819,28 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameters for creating the Dataset</span>
-<span class="n">TREATMENT_IS_BINARY</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">BETA</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">NUM_SAMPLES</span> <span class="o">=</span> <span class="mi">5000</span>
-<span class="n">NUM_CONFOUNDERS</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">NUM_INSTRUMENTS</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">NUM_EFFECT_MODIFIERS</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># Parameters for creating the Dataset
+TREATMENT_IS_BINARY = True
+BETA = 10
+NUM_SAMPLES = 5000
+NUM_CONFOUNDERS = 5
+NUM_INSTRUMENTS = 3
+NUM_EFFECT_MODIFIERS = 2
 
-<span class="c1"># Creating a Linear Dataset with the given parameters</span>
-<span class="n">linear_data</span> <span class="o">=</span> <span class="n">linear_dataset</span><span class="p">(</span>
-            <span class="n">beta</span> <span class="o">=</span> <span class="n">BETA</span><span class="p">,</span>
-            <span class="n">num_common_causes</span> <span class="o">=</span> <span class="n">NUM_CONFOUNDERS</span><span class="p">,</span>
-            <span class="n">num_instruments</span> <span class="o">=</span> <span class="n">NUM_INSTRUMENTS</span><span class="p">,</span>
-            <span class="n">num_effect_modifiers</span> <span class="o">=</span> <span class="n">NUM_EFFECT_MODIFIERS</span><span class="p">,</span>
-            <span class="n">num_samples</span> <span class="o">=</span> <span class="n">NUM_SAMPLES</span><span class="p">,</span>
-            <span class="n">treatment_is_binary</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="p">)</span>
-<span class="c1"># Other datasets come here</span>
+# Creating a Linear Dataset with the given parameters
+linear_data = linear_dataset(
+            beta = BETA,
+            num_common_causes = NUM_CONFOUNDERS,
+            num_instruments = NUM_INSTRUMENTS,
+            num_effect_modifiers = NUM_EFFECT_MODIFIERS,
+            num_samples = NUM_SAMPLES,
+            treatment_is_binary = True
+        )
+# Other datasets come here
 
 
-<span class="c1"># Append them together in an array</span>
-<span class="n">datasets</span> <span class="o">=</span> <span class="p">[</span><span class="n">linear_data</span><span class="p">]</span>
+# Append them together in an array
+datasets = [linear_data]
 <br/></pre></div>
 </div>
 </div>
@@ -825,13 +851,13 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_num</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">inspect_datasets</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;####### Dataset </span><span class="si">{}</span><span class="s2">###########################################################################################&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dataset_num</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;#############################################################################################################&quot;</span><span class="p">)</span>
-        <span class="n">dataset_num</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dataset_num = 1
+if inspect_datasets is True:
+    for data in datasets:
+        print(&quot;####### Dataset {}###########################################################################################&quot;.format(dataset_num))
+        print(data[&#39;df&#39;].head())
+        print(&quot;#############################################################################################################&quot;)
+        dataset_num += 1
 </pre></div>
 </div>
 </div>
@@ -864,15 +890,15 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">datasets</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">CausalModel</span><span class="p">(</span>
-                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">],</span>
-                <span class="n">treatment</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;treatment_name&#39;</span><span class="p">],</span>
-                <span class="n">outcome</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;outcome_name&#39;</span><span class="p">],</span>
-                <span class="n">graph</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;gml_graph&#39;</span><span class="p">]</span>
-            <span class="p">)</span>
-    <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>models = []
+for data in datasets:
+    model = CausalModel(
+                data = data[&#39;df&#39;],
+                treatment = data[&#39;treatment_name&#39;],
+                outcome = data[&#39;outcome_name&#39;],
+                graph = data[&#39;gml_graph&#39;]
+            )
+    models.append(model)
 </pre></div>
 </div>
 </div>
@@ -883,9 +909,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">view_model</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;causal_model.png&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.view_model()
+from IPython.display import Image, display
+display(Image(filename=&quot;causal_model.png&quot;))
 </pre></div>
 </div>
 </div>
@@ -903,10 +929,10 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">identified_estimands</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
-    <span class="n">identified_estimand</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">identify_effect</span><span class="p">(</span><span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">identified_estimands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>identified_estimands = []
+for model in models:
+    identified_estimand = model.identify_effect(proceed_when_unidentifiable=True)
+    identified_estimands.append(identified_estimand)
 </pre></div>
 </div>
 </div>
@@ -917,12 +943,12 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimand_count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">for</span> <span class="n">estimand</span> <span class="ow">in</span> <span class="n">identified_estimands</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;####### Identified Estimand </span><span class="si">{}</span><span class="s2">#####################################################################################&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">estimand_count</span><span class="p">))</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">estimand</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;###################################################################################################################&quot;</span><span class="p">)</span>
-    <span class="n">estimand_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>estimand_count = 1
+for estimand in identified_estimands:
+    print(&quot;####### Identified Estimand {}#####################################################################################&quot;.format(estimand_count))
+    print(estimand)
+    print(&quot;###################################################################################################################&quot;)
+    estimand_count += 1
 </pre></div>
 </div>
 </div>
@@ -963,15 +989,15 @@ No such variable(s) found!
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimate_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">identified_estimands</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimator_list</span><span class="p">)):</span>
-        <span class="n">estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span>
-                        <span class="n">identified_estimands</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-                        <span class="n">method_name</span><span class="o">=</span><span class="n">estimator_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span>
-                        <span class="n">method_params</span><span class="o">=</span><span class="n">method_params</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
-                  <span class="p">)</span>
-        <span class="n">estimate_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">estimate</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>estimate_list = []
+for i in range(len(identified_estimands)):
+    for j in range(len(estimator_list)):
+        estimate = model.estimate_effect(
+                        identified_estimands[i],
+                        method_name=estimator_list[j],
+                        method_params=method_params[j]
+                  )
+        estimate_list.append(estimate)
 </pre></div>
 </div>
 </div>
@@ -982,18 +1008,18 @@ No such variable(s) found!
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimand_count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">inspect_estimates</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">estimand</span> <span class="ow">in</span> <span class="n">estimate_list</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;####### Estimand </span><span class="si">{}</span><span class="s2">#######################################################################################&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">estimand_count</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** Class Name ***&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">estimand</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;estimator_class&#39;</span><span class="p">])</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">estimand</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;########################################################################################################&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="n">estimand_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>estimand_count = 1
+if inspect_estimates is True:
+    for estimand in estimate_list:
+        print(&quot;####### Estimand {}#######################################################################################&quot;.format(estimand_count))
+        print(&quot;*** Class Name ***&quot;)
+        print()
+        print(estimand.params[&#39;estimator_class&#39;])
+        print()
+        print(estimand)
+        print(&quot;########################################################################################################&quot;)
+        print()
+        estimand_count += 1
 </pre></div>
 </div>
 </div>
@@ -1094,12 +1120,12 @@ Effect estimates: [11.0297145   9.78699228 10.30838788 ...  9.46308525  9.647566
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refutation_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">estimand</span> <span class="ow">in</span> <span class="n">identified_estimands</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">estimate</span> <span class="ow">in</span> <span class="n">estimate_list</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">refuter</span> <span class="ow">in</span> <span class="n">refuter_list</span><span class="p">:</span>
-            <span class="n">ref</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">estimand</span><span class="p">,</span> <span class="n">estimate</span><span class="p">,</span><span class="n">method_name</span><span class="o">=</span><span class="n">refuter</span><span class="p">)</span>
-            <span class="n">refutation_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refutation_list = []
+for estimand in identified_estimands:
+    for estimate in estimate_list:
+        for refuter in refuter_list:
+            ref = model.refute_estimate(estimand, estimate,method_name=refuter)
+            refutation_list.append(ref)
 </pre></div>
 </div>
 </div>
@@ -1110,18 +1136,18 @@ Effect estimates: [11.0297145   9.78699228 10.30838788 ...  9.46308525  9.647566
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">refuter_count</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="n">inspect_refutations</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">refutation</span> <span class="ow">in</span> <span class="n">refutation_list</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;####### Refutation </span><span class="si">{}</span><span class="s2">#######################################################################################&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">refuter_count</span><span class="p">))</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;*** Class Name ***&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">refutation</span><span class="o">.</span><span class="n">refutation_type</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">refutation</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;########################################################################################################&quot;</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">()</span>
-        <span class="n">refuter_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>refuter_count = 1
+if inspect_refutations is True:
+    for refutation in refutation_list:
+        print(&quot;####### Refutation {}#######################################################################################&quot;.format(refuter_count))
+        print(&quot;*** Class Name ***&quot;)
+        print()
+        print(refutation.refutation_type)
+        print()
+        print(refutation)
+        print(&quot;########################################################################################################&quot;)
+        print()
+        refuter_count += 1
 </pre></div>
 </div>
 </div>
@@ -1215,17 +1241,17 @@ p value:0.28
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="dowhy_multiple_treatments.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="dowhy_mediation_analysis.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Estimating effect of multiple treatments</p>
+          <p class="prev-next-title">Mediation analysis with DoWhy: Direct and Indirect Effects</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="identifying_effects_using_id_algorithm.html" title="next page">
+  <a class='right-next' id="next-link" href="dowhy_causal_api.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Identifying Effect using ID Algorithm</p>
+      <p class="prev-next-title">Demo for the DoWhy causal API</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -1252,7 +1278,7 @@ p value:0.28
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

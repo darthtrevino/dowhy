@@ -15,6 +15,7 @@
   <title>A Simple Example on Creating a Custom Refutation Using User-Defined Outcome Functions &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -534,43 +537,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.0</td>
-      <td>-0.361335</td>
-      <td>0.012312</td>
-      <td>-1.482045</td>
-      <td>-15.048268</td>
+      <td>1.0</td>
+      <td>-1.407217</td>
+      <td>-1.660685</td>
+      <td>8.375845</td>
+      <td>71.589911</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.0</td>
-      <td>-0.584021</td>
-      <td>0.295182</td>
-      <td>-2.274378</td>
-      <td>-21.921591</td>
+      <td>1.609787</td>
+      <td>-1.436727</td>
+      <td>-0.110760</td>
+      <td>3.850352</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.0</td>
-      <td>-2.367325</td>
-      <td>-0.621843</td>
-      <td>-9.412874</td>
-      <td>-98.527148</td>
+      <td>1.0</td>
+      <td>-0.695853</td>
+      <td>0.116018</td>
+      <td>9.332311</td>
+      <td>89.818378</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.0</td>
-      <td>-2.996183</td>
-      <td>0.786959</td>
-      <td>-10.152970</td>
-      <td>-100.401194</td>
+      <td>1.0</td>
+      <td>0.086434</td>
+      <td>-2.254533</td>
+      <td>10.363044</td>
+      <td>98.050373</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
-      <td>-2.957189</td>
-      <td>0.892346</td>
-      <td>1.319359</td>
-      <td>14.795795</td>
+      <td>0.0</td>
+      <td>0.269142</td>
+      <td>0.118116</td>
+      <td>-0.708703</td>
+      <td>-5.297733</td>
     </tr>
   </tbody>
 </table>
@@ -625,9 +628,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W1])
+─────(E[y|W1,W0])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W1,U) = P(y|v0,W0,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,U) = P(y|v0,W1,W0)
 
 ### Estimand : 2
 Estimand name: iv
@@ -695,7 +698,7 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome y is 
 Target units: ate
 
 ## Estimate
-Mean value: 10.000206215055716
+Mean value: 9.995955579319535
 
 </pre></div></div>
 </div>
@@ -724,8 +727,8 @@ Mean value: 10.000206215055716
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:-6.5966854706429e-05
-p value:0.8799999999999999
+New effect:-4.6841757581057594e-05
+p value:0.96
 
 </pre></div></div>
 </div>
@@ -769,8 +772,8 @@ p value:0.8799999999999999
 <div class="highlight"><pre>
 Refute: Use a Dummy Outcome
 Estimated effect:0
-New effect:-1.2458620290474519e-05
-p value:1.0
+New effect:8.228944913894423e-06
+p value:0.96
 
 </pre></div></div>
 </div>
@@ -821,7 +824,6 @@ p value:1.0
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="dowhy_demo_dummy_outcome_refuter.html">v0.7.1</a></dd>
             <dd><a href="../../v0.8/index.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

@@ -15,6 +15,7 @@
   <title>Tutorial on Causal Inference and its Connections to Machine Learning (Using DoWhy+EconML) &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -628,9 +631,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W0,W4,W2])
+─────(E[y|W0,W2,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W0,W4,W2,U) = P(y|v0,W1,W3,W0,W4,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W2,W4,W1,W3,U) = P(y|v0,W0,W2,W4,W1,W3)
 
 ### Estimand : 2
 Estimand name: iv
@@ -677,16 +680,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W0,W4,W2])
+─────(E[y|W0,W2,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W0,W4,W2,U) = P(y|v0,W1,W3,W0,W4,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W2,W4,W1,W3,U) = P(y|v0,W0,W2,W4,W1,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W0+W4+W2
+b: y~v0+W0+W2+W4+W1+W3
 Target units: ate
 
 ## Estimate
-Mean value: 10.005967692975606
+Mean value: 10.01137850813929
 
 </pre></div></div>
 </div>
@@ -715,8 +718,8 @@ Mean value: 10.005967692975606
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-09-01 16:39:45.330134: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-09-01 16:39:45.330184: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-09-14 19:02:14.990293: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-09-14 19:02:14.990333: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -733,17 +736,17 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W0,W4,W2])
+─────(E[y|W0,W2,W4,W1,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W0,W4,W2,U) = P(y|v0,W1,W3,W0,W4,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W2,W4,W1,W3,U) = P(y|v0,W0,W2,W4,W1,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W0+W4+W2 |
+b: y~v0+W0+W2+W4+W1+W3 |
 Target units: ate
 
 ## Estimate
-Mean value: 9.943145080989257
-Effect estimates: [9.94314508 9.94314508 9.94314508 ... 9.94314508 9.94314508 9.94314508]
+Mean value: 10.000705998739136
+Effect estimates: [10.000706 10.000706 10.000706 ... 10.000706 10.000706 10.000706]
 
 </pre></div></div>
 </div>
@@ -767,9 +770,9 @@ estimate value of 0 when the action variable is replaced by a random variable, i
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:10.005967692975606
-New effect:-0.0066052070519527495
-p value:0.8200000000000001
+Estimated effect:10.01137850813929
+New effect:-0.015883397559986034
+p value:0.8
 
 </pre></div></div>
 </div>
@@ -821,11 +824,11 @@ than learning a new toolkit. The power of EconML is that you can now implement t
 <div class="output_area docutils container">
 <div class="highlight"><pre>
    Treatment    Outcome        w0         s        w1
-0  21.479210  43.011054  3.950363  3.222793 -0.031188
-1   6.947874  14.540621 -1.278121  8.649812 -0.383674
-2  21.115929  41.970583 -3.937172  6.749346 -0.585732
-3   6.345778  12.901791 -0.749413  5.197062 -0.295818
-4  19.885679  40.087013  3.907163  2.695308 -1.607624
+0   8.154810  16.811143  1.394262  1.385770  0.939455
+1  10.401133  20.965317  2.053829  4.395052  0.268027
+2  13.665126  27.251269 -2.806090  8.092662  0.047271
+3  10.036551  19.171753 -2.211162  0.507780 -1.757378
+4   6.307040  13.234534  0.346518  1.088592  0.627527
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -874,9 +877,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ### Estimand : 2
 Estimand name: iv
@@ -920,18 +923,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ## Realized estimand
-b: Outcome~Treatment+w1+w0
+b: Outcome~Treatment+w0+w1
 Target units: ate
 
 ## Estimate
-Mean value: 1.9993283666717114
+Mean value: 1.9987123592863592
 
-Causal Estimate is 1.9993283666717114
+Causal Estimate is 1.9987123592863592
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -978,17 +981,17 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
      d
-────────────(E[Outcome|w1,w0])
+────────────(E[Outcome|w0,w1])
 d[Treatment]
-Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w1,w0,U) = P(Outcome|Treatment,w1,w0)
+Estimand assumption 1, Unconfoundedness: If U→{Treatment} and U→Outcome then P(Outcome|Treatment,w0,w1,U) = P(Outcome|Treatment,w0,w1)
 
 ## Realized estimand
-b: Outcome~Treatment+w1+w0 |
+b: Outcome~Treatment+w0+w1 |
 Target units: ate
 
 ## Estimate
-Mean value: 1.2426889541492987
-Effect estimates: [1.24268895 1.24268895 1.24268895 ... 1.24268895 1.24268895 1.24268895]
+Mean value: 1.2022288255659004
+Effect estimates: [1.20222883 1.20222883 1.20222883 ... 1.20222883 1.20222883 1.20222883]
 
 </pre></div></div>
 </div>
@@ -1011,9 +1014,9 @@ Effect estimates: [1.24268895 1.24268895 1.24268895 ... 1.24268895 1.24268895 1.
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:1.2426889541492987
-New effect:1.2316284845736274
-p value:0.74
+Estimated effect:1.2022288255659004
+New effect:1.1743249373563558
+p value:0.3400000000000001
 
 </pre></div></div>
 </div>
@@ -1034,9 +1037,9 @@ p value:0.74
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:1.2426889541492987
-New effect:-6.085347155547568e-05
-p value:0.47251423698852024
+Estimated effect:1.2022288255659004
+New effect:1.669847355642941e-05
+p value:0.4863321487937454
 
 </pre></div></div>
 </div>
@@ -1144,7 +1147,6 @@ refutation methods that can check the robustness of the estimate.</p>
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="tutorial-causalinference-machinelearning-using-dowhy-econml.html">v0.7.1</a></dd>
             <dd><a href="../../v0.8/index.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

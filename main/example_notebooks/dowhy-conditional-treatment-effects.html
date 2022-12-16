@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Conditional Average Treatment Effects (CATE) with DoWhy and EconML &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,6 +45,10 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
@@ -49,7 +56,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Mediation analysis with DoWhy: Direct and Indirect Effects" href="dowhy_mediation_analysis.html" />
-    <link rel="prev" title="Lalonde Pandas API Example" href="lalonde_pandas_api.html" />
+    <link rel="prev" title="DoWhy: Interpreters for Causal Estimators" href="dowhy_interpreter.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="dowhy-conditional-treatment-effects.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -576,10 +601,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -731,8 +757,8 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> autoreload
-<span class="o">%</span><span class="k">autoreload</span> 2
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>%load_ext autoreload
+%autoreload 2
 </pre></div>
 </div>
 </div>
@@ -740,19 +766,19 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">logging</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
+import pandas as pd
+import logging
 
-<span class="kn">import</span> <span class="nn">dowhy</span>
-<span class="kn">from</span> <span class="nn">dowhy</span> <span class="kn">import</span> <span class="n">CausalModel</span>
-<span class="kn">import</span> <span class="nn">dowhy.datasets</span>
+import dowhy
+from dowhy import CausalModel
+import dowhy.datasets
 
-<span class="kn">import</span> <span class="nn">econml</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+import econml
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)
 
-<span class="n">BETA</span> <span class="o">=</span> <span class="mi">10</span>
+BETA = 10
 </pre></div>
 </div>
 </div>
@@ -760,16 +786,16 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">dowhy</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">linear_dataset</span><span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">num_common_causes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-                                    <span class="n">num_instruments</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_effect_modifiers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                     <span class="n">num_treatments</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                                    <span class="n">treatment_is_binary</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                    <span class="n">num_discrete_common_causes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                    <span class="n">num_discrete_effect_modifiers</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                    <span class="n">one_hot_encode</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">df</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True causal estimate is&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ate&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data = dowhy.datasets.linear_dataset(BETA, num_common_causes=4, num_samples=10000,
+                                    num_instruments=2, num_effect_modifiers=2,
+                                     num_treatments=1,
+                                    treatment_is_binary=False,
+                                    num_discrete_common_causes=2,
+                                    num_discrete_effect_modifiers=0,
+                                    one_hot_encode=False)
+df=data[&#39;df&#39;]
+print(df.head())
+print(&quot;True causal estimate is&quot;, data[&quot;ate&quot;])
 </pre></div>
 </div>
 </div>
@@ -779,28 +805,28 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
          X0        X1   Z0        Z1        W0        W1 W2 W3         v0  \
-0  0.299470  1.373214  0.0  0.846430 -1.806362 -0.946527  1  1   5.999320
-1 -1.522037  1.427493  1.0  0.968686 -1.876501 -1.469616  3  1  25.071315
-2  1.585637  0.029029  1.0  0.066989 -1.123385 -0.334670  3  1  22.508896
-3 -0.308178  0.726708  0.0  0.611369 -1.752695 -0.911381  2  2  12.125685
-4 -0.007093 -0.119927  0.0  0.736437  0.502190  1.421267  0  2  21.250423
+0  0.184316  1.023765  0.0  0.746975 -1.064751 -1.655496  0  2   4.303728
+1 -0.098788 -0.271350  0.0  0.056506  0.685865  0.745997  2  3  11.380914
+2 -1.430053 -0.788282  0.0  0.102457 -0.513976 -0.473495  3  1   7.679942
+3  0.164521 -1.147925  0.0  0.054876 -0.759346 -0.197663  0  1  -0.192062
+4  0.248026 -0.251351  1.0  0.447742 -1.551764 -2.543249  3  3  16.796109
 
             y
-0  103.430812
-1  316.520530
-2  321.906205
-3  158.631820
-4  211.426926
-True causal estimate is 12.63833425360184
+0   51.187076
+1  120.013064
+2   39.207876
+3   -1.783893
+4  173.186709
+True causal estimate is 9.628211731869985
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">CausalModel</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;df&quot;</span><span class="p">],</span>
-                    <span class="n">treatment</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">],</span> <span class="n">outcome</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">],</span>
-                    <span class="n">graph</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;gml_graph&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model = CausalModel(data=data[&quot;df&quot;],
+                    treatment=data[&quot;treatment_name&quot;], outcome=data[&quot;outcome_name&quot;],
+                    graph=data[&quot;gml_graph&quot;])
 </pre></div>
 </div>
 </div>
@@ -808,9 +834,9 @@ True causal estimate is 12.63833425360184
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">view_model</span><span class="p">()</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;causal_model.png&quot;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>model.view_model()
+from IPython.display import Image, display
+display(Image(filename=&quot;causal_model.png&quot;))
 </pre></div>
 </div>
 </div>
@@ -825,8 +851,8 @@ True causal estimate is 12.63833425360184
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">identified_estimand</span><span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">identify_effect</span><span class="p">(</span><span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>identified_estimand= model.identify_effect(proceed_when_unidentifiable=True)
+print(identified_estimand)
 </pre></div>
 </div>
 </div>
@@ -835,15 +861,15 @@ True causal estimate is 12.63833425360184
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ### Estimand : 2
 Estimand name: iv
@@ -869,11 +895,11 @@ No such variable(s) found!
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">linear_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span>
-                                        <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.linear_regression&quot;</span><span class="p">,</span>
-                                       <span class="n">control_value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-                                       <span class="n">treatment_value</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">linear_estimate</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>linear_estimate = model.estimate_effect(identified_estimand,
+                                        method_name=&quot;backdoor.linear_regression&quot;,
+                                       control_value=0,
+                                       treatment_value=1)
+print(linear_estimate)
 </pre></div>
 </div>
 </div>
@@ -885,50 +911,23 @@ No such variable(s) found!
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0+v0*X0+v0*X1
+b: y~v0+W1+W0+W2+W3+v0*X0+v0*X1
 Target units: ate
 
 ## Estimate
-Mean value: 12.638268310898727
-### Conditional Estimates
-__categorical__X0   __categorical__X1
-(-3.264, -0.588]    (-4.365, -0.397]      2.921323
-                    (-0.397, 0.206]       6.808680
-                    (0.206, 0.713]        9.223157
-                    (0.713, 1.311]       11.512113
-                    (1.311, 4.578]       15.490305
-(-0.588, -0.00428]  (-4.365, -0.397]      5.330021
-                    (-0.397, 0.206]       8.976471
-                    (0.206, 0.713]       11.264465
-                    (0.713, 1.311]       13.658610
-                    (1.311, 4.578]       17.378831
-(-0.00428, 0.497]   (-4.365, -0.397]      6.793895
-                    (-0.397, 0.206]      10.268846
-                    (0.206, 0.713]       12.598817
-                    (0.713, 1.311]       14.907047
-                    (1.311, 4.578]       18.833311
-(0.497, 1.093]      (-4.365, -0.397]      7.564129
-                    (-0.397, 0.206]      11.606786
-                    (0.206, 0.713]       13.953793
-                    (0.713, 1.311]       16.243462
-                    (1.311, 4.578]       20.174817
-(1.093, 4.489]      (-4.365, -0.397]      9.903896
-                    (-0.397, 0.206]      13.785227
-                    (0.206, 0.713]       16.080800
-                    (0.713, 1.311]       18.403052
-                    (1.311, 4.578]       22.265578
-dtype: float64
+Mean value: 9.628235916738104
+
 </pre></div></div>
 </div>
 </section>
@@ -942,31 +941,22 @@ dtype: float64
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
-<span class="n">dml_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.dml.DML&quot;</span><span class="p">,</span>
-                                     <span class="n">control_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                     <span class="n">treatment_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                                 <span class="n">target_units</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;X0&quot;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># condition used for CATE</span>
-                                 <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;model_y&#39;</span><span class="p">:</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;model_t&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s2">&quot;model_final&quot;</span><span class="p">:</span><span class="n">LassoCV</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-                                                              <span class="s1">&#39;featurizer&#39;</span><span class="p">:</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dml_estimate</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LassoCV
+from sklearn.ensemble import GradientBoostingRegressor
+dml_estimate = model.estimate_effect(identified_estimand, method_name=&quot;backdoor.econml.dml.DML&quot;,
+                                     control_value = 0,
+                                     treatment_value = 1,
+                                 target_units = lambda df: df[&quot;X0&quot;]&gt;1,  # condition used for CATE
+                                 confidence_intervals=False,
+                                method_params={&quot;init_params&quot;:{&#39;model_y&#39;:GradientBoostingRegressor(),
+                                                              &#39;model_t&#39;: GradientBoostingRegressor(),
+                                                              &quot;model_final&quot;:LassoCV(fit_intercept=False),
+                                                              &#39;featurizer&#39;:PolynomialFeatures(degree=1, include_bias=False)},
+                                               &quot;fit_params&quot;:{}})
+print(dml_estimate)
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-2022-09-01 18:22:22.318343: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-09-01 18:22:22.318391: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -976,24 +966,29 @@ dtype: float64
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0 | X0,X1
+b: y~v0+W1+W0+W2+W3 | X0,X1
 Target units: Data subset defined by a function
 
 ## Estimate
-Mean value: 15.936957365521865
-Effect estimates: [14.04933708  9.4502064  20.89524431 ... 21.40694837 12.95492208
- 15.49281079]
+Mean value: 14.495131695143286
+Effect estimates: [[13.77887095]
+ [13.75726448]
+ [12.51609202]
+ ...
+ [14.57703812]
+ [10.56353472]
+ [11.59317826]]
 
 </pre></div></div>
 </div>
@@ -1001,7 +996,7 @@ Effect estimates: [14.04933708  9.4502064  20.89524431 ... 21.40694837 12.954922
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True causal estimate is&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ate&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(&quot;True causal estimate is&quot;, data[&quot;ate&quot;])
 </pre></div>
 </div>
 </div>
@@ -1010,24 +1005,24 @@ Effect estimates: [14.04933708  9.4502064  20.89524431 ... 21.40694837 12.954922
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-True causal estimate is 12.63833425360184
+True causal estimate is 9.628211731869985
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dml_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.dml.DML&quot;</span><span class="p">,</span>
-                                     <span class="n">control_value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-                                     <span class="n">treatment_value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-                                 <span class="n">target_units</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>  <span class="c1"># condition used for CATE</span>
-                                 <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;model_y&#39;</span><span class="p">:</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;model_t&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s2">&quot;model_final&quot;</span><span class="p">:</span><span class="n">LassoCV</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-                                                              <span class="s1">&#39;featurizer&#39;</span><span class="p">:</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dml_estimate</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>dml_estimate = model.estimate_effect(identified_estimand, method_name=&quot;backdoor.econml.dml.DML&quot;,
+                                     control_value = 0,
+                                     treatment_value = 1,
+                                 target_units = 1,  # condition used for CATE
+                                 confidence_intervals=False,
+                                method_params={&quot;init_params&quot;:{&#39;model_y&#39;:GradientBoostingRegressor(),
+                                                              &#39;model_t&#39;: GradientBoostingRegressor(),
+                                                              &quot;model_final&quot;:LassoCV(fit_intercept=False),
+                                                              &#39;featurizer&#39;:PolynomialFeatures(degree=1, include_bias=True)},
+                                               &quot;fit_params&quot;:{}})
+print(dml_estimate)
 </pre></div>
 </div>
 </div>
@@ -1039,24 +1034,29 @@ True causal estimate is 12.63833425360184
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0 | X0,X1
+b: y~v0+W1+W0+W2+W3 | X0,X1
 Target units:
 
 ## Estimate
-Mean value: 12.532441905139986
-Effect estimates: [16.62508586 12.24359321 14.01541866 ... 12.92866967 15.42284184
- 12.91544036]
+Mean value: 9.566581240446085
+Effect estimates: [[12.66641759]
+ [ 9.06324629]
+ [ 4.16475233]
+ ...
+ [10.75745638]
+ [ 7.36737442]
+ [ 8.17839377]]
 
 </pre></div></div>
 </div>
@@ -1067,23 +1067,23 @@ Effect estimates: [16.62508586 12.24359321 14.01541866 ... 12.92866967 15.422841
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">PolynomialFeatures</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LassoCV</span>
-<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingRegressor</span>
-<span class="kn">from</span> <span class="nn">econml.inference</span> <span class="kn">import</span> <span class="n">BootstrapInference</span>
-<span class="n">dml_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span>
-                                     <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.dml.DML&quot;</span><span class="p">,</span>
-                                     <span class="n">target_units</span> <span class="o">=</span> <span class="s2">&quot;ate&quot;</span><span class="p">,</span>
-                                     <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                                     <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;model_y&#39;</span><span class="p">:</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;model_t&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s2">&quot;model_final&quot;</span><span class="p">:</span> <span class="n">LassoCV</span><span class="p">(</span><span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
-                                                              <span class="s1">&#39;featurizer&#39;</span><span class="p">:</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{</span>
-                                                               <span class="s1">&#39;inference&#39;</span><span class="p">:</span> <span class="n">BootstrapInference</span><span class="p">(</span><span class="n">n_bootstrap_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
-                                                            <span class="p">}</span>
-                                              <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dml_estimate</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LassoCV
+from sklearn.ensemble import GradientBoostingRegressor
+from econml.inference import BootstrapInference
+dml_estimate = model.estimate_effect(identified_estimand,
+                                     method_name=&quot;backdoor.econml.dml.DML&quot;,
+                                     target_units = &quot;ate&quot;,
+                                     confidence_intervals=True,
+                                     method_params={&quot;init_params&quot;:{&#39;model_y&#39;:GradientBoostingRegressor(),
+                                                              &#39;model_t&#39;: GradientBoostingRegressor(),
+                                                              &quot;model_final&quot;: LassoCV(fit_intercept=False),
+                                                              &#39;featurizer&#39;:PolynomialFeatures(degree=1, include_bias=True)},
+                                               &quot;fit_params&quot;:{
+                                                               &#39;inference&#39;: BootstrapInference(n_bootstrap_samples=100, n_jobs=-1),
+                                                            }
+                                              })
+print(dml_estimate)
 </pre></div>
 </div>
 </div>
@@ -1095,27 +1095,29 @@ Effect estimates: [16.62508586 12.24359321 14.01541866 ... 12.92866967 15.422841
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0 | X0,X1
+b: y~v0+W1+W0+W2+W3 | X0,X1
 Target units: ate
 
 ## Estimate
-Mean value: 12.522863226696986
-Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.41165308
- 12.90622377]
-95.0% confidence interval: (array([16.63938473, 12.0225659 , 14.04855107, ..., 12.95002251,
-       15.45133622, 12.89151996]), array([16.99904249, 12.52933832, 14.42379984, ..., 13.23597792,
-       15.78828076, 13.14541203]))
+Mean value: 9.585337595143452
+Effect estimates: [[12.71754568]
+ [ 9.08152062]
+ [ 4.08314366]
+ ...
+ [10.77288291]
+ [ 7.33489019]
+ [ 8.15373185]]
 
 </pre></div></div>
 </div>
@@ -1126,20 +1128,20 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_cols</span><span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;effect_modifier_names&#39;</span><span class="p">]</span> <span class="c1"># only need effect modifiers&#39; values</span>
-<span class="n">test_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test_cols</span><span class="p">))]</span> <span class="c1"># all variables are sampled uniformly, sample of 10</span>
-<span class="n">test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_arr</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">columns</span><span class="o">=</span><span class="n">test_cols</span><span class="p">)</span>
-<span class="n">dml_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span>
-                                     <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.dml.DML&quot;</span><span class="p">,</span>
-                                     <span class="n">target_units</span> <span class="o">=</span> <span class="n">test_df</span><span class="p">,</span>
-                                     <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                     <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;model_y&#39;</span><span class="p">:</span><span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;model_t&#39;</span><span class="p">:</span> <span class="n">GradientBoostingRegressor</span><span class="p">(),</span>
-                                                              <span class="s2">&quot;model_final&quot;</span><span class="p">:</span><span class="n">LassoCV</span><span class="p">(),</span>
-                                                              <span class="s1">&#39;featurizer&#39;</span><span class="p">:</span><span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">True</span><span class="p">)},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}</span>
-                                              <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">dml_estimate</span><span class="o">.</span><span class="n">cate_estimates</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test_cols= data[&#39;effect_modifier_names&#39;] # only need effect modifiers&#39; values
+test_arr = [np.random.uniform(0,1, 10) for _ in range(len(test_cols))] # all variables are sampled uniformly, sample of 10
+test_df = pd.DataFrame(np.array(test_arr).transpose(), columns=test_cols)
+dml_estimate = model.estimate_effect(identified_estimand,
+                                     method_name=&quot;backdoor.econml.dml.DML&quot;,
+                                     target_units = test_df,
+                                     confidence_intervals=False,
+                                     method_params={&quot;init_params&quot;:{&#39;model_y&#39;:GradientBoostingRegressor(),
+                                                              &#39;model_t&#39;: GradientBoostingRegressor(),
+                                                              &quot;model_final&quot;:LassoCV(),
+                                                              &#39;featurizer&#39;:PolynomialFeatures(degree=1, include_bias=True)},
+                                               &quot;fit_params&quot;:{}
+                                              })
+print(dml_estimate.cate_estimates)
 </pre></div>
 </div>
 </div>
@@ -1148,8 +1150,16 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[12.73131269 11.1398762  14.46470441 12.64375253 11.8688257  13.99804245
- 12.45993446 12.756014   14.31303177 14.44421653]
+[[12.51144473]
+ [12.07468235]
+ [11.1622291 ]
+ [11.89897762]
+ [12.95068227]
+ [13.09547487]
+ [13.62526954]
+ [11.38264721]
+ [13.01080906]
+ [13.16179901]]
 </pre></div></div>
 </div>
 </section>
@@ -1159,7 +1169,7 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dml_estimate</span><span class="o">.</span><span class="n">_estimator_object</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(dml_estimate._estimator_object)
 </pre></div>
 </div>
 </div>
@@ -1168,7 +1178,7 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;econml.dml.dml.DML object at 0x7f8ae0eab370&gt;
+&lt;econml.dml.dml.DML object at 0x7fb9ddadf610&gt;
 </pre></div></div>
 </div>
 </section>
@@ -1182,18 +1192,18 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_binary</span> <span class="o">=</span> <span class="n">dowhy</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">linear_dataset</span><span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">num_common_causes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-                                    <span class="n">num_instruments</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_effect_modifiers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                    <span class="n">treatment_is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">outcome_is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1"># convert boolean values to {0,1} numeric</span>
-<span class="n">data_binary</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">data_binary</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">v0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">data_binary</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">data_binary</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_binary</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_binary = dowhy.datasets.linear_dataset(BETA, num_common_causes=4, num_samples=10000,
+                                    num_instruments=2, num_effect_modifiers=2,
+                                    treatment_is_binary=True, outcome_is_binary=True)
+# convert boolean values to {0,1} numeric
+data_binary[&#39;df&#39;].v0 = data_binary[&#39;df&#39;].v0.astype(int)
+data_binary[&#39;df&#39;].y = data_binary[&#39;df&#39;].y.astype(int)
+print(data_binary[&#39;df&#39;])
 
-<span class="n">model_binary</span> <span class="o">=</span> <span class="n">CausalModel</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_binary</span><span class="p">[</span><span class="s2">&quot;df&quot;</span><span class="p">],</span>
-                    <span class="n">treatment</span><span class="o">=</span><span class="n">data_binary</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">],</span> <span class="n">outcome</span><span class="o">=</span><span class="n">data_binary</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">],</span>
-                    <span class="n">graph</span><span class="o">=</span><span class="n">data_binary</span><span class="p">[</span><span class="s2">&quot;gml_graph&quot;</span><span class="p">])</span>
-<span class="n">identified_estimand_binary</span> <span class="o">=</span> <span class="n">model_binary</span><span class="o">.</span><span class="n">identify_effect</span><span class="p">(</span><span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+model_binary = CausalModel(data=data_binary[&quot;df&quot;],
+                    treatment=data_binary[&quot;treatment_name&quot;], outcome=data_binary[&quot;outcome_name&quot;],
+                    graph=data_binary[&quot;gml_graph&quot;])
+identified_estimand_binary = model_binary.identify_effect(proceed_when_unidentifiable=True)
 </pre></div>
 </div>
 </div>
@@ -1203,30 +1213,30 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 <div class="output_area docutils container">
 <div class="highlight"><pre>
             X0        X1   Z0        Z1        W0        W1        W2  \
-0    -0.029031 -0.214394  1.0  0.565859 -1.396418  0.052174  0.437995
-1    -0.278584 -0.796016  1.0  0.551773 -0.084970  0.506977 -1.454635
-2     0.322190 -0.683830  0.0  0.888256 -1.194645  1.485516 -0.446854
-3    -0.259875 -0.503708  1.0  0.274858 -1.287364  0.927897  1.774605
-4    -0.589304  0.977283  1.0  0.841254 -1.911123  0.146777  1.400689
+0     1.407181 -1.006574  1.0  0.936970 -0.560792  3.675080  1.695422
+1     0.788738  0.233188  0.0  0.611156 -0.255626  1.361288  1.077083
+2     1.567530  0.521190  1.0  0.032971 -0.108569  2.273863  0.085113
+3     0.352918 -0.840284  0.0  0.040884  0.007009  2.733734  0.281024
+4     0.008780 -1.696901  0.0  0.180170 -1.088745  0.990502  1.812114
 ...        ...       ...  ...       ...       ...       ...       ...
-9995 -0.796499 -1.553187  1.0  0.815108 -0.333313 -0.413536 -0.051864
-9996  1.755918 -1.173517  0.0  0.071442  0.949639  1.357934  0.350278
-9997  1.862585 -2.568634  1.0  0.719647  0.598050  0.168653  1.075394
-9998  0.867975 -1.487359  0.0  0.462255  0.232077 -0.179117 -0.097738
-9999  2.400810  0.485402  1.0  0.028134 -0.671366  0.360013  1.017259
+9995 -0.142011  1.028627  0.0  0.957043 -1.500051  0.998575  0.511238
+9996  0.851902  2.266624  0.0  0.678300 -0.701726  0.748294  1.628316
+9997 -0.171566  0.033419  1.0  0.092534 -0.118482  0.253016 -0.289634
+9998  0.537959 -0.200492  1.0  0.943669 -1.749916  0.629262  1.241166
+9999  0.352818 -0.332338  1.0  0.523575 -1.927553 -0.576147  1.703810
 
             W3  v0  y
-0    -0.365444   1  1
-1     0.696296   1  1
-2     2.093190   1  1
-3    -1.586242   1  1
-4     2.073343   1  1
+0     0.219969   1  1
+1     0.415013   1  1
+2    -2.174826   1  1
+3    -1.356104   1  1
+4    -0.820616   1  0
 ...        ...  .. ..
-9995  0.096189   1  1
-9996  0.268053   1  1
-9997 -2.081355   1  1
-9998  0.461379   1  1
-9999 -0.079064   1  1
+9995  0.658315   1  1
+9996  1.337809   1  1
+9997  0.114054   1  1
+9998 -2.240528   1  0
+9999  1.526971   1  1
 
 [10000 rows x 10 columns]
 </pre></div></div>
@@ -1237,18 +1247,18 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegressionCV</span>
-<span class="c1">#todo needs binary y</span>
-<span class="n">drlearner_estimate</span> <span class="o">=</span> <span class="n">model_binary</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand_binary</span><span class="p">,</span>
-                                <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.drlearner.LinearDRLearner&quot;</span><span class="p">,</span>
-                                <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span>
-                                                    <span class="s1">&#39;model_propensity&#39;</span><span class="p">:</span> <span class="n">LogisticRegressionCV</span><span class="p">(</span><span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
-                                                    <span class="p">},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}</span>
-                                              <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">drlearner_estimate</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True causal estimate is&quot;</span><span class="p">,</span> <span class="n">data_binary</span><span class="p">[</span><span class="s2">&quot;ate&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.linear_model import LogisticRegressionCV
+#todo needs binary y
+drlearner_estimate = model_binary.estimate_effect(identified_estimand_binary,
+                                method_name=&quot;backdoor.econml.dr.LinearDRLearner&quot;,
+                                confidence_intervals=False,
+                                method_params={&quot;init_params&quot;:{
+                                                    &#39;model_propensity&#39;: LogisticRegressionCV(cv=3, solver=&#39;lbfgs&#39;, multi_class=&#39;auto&#39;)
+                                                    },
+                                               &quot;fit_params&quot;:{}
+                                              })
+print(drlearner_estimate)
+print(&quot;True causal estimate is&quot;, data_binary[&quot;ate&quot;])
 </pre></div>
 </div>
 </div>
@@ -1260,25 +1270,31 @@ Effect estimates: [16.61412991 12.23552376 14.00428923 ... 12.91829872 15.411653
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W2,W0])
+─────(E[y|W1,W0,W2,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W2,W0,U) = P(y|v0,W1,W3,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W3,U) = P(y|v0,W1,W0,W2,W3)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0 | X0,X1
+b: y~v0+W1+W0+W2+W3 | X0,X1
 Target units: ate
 
 ## Estimate
-Mean value: 0.4134793789282324
-Effect estimates: [0.43505306 0.37822827 0.40982449 ... 0.31339356 0.3645725  0.58294214]
+Mean value: 0.7851288320019663
+Effect estimates: [[0.74634454]
+ [0.78092621]
+ [0.81595167]
+ ...
+ [0.74433858]
+ [0.75516095]
+ [0.74414137]]
 
-True causal estimate is 0.2986
+True causal estimate is 0.2967
 </pre></div></div>
 </div>
 </section>
@@ -1289,37 +1305,36 @@ True causal estimate is 0.2986
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">keras</span>
-<span class="kn">from</span> <span class="nn">econml.deepiv</span> <span class="kn">import</span> <span class="n">DeepIVEstimator</span>
-<span class="n">dims_zx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_instruments</span><span class="p">())</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_effect_modifiers</span><span class="p">())</span>
-<span class="n">dims_tx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">_treatment</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">get_effect_modifiers</span><span class="p">())</span>
-<span class="n">treatment_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">dims_zx</span><span class="p">,)),</span> <span class="c1"># sum of dims of Z and X</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">)])</span>
-<span class="n">response_model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">dims_tx</span><span class="p">,)),</span> <span class="c1"># sum of dims of T and X</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.17</span><span class="p">),</span>
-                                    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import keras
+dims_zx = len(model.get_instruments())+len(model.get_effect_modifiers())
+dims_tx = len(model._treatment)+len(model.get_effect_modifiers())
+treatment_model = keras.Sequential([keras.layers.Dense(128, activation=&#39;relu&#39;, input_shape=(dims_zx,)), # sum of dims of Z and X
+                                    keras.layers.Dropout(0.17),
+                                    keras.layers.Dense(64, activation=&#39;relu&#39;),
+                                    keras.layers.Dropout(0.17),
+                                    keras.layers.Dense(32, activation=&#39;relu&#39;),
+                                    keras.layers.Dropout(0.17)])
+response_model = keras.Sequential([keras.layers.Dense(128, activation=&#39;relu&#39;, input_shape=(dims_tx,)), # sum of dims of T and X
+                                    keras.layers.Dropout(0.17),
+                                    keras.layers.Dense(64, activation=&#39;relu&#39;),
+                                    keras.layers.Dropout(0.17),
+                                    keras.layers.Dense(32, activation=&#39;relu&#39;),
+                                    keras.layers.Dropout(0.17),
+                                    keras.layers.Dense(1)])
 
-<span class="n">deepiv_estimate</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span>
-                                        <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;iv.econml.deepiv.DeepIV&quot;</span><span class="p">,</span>
-                                        <span class="n">target_units</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;X0&quot;</span><span class="p">]</span><span class="o">&gt;-</span><span class="mi">1</span><span class="p">,</span>
-                                        <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span><span class="s1">&#39;n_components&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="c1"># Number of gaussians in the mixture density networks</span>
-                                                              <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">treatment_model</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">z</span><span class="p">,</span> <span class="n">x</span><span class="p">])),</span> <span class="c1"># Treatment model,</span>
-                                                              <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">response_model</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">])),</span> <span class="c1"># Response model</span>
-                                                              <span class="s1">&#39;n_samples&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="c1"># Number of samples used to estimate the response</span>
-                                                              <span class="s1">&#39;first_stage_options&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;epochs&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">},</span>
-                                                              <span class="s1">&#39;second_stage_options&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;epochs&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">}</span>
-                                                             <span class="p">},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">deepiv_estimate</span><span class="p">)</span>
+deepiv_estimate = model.estimate_effect(identified_estimand,
+                                        method_name=&quot;iv.econml.iv.nnet.DeepIV&quot;,
+                                        target_units = lambda df: df[&quot;X0&quot;]&gt;-1,
+                                        confidence_intervals=False,
+                                method_params={&quot;init_params&quot;:{&#39;n_components&#39;: 10, # Number of gaussians in the mixture density networks
+                                                              &#39;m&#39;: lambda z, x: treatment_model(keras.layers.concatenate([z, x])), # Treatment model,
+                                                              &quot;h&quot;: lambda t, x: response_model(keras.layers.concatenate([t, x])), # Response model
+                                                              &#39;n_samples&#39;: 1, # Number of samples used to estimate the response
+                                                              &#39;first_stage_options&#39;: {&#39;epochs&#39;:25},
+                                                              &#39;second_stage_options&#39;: {&#39;epochs&#39;:25}
+                                                             },
+                                               &quot;fit_params&quot;:{}})
+print(deepiv_estimate)
 </pre></div>
 </div>
 </div>
@@ -1328,10 +1343,17 @@ True causal estimate is 0.2986
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-09-01 18:25:48.590975: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcuda.so.1&#39;; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
-2022-09-01 18:25:48.591020: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
-2022-09-01 18:25:48.591047: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (f997592ac2d8): /proc/driver/nvidia/version does not exist
-2022-09-01 18:25:48.591349: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 AVX512F FMA
+2022-12-16 19:28:47.129926: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2022-12-16 19:28:47.302949: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-12-16 19:28:47.302991: I tensorflow/compiler/xla/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-12-16 19:28:48.444067: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer.so.7&#39;; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+2022-12-16 19:28:48.444299: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libnvinfer_plugin.so.7&#39;; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2022-12-16 19:28:48.444316: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+2022-12-16 19:28:49.805982: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcuda.so.1&#39;; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-12-16 19:28:49.806025: W tensorflow/compiler/xla/stream_executor/cuda/cuda_driver.cc:265] failed call to cuInit: UNKNOWN ERROR (303)
+2022-12-16 19:28:49.806057: I tensorflow/compiler/xla/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (777afec44b91): /proc/driver/nvidia/version does not exist
+2022-12-16 19:28:49.807647: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </pre></div></div>
 </div>
@@ -1341,105 +1363,105 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Epoch 1/25
-313/313 [==============================] - 1s 2ms/step - loss: 6.4254
+313/313 [==============================] - 3s 3ms/step - loss: 5.6407
 Epoch 2/25
-313/313 [==============================] - 1s 2ms/step - loss: 3.0567
+313/313 [==============================] - 1s 3ms/step - loss: 2.5095
 Epoch 3/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.8652
+313/313 [==============================] - 1s 3ms/step - loss: 2.2534
 Epoch 4/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.7924
+313/313 [==============================] - 1s 2ms/step - loss: 2.2023
 Epoch 5/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.7493
+313/313 [==============================] - 1s 2ms/step - loss: 2.1695
 Epoch 6/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.7186
+313/313 [==============================] - 1s 2ms/step - loss: 2.1338
 Epoch 7/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6994
+313/313 [==============================] - 1s 2ms/step - loss: 2.1081
 Epoch 8/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6842
+313/313 [==============================] - 1s 2ms/step - loss: 2.0703
 Epoch 9/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6817
+313/313 [==============================] - 1s 2ms/step - loss: 2.0594
 Epoch 10/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6682
+313/313 [==============================] - 1s 2ms/step - loss: 2.0414
 Epoch 11/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6613
+313/313 [==============================] - 1s 3ms/step - loss: 2.0357
 Epoch 12/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6583
+313/313 [==============================] - 1s 3ms/step - loss: 2.0270
 Epoch 13/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6566
+313/313 [==============================] - 1s 2ms/step - loss: 2.0187
 Epoch 14/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6500
+313/313 [==============================] - 1s 2ms/step - loss: 2.0250
 Epoch 15/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6475
+313/313 [==============================] - 1s 2ms/step - loss: 2.0193
 Epoch 16/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6456
+313/313 [==============================] - 1s 2ms/step - loss: 2.0053
 Epoch 17/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6401
+313/313 [==============================] - 1s 3ms/step - loss: 2.0101
 Epoch 18/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6388
+313/313 [==============================] - 1s 2ms/step - loss: 2.0011
 Epoch 19/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6403
+313/313 [==============================] - 1s 2ms/step - loss: 2.0034
 Epoch 20/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6309
+313/313 [==============================] - 1s 2ms/step - loss: 1.9993
 Epoch 21/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6329
+313/313 [==============================] - 1s 2ms/step - loss: 1.9971
 Epoch 22/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6328
+313/313 [==============================] - 1s 2ms/step - loss: 1.9979
 Epoch 23/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6269
+313/313 [==============================] - 1s 3ms/step - loss: 1.9915
 Epoch 24/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6279
+313/313 [==============================] - 1s 3ms/step - loss: 1.9929
 Epoch 25/25
-313/313 [==============================] - 1s 2ms/step - loss: 2.6251
+313/313 [==============================] - 1s 3ms/step - loss: 1.9846
 Epoch 1/25
-313/313 [==============================] - 2s 2ms/step - loss: 28642.3203
+313/313 [==============================] - 3s 3ms/step - loss: 7081.2021
 Epoch 2/25
-313/313 [==============================] - 1s 2ms/step - loss: 18036.0215
+313/313 [==============================] - 1s 3ms/step - loss: 4377.8892
 Epoch 3/25
-313/313 [==============================] - 1s 2ms/step - loss: 17669.7227
+313/313 [==============================] - 1s 3ms/step - loss: 4298.5977
 Epoch 4/25
-313/313 [==============================] - 1s 2ms/step - loss: 17480.4297
+313/313 [==============================] - 1s 3ms/step - loss: 4263.7568
 Epoch 5/25
-313/313 [==============================] - 1s 2ms/step - loss: 17523.4688
+313/313 [==============================] - 1s 3ms/step - loss: 4190.7422
 Epoch 6/25
-313/313 [==============================] - 1s 2ms/step - loss: 17618.7031
+313/313 [==============================] - 1s 3ms/step - loss: 4293.9736
 Epoch 7/25
-313/313 [==============================] - 1s 2ms/step - loss: 17677.5449
+313/313 [==============================] - 1s 3ms/step - loss: 4114.6875
 Epoch 8/25
-313/313 [==============================] - 1s 2ms/step - loss: 17622.6016
+313/313 [==============================] - 1s 3ms/step - loss: 4107.5732
 Epoch 9/25
-313/313 [==============================] - 1s 2ms/step - loss: 17263.7871
+313/313 [==============================] - 1s 3ms/step - loss: 4147.4502
 Epoch 10/25
-313/313 [==============================] - 1s 2ms/step - loss: 17551.4668
+313/313 [==============================] - 1s 3ms/step - loss: 4122.8916
 Epoch 11/25
-313/313 [==============================] - 1s 2ms/step - loss: 17627.0430
+313/313 [==============================] - 1s 3ms/step - loss: 4153.2061
 Epoch 12/25
-313/313 [==============================] - 1s 2ms/step - loss: 17412.7734
+313/313 [==============================] - 1s 3ms/step - loss: 4176.7271
 Epoch 13/25
-313/313 [==============================] - 1s 2ms/step - loss: 17332.6074
+313/313 [==============================] - 1s 3ms/step - loss: 4151.8770
 Epoch 14/25
-313/313 [==============================] - 1s 2ms/step - loss: 17266.2051
+313/313 [==============================] - 1s 3ms/step - loss: 4022.6245
 Epoch 15/25
-313/313 [==============================] - 1s 2ms/step - loss: 17291.6348
+313/313 [==============================] - 1s 3ms/step - loss: 3997.9785
 Epoch 16/25
-313/313 [==============================] - 1s 2ms/step - loss: 17365.8359
+313/313 [==============================] - 1s 3ms/step - loss: 4069.5981
 Epoch 17/25
-313/313 [==============================] - 1s 2ms/step - loss: 17144.8262
+313/313 [==============================] - 1s 3ms/step - loss: 4157.8320
 Epoch 18/25
-313/313 [==============================] - 1s 2ms/step - loss: 17215.7285
+313/313 [==============================] - 1s 3ms/step - loss: 4117.6450
 Epoch 19/25
-313/313 [==============================] - 1s 2ms/step - loss: 17374.6504
+313/313 [==============================] - 1s 3ms/step - loss: 4002.1157
 Epoch 20/25
-313/313 [==============================] - 1s 2ms/step - loss: 17163.1270
+313/313 [==============================] - 1s 3ms/step - loss: 4086.8240
 Epoch 21/25
-313/313 [==============================] - 1s 2ms/step - loss: 17374.3223
+313/313 [==============================] - 1s 3ms/step - loss: 4106.6558
 Epoch 22/25
-313/313 [==============================] - 1s 2ms/step - loss: 17284.2793
+313/313 [==============================] - 1s 3ms/step - loss: 3981.7983
 Epoch 23/25
-313/313 [==============================] - 1s 2ms/step - loss: 17402.9980
+313/313 [==============================] - 1s 3ms/step - loss: 4068.2671
 Epoch 24/25
-313/313 [==============================] - 1s 2ms/step - loss: 17174.6914
+313/313 [==============================] - 1s 3ms/step - loss: 4031.1350
 Epoch 25/25
-313/313 [==============================] - 1s 3ms/step - loss: 17266.3027
+313/313 [==============================] - 1s 3ms/step - loss: 3995.3833
 WARNING:tensorflow:
 The following Variables were used a Lambda layer&#39;s call (lambda_7), but
 are not present in its tracked objects:
@@ -1454,12 +1476,12 @@ are not present in its tracked objects:
 It is possible that this is intended behavior, but it is more likely
 an omission. This is a strong indication that this layer should be
 formulated as a subclassed Layer rather than a Lambda layer.
-281/281 [==============================] - 0s 1ms/step
-281/281 [==============================] - 0s 1ms/step
+253/253 [==============================] - 1s 2ms/step
+253/253 [==============================] - 0s 1ms/step
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: iv
@@ -1472,12 +1494,18 @@ Estimand assumption 1, As-if-random: If U→→y then ¬(U →→{Z0,Z1})
 Estimand assumption 2, Exclusion: If we remove {Z0,Z1}→{v0}, then ¬({Z0,Z1}→y)
 
 ## Realized estimand
-b: y~v0+W1+W3+W2+W0 | X0,X1
+b: y~v0+W1+W0+W2+W3 | X0,X1
 Target units: Data subset defined by a function
 
 ## Estimate
-Mean value: 1.5585929155349731
-Effect estimates: [1.778717  1.9940491 1.9520264 ... 1.9673462 2.251297  1.9540558]
+Mean value: 0.42060771584510803
+Effect estimates: [[ 0.9326782]
+ [-1.7068939]
+ [ 0.5981064]
+ ...
+ [ 0.4834633]
+ [ 0.7490692]
+ [-1.6377144]]
 
 </pre></div></div>
 </div>
@@ -1488,16 +1516,16 @@ Effect estimates: [1.778717  1.9940491 1.9520264 ... 1.9673462 2.251297  1.95405
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_experiment</span> <span class="o">=</span> <span class="n">dowhy</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">linear_dataset</span><span class="p">(</span><span class="n">BETA</span><span class="p">,</span> <span class="n">num_common_causes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-                                    <span class="n">num_instruments</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_effect_modifiers</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-                                    <span class="n">treatment_is_binary</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">outcome_is_binary</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="c1"># convert boolean values to {0,1} numeric</span>
-<span class="n">data_experiment</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">v0</span> <span class="o">=</span> <span class="n">data_experiment</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">v0</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">data_experiment</span><span class="p">[</span><span class="s1">&#39;df&#39;</span><span class="p">])</span>
-<span class="n">model_experiment</span> <span class="o">=</span> <span class="n">CausalModel</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;df&quot;</span><span class="p">],</span>
-                    <span class="n">treatment</span><span class="o">=</span><span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;treatment_name&quot;</span><span class="p">],</span> <span class="n">outcome</span><span class="o">=</span><span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;outcome_name&quot;</span><span class="p">],</span>
-                    <span class="n">graph</span><span class="o">=</span><span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;gml_graph&quot;</span><span class="p">])</span>
-<span class="n">identified_estimand_experiment</span> <span class="o">=</span> <span class="n">model_experiment</span><span class="o">.</span><span class="n">identify_effect</span><span class="p">(</span><span class="n">proceed_when_unidentifiable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_experiment = dowhy.datasets.linear_dataset(BETA, num_common_causes=5, num_samples=10000,
+                                    num_instruments=2, num_effect_modifiers=5,
+                                    treatment_is_binary=True, outcome_is_binary=False)
+# convert boolean values to {0,1} numeric
+data_experiment[&#39;df&#39;].v0 = data_experiment[&#39;df&#39;].v0.astype(int)
+print(data_experiment[&#39;df&#39;])
+model_experiment = CausalModel(data=data_experiment[&quot;df&quot;],
+                    treatment=data_experiment[&quot;treatment_name&quot;], outcome=data_experiment[&quot;outcome_name&quot;],
+                    graph=data_experiment[&quot;gml_graph&quot;])
+identified_estimand_experiment = model_experiment.identify_effect(proceed_when_unidentifiable=True)
 </pre></div>
 </div>
 </div>
@@ -1507,30 +1535,30 @@ Effect estimates: [1.778717  1.9940491 1.9520264 ... 1.9673462 2.251297  1.95405
 <div class="output_area docutils container">
 <div class="highlight"><pre>
             X0        X1        X2        X3        X4   Z0        Z1  \
-0     0.913446 -1.178558  1.948429 -0.440662 -0.299751  1.0  0.997921
-1    -1.635102  0.909366  0.523853  1.860709 -1.586961  1.0  0.627042
-2     1.457574  0.779387 -0.681375  0.175195  1.885933  1.0  0.040653
-3    -0.297247  0.785962  0.208292 -1.773085  1.573050  1.0  0.081537
-4     0.442248 -0.179572 -0.273643 -0.172818 -0.137142  1.0  0.078248
+0     1.743898 -0.890140  0.562728 -2.006577  0.015751  0.0  0.959286
+1     0.012154  1.355988  1.213555 -0.123547  0.816340  1.0  0.910219
+2    -1.199349  0.772105 -0.266229 -1.049347  0.093711  1.0  0.488834
+3     1.236411  1.295587  0.401717  0.439380  0.288046  1.0  0.290860
+4     0.465590  0.059305  2.064689  0.078367 -0.394516  1.0  0.711490
 ...        ...       ...       ...       ...       ...  ...       ...
-9995 -1.891962  0.851994  1.536967  1.900734 -0.020682  1.0  0.215585
-9996 -0.724235 -0.188752  0.171876  1.001460 -0.073933  0.0  0.664253
-9997  0.175172  1.576479 -0.390433  0.592880 -2.184459  1.0  0.843913
-9998 -0.351555  1.574144  0.660650  0.276515  0.709933  1.0  0.931761
-9999 -1.227998  0.156739  0.006776  1.774396 -0.130978  0.0  0.549924
+9995  0.590505 -0.937171  0.387889 -1.950301 -1.169191  1.0  0.305562
+9996  1.383211  1.718760 -0.790349 -1.260861  1.273519  1.0  0.119525
+9997 -0.899828  1.948880  0.051943  0.885870  1.279096  0.0  0.403354
+9998 -1.062649  2.707114 -0.098794  0.517613  0.497077  0.0  0.476062
+9999 -1.063228 -0.004953  0.206045  1.399830  0.204981  1.0  0.451209
 
             W0        W1        W2        W3        W4  v0          y
-0    -1.413276  0.252440  2.280001  1.691328 -0.342641   1  21.923518
-1    -0.521223  0.560814  2.143685 -1.516825  0.804933   1   0.715130
-2    -0.057818  0.457045  1.827949 -0.036620 -0.476972   1  22.438355
-3    -1.458437  1.476573  0.743381  1.038058  0.964525   1  16.934451
-4    -2.494337  1.207946  0.064455  0.013840 -1.423084   1  -0.034163
+0    -0.729637  0.602339  0.121998 -0.778296  0.732802   1   8.469508
+1    -1.366126  0.523855  1.071135 -0.682668  0.277667   1  27.865709
+2    -0.955632  0.995526  2.134984  0.458205  1.026477   1  23.329016
+3    -1.798640  3.185101 -1.047171 -0.007763  0.433961   1  23.122175
+4     0.310178 -0.829054  2.966443  0.510647 -0.326804   1  22.180168
 ...        ...       ...       ...       ...       ...  ..        ...
-9995 -0.589069  0.603964  0.181133 -0.691850  0.318968   1   8.425033
-9996  0.055580 -1.166935  1.116966 -1.618618 -0.944334   1  -4.189491
-9997 -1.900583  0.865281  3.817741 -0.624196  1.041738   1   2.018306
-9998 -0.235086  0.110658  2.426118 -0.457320  0.133301   1  13.609056
-9999 -0.358349 -1.587731  1.212260 -0.505550  0.223803   1  -1.658796
+9995 -0.191966 -0.404683  1.561107  0.021241  1.418188   1   6.223436
+9996 -0.994058  0.667992  1.402639  1.046060 -0.675264   1  30.193325
+9997  0.490086 -0.368121  0.303929  0.024818 -0.106152   1  27.457171
+9998  0.459440  1.885630  1.683509  1.161110  2.247054   1  41.475959
+9999  1.726062  0.250172  0.622956 -2.163161  1.927936   1  16.179748
 
 [10000 rows x 14 columns]
 </pre></div></div>
@@ -1539,17 +1567,17 @@ Effect estimates: [1.778717  1.9940491 1.9520264 ... 1.9673462 2.251297  1.95405
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
-<span class="n">metalearner_estimate</span> <span class="o">=</span> <span class="n">model_experiment</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand_experiment</span><span class="p">,</span>
-                                <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.metalearners.TLearner&quot;</span><span class="p">,</span>
-                                <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;init_params&quot;</span><span class="p">:{</span>
-                                                    <span class="s1">&#39;models&#39;</span><span class="p">:</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
-                                                    <span class="p">},</span>
-                                               <span class="s2">&quot;fit_params&quot;</span><span class="p">:{}</span>
-                                              <span class="p">})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">metalearner_estimate</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True causal estimate is&quot;</span><span class="p">,</span> <span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;ate&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from sklearn.ensemble import RandomForestRegressor
+metalearner_estimate = model_experiment.estimate_effect(identified_estimand_experiment,
+                                method_name=&quot;backdoor.econml.metalearners.TLearner&quot;,
+                                confidence_intervals=False,
+                                method_params={&quot;init_params&quot;:{
+                                                    &#39;models&#39;: RandomForestRegressor()
+                                                    },
+                                               &quot;fit_params&quot;:{}
+                                              })
+print(metalearner_estimate)
+print(&quot;True causal estimate is&quot;, data_experiment[&quot;ate&quot;])
 </pre></div>
 </div>
 </div>
@@ -1561,26 +1589,31 @@ Effect estimates: [1.778717  1.9940491 1.9520264 ... 1.9673462 2.251297  1.95405
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W4,W2,W0])
+─────(E[y|W1,W0,W2,W4,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W4,W2,W0,U) = P(y|v0,W1,W3,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W4,W3,U) = P(y|v0,W1,W0,W2,W4,W3)
 
 ## Realized estimand
-b: y~v0+X2+X1+X0+X3+X4+W1+W3+W4+W2+W0
+b: y~v0+X0+X1+X3+X4+X2+W1+W0+W2+W4+W3
 Target units: ate
 
 ## Estimate
-Mean value: 14.099495333655405
-Effect estimates: [25.51389145  7.07122405 22.60234448 ... 10.83161019 17.67879945
-  9.70833232]
+Mean value: 21.196386516362857
+Effect estimates: [[ 7.33358842]
+ [24.77802093]
+ [17.59936391]
+ ...
+ [28.65312462]
+ [33.91275667]
+ [15.30409408]]
 
-True causal estimate is 9.051578964280441
+True causal estimate is 18.501996376266213
 </pre></div></div>
 </div>
 </section>
@@ -1592,15 +1625,15 @@ True causal estimate is 9.051578964280441
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For metalearners, need to provide all the features (except treatmeant and outcome)</span>
-<span class="n">metalearner_estimate</span> <span class="o">=</span> <span class="n">model_experiment</span><span class="o">.</span><span class="n">estimate_effect</span><span class="p">(</span><span class="n">identified_estimand_experiment</span><span class="p">,</span>
-                                <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;backdoor.econml.metalearners.TLearner&quot;</span><span class="p">,</span>
-                                <span class="n">confidence_intervals</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">fit_estimator</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                                <span class="n">target_units</span><span class="o">=</span><span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;df&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;v0&quot;</span><span class="p">,</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z0&quot;</span><span class="p">,</span> <span class="s2">&quot;Z1&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">9995</span><span class="p">:],</span>
-                                <span class="n">method_params</span><span class="o">=</span><span class="p">{})</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">metalearner_estimate</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;True causal estimate is&quot;</span><span class="p">,</span> <span class="n">data_experiment</span><span class="p">[</span><span class="s2">&quot;ate&quot;</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span># For metalearners, need to provide all the features (except treatmeant and outcome)
+metalearner_estimate = model_experiment.estimate_effect(identified_estimand_experiment,
+                                method_name=&quot;backdoor.econml.metalearners.TLearner&quot;,
+                                confidence_intervals=False,
+                                fit_estimator=False,
+                                target_units=data_experiment[&quot;df&quot;].drop([&quot;v0&quot;,&quot;y&quot;, &quot;Z0&quot;, &quot;Z1&quot;], axis=1)[9995:],
+                                method_params={})
+print(metalearner_estimate)
+print(&quot;True causal estimate is&quot;, data_experiment[&quot;ate&quot;])
 </pre></div>
 </div>
 </div>
@@ -1612,25 +1645,29 @@ True causal estimate is 9.051578964280441
 *** Causal Estimate ***
 
 ## Identified estimand
-Estimand type: nonparametric-ate
+Estimand type: EstimandType.NONPARAMETRIC_ATE
 
 ### Estimand : 1
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W1,W3,W4,W2,W0])
+─────(E[y|W1,W0,W2,W4,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W3,W4,W2,W0,U) = P(y|v0,W1,W3,W4,W2,W0)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W0,W2,W4,W3,U) = P(y|v0,W1,W0,W2,W4,W3)
 
 ## Realized estimand
-b: y~v0+X2+X1+X0+X3+X4+W1+W3+W4+W2+W0
+b: y~v0+X0+X1+X3+X4+X2+W1+W0+W2+W4+W3
 Target units: Data subset provided as a data frame
 
 ## Estimate
-Mean value: 11.549937399175354
-Effect estimates: [11.70675701  9.30395438 14.08448062 15.47063137  7.18386361]
+Mean value: 21.88145628028146
+Effect estimates: [[ 4.73294605]
+ [26.80435998]
+ [28.65312462]
+ [33.91275667]
+ [15.30409408]]
 
-True causal estimate is 9.051578964280441
+True causal estimate is 18.501996376266213
 </pre></div></div>
 </div>
 </section>
@@ -1642,8 +1679,8 @@ True causal estimate is 9.051578964280441
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_random</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">dml_estimate</span><span class="p">,</span> <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;random_common_cause&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res_random</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>res_random=model.refute_estimate(identified_estimand, dml_estimate, method_name=&quot;random_common_cause&quot;)
+print(res_random)
 </pre></div>
 </div>
 </div>
@@ -1653,9 +1690,9 @@ True causal estimate is 9.051578964280441
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:13.081971073961693
-New effect:13.096353538518697
-p value:0.66
+Estimated effect:12.487401576275902
+New effect:12.542885746477907
+p value:0.08
 
 </pre></div></div>
 </div>
@@ -1666,10 +1703,10 @@ p value:0.66
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_unobserved</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">dml_estimate</span><span class="p">,</span> <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;add_unobserved_common_cause&quot;</span><span class="p">,</span>
-                                     <span class="n">confounders_effect_on_treatment</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">confounders_effect_on_outcome</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
-                                    <span class="n">effect_strength_on_treatment</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">effect_strength_on_outcome</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res_unobserved</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>res_unobserved=model.refute_estimate(identified_estimand, dml_estimate, method_name=&quot;add_unobserved_common_cause&quot;,
+                                     confounders_effect_on_treatment=&quot;linear&quot;, confounders_effect_on_outcome=&quot;linear&quot;,
+                                    effect_strength_on_treatment=0.01, effect_strength_on_outcome=0.02)
+print(res_unobserved)
 </pre></div>
 </div>
 </div>
@@ -1679,8 +1716,8 @@ p value:0.66
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add an Unobserved Common Cause
-Estimated effect:13.081971073961693
-New effect:13.06576129304807
+Estimated effect:12.487401576275902
+New effect:12.532047615941753
 
 </pre></div></div>
 </div>
@@ -1691,11 +1728,11 @@ New effect:13.06576129304807
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_placebo</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">dml_estimate</span><span class="p">,</span>
-        <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;placebo_treatment_refuter&quot;</span><span class="p">,</span> <span class="n">placebo_type</span><span class="o">=</span><span class="s2">&quot;permute&quot;</span><span class="p">,</span>
-        <span class="n">num_simulations</span><span class="o">=</span><span class="mi">10</span> <span class="c1"># at least 100 is good, setting to 10 for speed</span>
-        <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res_placebo</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>res_placebo=model.refute_estimate(identified_estimand, dml_estimate,
+        method_name=&quot;placebo_treatment_refuter&quot;, placebo_type=&quot;permute&quot;,
+        num_simulations=10 # at least 100 is good, setting to 10 for speed
+        )
+print(res_placebo)
 </pre></div>
 </div>
 </div>
@@ -1705,9 +1742,9 @@ New effect:13.06576129304807
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:13.081971073961693
-New effect:0.01641475368900233
-p value:0.41718300127069957
+Estimated effect:12.487401576275902
+New effect:0.016433278850981024
+p value:0.3538548499172921
 
 </pre></div></div>
 </div>
@@ -1718,10 +1755,10 @@ p value:0.41718300127069957
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">res_subset</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">refute_estimate</span><span class="p">(</span><span class="n">identified_estimand</span><span class="p">,</span> <span class="n">dml_estimate</span><span class="p">,</span>
-        <span class="n">method_name</span><span class="o">=</span><span class="s2">&quot;data_subset_refuter&quot;</span><span class="p">,</span> <span class="n">subset_fraction</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
-        <span class="n">num_simulations</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res_subset</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>res_subset=model.refute_estimate(identified_estimand, dml_estimate,
+        method_name=&quot;data_subset_refuter&quot;, subset_fraction=0.8,
+        num_simulations=10)
+print(res_subset)
 </pre></div>
 </div>
 </div>
@@ -1731,9 +1768,9 @@ p value:0.41718300127069957
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a subset of data
-Estimated effect:13.081971073961693
-New effect:13.082907878875947
-p value:0.49194818349042063
+Estimated effect:12.487401576275902
+New effect:12.540890746120684
+p value:0.040002276628123314
 
 </pre></div></div>
 </div>
@@ -1750,11 +1787,11 @@ p value:0.49194818349042063
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="lalonde_pandas_api.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="dowhy_interpreter.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Lalonde Pandas API Example</p>
+          <p class="prev-next-title">DoWhy: Interpreters for Causal Estimators</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="dowhy_mediation_analysis.html" title="next page">
@@ -1787,7 +1824,7 @@ p value:0.49194818349042063
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

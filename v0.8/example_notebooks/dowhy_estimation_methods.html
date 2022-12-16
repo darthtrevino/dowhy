@@ -15,6 +15,7 @@
   <title>DoWhy: Different estimation methods for causal inference &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -505,63 +508,63 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.0</td>
-      <td>0.233616</td>
-      <td>0.963062</td>
-      <td>-2.553247</td>
-      <td>0.838472</td>
-      <td>0.161773</td>
-      <td>0.118178</td>
-      <td>False</td>
-      <td>1.779432</td>
+      <td>1.0</td>
+      <td>0.687986</td>
+      <td>1.633494</td>
+      <td>-1.250625</td>
+      <td>0.927178</td>
+      <td>-1.833909</td>
+      <td>-0.404578</td>
+      <td>True</td>
+      <td>5.498197</td>
     </tr>
     <tr>
       <th>1</th>
       <td>1.0</td>
-      <td>0.526528</td>
-      <td>-0.282174</td>
-      <td>0.107188</td>
-      <td>-2.627213</td>
-      <td>0.668682</td>
-      <td>0.240998</td>
-      <td>False</td>
-      <td>1.648918</td>
+      <td>0.756570</td>
+      <td>0.398974</td>
+      <td>-1.389788</td>
+      <td>1.146683</td>
+      <td>-2.245861</td>
+      <td>-0.845968</td>
+      <td>True</td>
+      <td>1.782328</td>
     </tr>
     <tr>
       <th>2</th>
       <td>1.0</td>
-      <td>0.426292</td>
-      <td>1.293703</td>
-      <td>-3.205983</td>
-      <td>-1.479011</td>
-      <td>1.056113</td>
-      <td>0.048248</td>
+      <td>0.875724</td>
+      <td>-1.170325</td>
+      <td>-0.138730</td>
+      <td>2.203882</td>
+      <td>-0.030699</td>
+      <td>-1.603035</td>
       <td>True</td>
-      <td>13.103998</td>
+      <td>4.628401</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
-      <td>0.015923</td>
-      <td>-0.315444</td>
-      <td>-0.854410</td>
-      <td>1.184116</td>
-      <td>0.645305</td>
-      <td>1.688935</td>
+      <td>0.0</td>
+      <td>0.924126</td>
+      <td>-0.951097</td>
+      <td>0.675440</td>
+      <td>0.480698</td>
+      <td>-0.861801</td>
+      <td>-2.738749</td>
       <td>False</td>
-      <td>9.858477</td>
+      <td>-12.592867</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
-      <td>0.483313</td>
-      <td>0.108754</td>
-      <td>0.456076</td>
-      <td>-0.724961</td>
-      <td>1.432974</td>
-      <td>0.812299</td>
+      <td>0.0</td>
+      <td>0.605515</td>
+      <td>-0.342407</td>
+      <td>1.448468</td>
+      <td>1.408716</td>
+      <td>-2.028318</td>
+      <td>-0.414919</td>
       <td>True</td>
-      <td>17.714678</td>
+      <td>13.333022</td>
     </tr>
     <tr>
       <th>...</th>
@@ -577,63 +580,63 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>9995</th>
-      <td>1.0</td>
-      <td>0.993678</td>
-      <td>0.270455</td>
-      <td>1.208213</td>
-      <td>-1.181687</td>
-      <td>2.194586</td>
-      <td>0.002528</td>
-      <td>True</td>
-      <td>15.592185</td>
+      <td>0.0</td>
+      <td>0.056583</td>
+      <td>-0.011412</td>
+      <td>-3.570399</td>
+      <td>1.246381</td>
+      <td>-0.298294</td>
+      <td>-2.293432</td>
+      <td>False</td>
+      <td>-21.295866</td>
     </tr>
     <tr>
       <th>9996</th>
-      <td>0.0</td>
-      <td>0.456026</td>
-      <td>0.165742</td>
-      <td>0.330077</td>
-      <td>-3.168243</td>
-      <td>1.253651</td>
-      <td>-0.927581</td>
+      <td>1.0</td>
+      <td>0.504050</td>
+      <td>-0.747385</td>
+      <td>-0.053360</td>
+      <td>0.117537</td>
+      <td>-1.425899</td>
+      <td>-1.864726</td>
       <td>False</td>
-      <td>-2.507238</td>
+      <td>-11.462042</td>
     </tr>
     <tr>
       <th>9997</th>
       <td>1.0</td>
-      <td>0.729451</td>
-      <td>-0.506057</td>
-      <td>-0.722758</td>
-      <td>-1.005219</td>
-      <td>1.671504</td>
-      <td>0.840337</td>
+      <td>0.904261</td>
+      <td>0.228929</td>
+      <td>-1.418597</td>
+      <td>0.218014</td>
+      <td>-0.802668</td>
+      <td>-0.169217</td>
       <td>True</td>
-      <td>16.841123</td>
+      <td>4.449252</td>
     </tr>
     <tr>
       <th>9998</th>
       <td>1.0</td>
-      <td>0.046072</td>
-      <td>0.286940</td>
-      <td>0.198490</td>
-      <td>1.271030</td>
-      <td>1.797747</td>
-      <td>0.967621</td>
+      <td>0.380770</td>
+      <td>-0.407239</td>
+      <td>0.672763</td>
+      <td>2.566541</td>
+      <td>-2.290793</td>
+      <td>0.009718</td>
       <td>True</td>
-      <td>20.085117</td>
+      <td>15.038049</td>
     </tr>
     <tr>
       <th>9999</th>
       <td>1.0</td>
-      <td>0.761723</td>
-      <td>-1.059944</td>
-      <td>-3.015790</td>
-      <td>-0.252801</td>
-      <td>0.685124</td>
-      <td>0.744849</td>
+      <td>0.141680</td>
+      <td>-0.730638</td>
+      <td>0.052157</td>
+      <td>0.420813</td>
+      <td>-1.127148</td>
+      <td>-0.508346</td>
       <td>True</td>
-      <td>12.488960</td>
+      <td>6.775777</td>
     </tr>
   </tbody>
 </table>
@@ -704,9 +707,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ### Estimand : 2
 Estimand name: iv
@@ -754,19 +757,19 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W1+W2+W4
+b: y~v0+W4+W3+W0+W1+W2
 Target units: ate
 
 ## Estimate
-Mean value: 10.000001544669276
+Mean value: 10.00004796011746
 p-value: [0.]
 
-Causal Estimate is 10.000001544669276
+Causal Estimate is 10.00004796011746
 </pre></div></div>
 </div>
 </section>
@@ -800,18 +803,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W1+W2+W4
+b: y~v0+W4+W3+W0+W1+W2
 Target units: att
 
 ## Estimate
-Mean value: 10.332323484657657
+Mean value: 10.500365546485488
 
-Causal Estimate is 10.332323484657657
+Causal Estimate is 10.500365546485488
 </pre></div></div>
 </div>
 </section>
@@ -844,18 +847,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W1+W2+W4
+b: y~v0+W4+W3+W0+W1+W2
 Target units: att
 
 ## Estimate
-Mean value: 9.915079623297697
+Mean value: 10.091725925183123
 
-Causal Estimate is 9.915079623297697
+Causal Estimate is 10.091725925183123
 </pre></div></div>
 </div>
 </section>
@@ -888,18 +891,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W1+W2+W4
+b: y~v0+W4+W3+W0+W1+W2
 Target units: atc
 
 ## Estimate
-Mean value: 10.09975094005006
+Mean value: 9.850957370560343
 
-Causal Estimate is 10.09975094005006
+Causal Estimate is 9.850957370560343
 </pre></div></div>
 </div>
 </section>
@@ -933,18 +936,18 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W1,W2,W4])
+─────(E[y|W4,W3,W0,W1,W2])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W1,W2,W4,U) = P(y|v0,W0,W3,W1,W2,W4)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W4,W3,W0,W1,W2,U) = P(y|v0,W4,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+W0+W3+W1+W2+W4
+b: y~v0+W4+W3+W0+W1+W2
 Target units: ate
 
 ## Estimate
-Mean value: 10.442370462839573
+Mean value: 10.184880436277249
 
-Causal Estimate is 10.442370462839573
+Causal Estimate is 10.184880436277249
 </pre></div></div>
 </div>
 </section>
@@ -997,9 +1000,9 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome y is 
 Target units: ate
 
 ## Estimate
-Mean value: 11.194562318313267
+Mean value: 10.253272548814012
 
-Causal Estimate is 11.194562318313267
+Causal Estimate is 10.253272548814012
 </pre></div></div>
 </div>
 </section>
@@ -1055,9 +1058,9 @@ Estimand assumption 4, outcome_effect_homogeneity: Each unit&#39;s outcome local
 Target units: ate
 
 ## Estimate
-Mean value: 1.6802590749860151
+Mean value: -1.3421212407734997
 
-Causal Estimate is 1.6802590749860151
+Causal Estimate is -1.3421212407734997
 </pre></div></div>
 </div>
 </section>
@@ -1106,7 +1109,6 @@ Causal Estimate is 1.6802590749860151
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="dowhy_estimation_methods.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

@@ -15,6 +15,7 @@
   <title>Estimating effect of multiple treatments &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -488,63 +491,63 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>-1.102010</td>
-      <td>-0.549400</td>
-      <td>1.575016</td>
-      <td>1.042561</td>
-      <td>3</td>
-      <td>1</td>
-      <td>21.683086</td>
-      <td>14.487439</td>
-      <td>-1612.904863</td>
+      <td>0.048780</td>
+      <td>-1.168705</td>
+      <td>0.542571</td>
+      <td>-0.745830</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2.268239</td>
+      <td>3.145854</td>
+      <td>27.554411</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>-1.566154</td>
-      <td>0.621790</td>
-      <td>-2.435099</td>
-      <td>2.176387</td>
+      <td>-1.086124</td>
+      <td>1.009211</td>
+      <td>-0.788796</td>
+      <td>0.536774</td>
+      <td>2</td>
       <td>1</td>
-      <td>1</td>
-      <td>1.318649</td>
-      <td>8.569262</td>
-      <td>33.558722</td>
+      <td>4.404500</td>
+      <td>7.184804</td>
+      <td>57.884088</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>-0.728411</td>
-      <td>0.782018</td>
-      <td>-0.324753</td>
-      <td>0.401219</td>
+      <td>-0.312494</td>
+      <td>-0.582138</td>
+      <td>0.519299</td>
+      <td>-0.638889</td>
+      <td>0</td>
       <td>3</td>
-      <td>2</td>
-      <td>16.943907</td>
-      <td>15.371473</td>
-      <td>-181.920524</td>
+      <td>10.489494</td>
+      <td>1.515061</td>
+      <td>74.968139</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-0.869039</td>
-      <td>1.854602</td>
-      <td>1.704828</td>
-      <td>-1.113700</td>
+      <td>1.748224</td>
+      <td>-0.769179</td>
+      <td>0.278752</td>
+      <td>1.888858</td>
       <td>3</td>
-      <td>3</td>
-      <td>22.497881</td>
-      <td>17.148079</td>
-      <td>184.454977</td>
+      <td>0</td>
+      <td>11.828633</td>
+      <td>18.127881</td>
+      <td>1569.944097</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.555257</td>
-      <td>0.597932</td>
-      <td>1.643981</td>
-      <td>-0.123506</td>
-      <td>0</td>
+      <td>0.692610</td>
+      <td>1.158256</td>
+      <td>0.601062</td>
+      <td>0.591958</td>
       <td>1</td>
-      <td>6.683382</td>
-      <td>5.498353</td>
-      <td>270.029251</td>
+      <td>0</td>
+      <td>6.631769</td>
+      <td>6.379249</td>
+      <td>431.997043</td>
     </tr>
   </tbody>
 </table>
@@ -597,9 +600,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W0,W1,W3,W2])
+─────────(E[y|W3,W0,W1,W2])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W1,W3,W2,U) = P(y|v0,v1,W0,W1,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W3,W0,W1,W2,U) = P(y|v0,v1,W3,W0,W1,W2)
 
 ### Estimand : 2
 Estimand name: iv
@@ -642,16 +645,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W0,W1,W3,W2])
+─────────(E[y|W3,W0,W1,W2])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W1,W3,W2,U) = P(y|v0,v1,W0,W1,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W3,W0,W1,W2,U) = P(y|v0,v1,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+v1+W0+W1+W3+W2+v0*X1+v0*X0+v1*X1+v1*X0
+b: y~v0+v1+W3+W0+W1+W2+v0*X1+v0*X0+v1*X1+v1*X0
 Target units: ate
 
 ## Estimate
-Mean value: -19.216983114200346
+Mean value: 27.598049182644683
 
 </pre></div></div>
 </div>
@@ -682,43 +685,43 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
     d
-─────────(E[y|W0,W1,W3,W2])
+─────────(E[y|W3,W0,W1,W2])
 d[v₀  v₁]
-Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W0,W1,W3,W2,U) = P(y|v0,v1,W0,W1,W3,W2)
+Estimand assumption 1, Unconfoundedness: If U→{v0,v1} and U→y then P(y|v0,v1,W3,W0,W1,W2,U) = P(y|v0,v1,W3,W0,W1,W2)
 
 ## Realized estimand
-b: y~v0+v1+W0+W1+W3+W2+v0*X1+v0*X0+v1*X1+v1*X0
+b: y~v0+v1+W3+W0+W1+W2+v0*X1+v0*X0+v1*X1+v1*X0
 Target units: ate
 
 ## Estimate
-Mean value: -19.216983114200346
+Mean value: 27.598049182644683
 ### Conditional Estimates
 __categorical__X1  __categorical__X0
-(-3.326, -0.361]   (-5.414000000000001, -1.468]   -163.010415
-                   (-1.468, -0.876]               -100.285527
-                   (-0.876, -0.383]                -60.216254
-                   (-0.383, 0.185]                 -22.598934
-                   (0.185, 2.919]                   41.307048
-(-0.361, 0.236]    (-5.414000000000001, -1.468]   -139.425746
-                   (-1.468, -0.876]                -72.827734
-                   (-0.876, -0.383]                -33.756819
-                   (-0.383, 0.185]                   4.090504
-                   (0.185, 2.919]                   67.038363
-(0.236, 0.728]     (-5.414000000000001, -1.468]   -125.238121
-                   (-1.468, -0.876]                -58.243555
-                   (-0.876, -0.383]                -19.134825
-                   (-0.383, 0.185]                  19.721159
-                   (0.185, 2.919]                   79.729060
-(0.728, 1.325]     (-5.414000000000001, -1.468]   -107.856406
-                   (-1.468, -0.876]                -42.249208
-                   (-0.876, -0.383]                 -3.101739
-                   (-0.383, 0.185]                  36.235928
-                   (0.185, 2.919]                  101.812659
-(1.325, 4.849]     (-5.414000000000001, -1.468]    -81.502052
-                   (-1.468, -0.876]                -15.676755
-                   (-0.876, -0.383]                 23.396183
-                   (-0.383, 0.185]                  63.091689
-                   (0.185, 2.919]                  128.314208
+(-4.623, -1.514]   (-3.012, -0.311]    -115.443663
+                   (-0.311, 0.273]      -65.270347
+                   (0.273, 0.771]       -31.873678
+                   (0.771, 1.368]         1.022828
+                   (1.368, 5.019]        54.280508
+(-1.514, -0.926]   (-3.012, -0.311]     -77.724619
+                   (-0.311, 0.273]      -29.198328
+                   (0.273, 0.771]         5.232500
+                   (0.771, 1.368]        38.251000
+                   (1.368, 5.019]        91.802134
+(-0.926, -0.416]   (-3.012, -0.311]     -61.536709
+                   (-0.311, 0.273]       -5.262257
+                   (0.273, 0.771]        27.660328
+                   (0.771, 1.368]        61.239789
+                   (1.368, 5.019]       114.295588
+(-0.416, 0.179]    (-3.012, -0.311]     -39.044539
+                   (-0.311, 0.273]       16.329306
+                   (0.273, 0.771]        49.838503
+                   (0.771, 1.368]        82.778759
+                   (1.368, 5.019]       137.403639
+(0.179, 3.069]     (-3.012, -0.311]      -1.954634
+                   (-0.311, 0.273]       54.155801
+                   (0.273, 0.771]        86.890604
+                   (0.771, 1.368]       121.662042
+                   (1.368, 5.019]       174.116303
 dtype: float64
 </pre></div></div>
 </div>
@@ -773,7 +776,6 @@ dtype: float64
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="dowhy_multiple_treatments.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

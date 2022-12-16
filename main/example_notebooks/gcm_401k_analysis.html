@@ -5,15 +5,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
     <title>Impact of 401(k) eligibility on net financial assets &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,14 +45,18 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="API reference" href="../dowhy.html" />
-    <link rel="prev" title="Counterfactual analysis in a medical case using a GCM" href="gcm_counterfactual_medical_dry_eyes.html" />
+    <link rel="next" title="Finding Root Causes of Changes in a Supply Chain" href="gcm_supply_chain_dist_change.html" />
+    <link rel="prev" title="Finding the Root Cause of Elevated Latencies in a Microservice Architecture" href="gcm_rca_microservice_architecture.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="gcm_401k_analysis.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,23 +249,50 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_ihdp_data_example.html">
    DoWhy example on ihdp (Infant Health and Development Program) dataset
@@ -273,6 +308,11 @@
    Applying refutation tests to the Lalonde and IHDP datasets
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_supply_chain_dist_change.html">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -503,10 +528,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -759,8 +785,8 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;pension.csv&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+df = pd.read_csv(&quot;pension.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -768,7 +794,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.head()
 </pre></div>
 </div>
 </div>
@@ -952,20 +978,20 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">dowhy.gcm</span> <span class="k">as</span> <span class="nn">gcm</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import networkx as nx
+import dowhy.gcm as gcm
 
-<span class="n">treatment_var</span> <span class="o">=</span> <span class="s2">&quot;e401&quot;</span>
-<span class="n">outcome_var</span> <span class="o">=</span> <span class="s2">&quot;net_tfa&quot;</span>
-<span class="n">covariates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;age&quot;</span><span class="p">,</span><span class="s2">&quot;inc&quot;</span><span class="p">,</span><span class="s2">&quot;fsize&quot;</span><span class="p">,</span><span class="s2">&quot;educ&quot;</span><span class="p">,</span><span class="s2">&quot;male&quot;</span><span class="p">,</span><span class="s2">&quot;db&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;marr&quot;</span><span class="p">,</span><span class="s2">&quot;twoearn&quot;</span><span class="p">,</span><span class="s2">&quot;pira&quot;</span><span class="p">,</span><span class="s2">&quot;hown&quot;</span><span class="p">,</span><span class="s2">&quot;hval&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;hequity&quot;</span><span class="p">,</span><span class="s2">&quot;hmort&quot;</span><span class="p">,</span><span class="s2">&quot;nohs&quot;</span><span class="p">,</span><span class="s2">&quot;hs&quot;</span><span class="p">,</span><span class="s2">&quot;smcol&quot;</span><span class="p">]</span>
+treatment_var = &quot;e401&quot;
+outcome_var = &quot;net_tfa&quot;
+covariates = [&quot;age&quot;,&quot;inc&quot;,&quot;fsize&quot;,&quot;educ&quot;,&quot;male&quot;,&quot;db&quot;,
+              &quot;marr&quot;,&quot;twoearn&quot;,&quot;pira&quot;,&quot;hown&quot;,&quot;hval&quot;,
+              &quot;hequity&quot;,&quot;hmort&quot;,&quot;nohs&quot;,&quot;hs&quot;,&quot;smcol&quot;]
 
-<span class="n">edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">treatment_var</span><span class="p">,</span> <span class="n">outcome_var</span><span class="p">)]</span>
-<span class="n">edges</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="n">covariate</span><span class="p">,</span> <span class="n">treatment_var</span><span class="p">)</span> <span class="k">for</span> <span class="n">covariate</span> <span class="ow">in</span> <span class="n">covariates</span><span class="p">])</span>
-<span class="n">edges</span><span class="o">.</span><span class="n">extend</span><span class="p">([(</span><span class="n">covariate</span><span class="p">,</span> <span class="n">outcome_var</span><span class="p">)</span> <span class="k">for</span> <span class="n">covariate</span> <span class="ow">in</span> <span class="n">covariates</span><span class="p">])</span>
+edges = [(treatment_var, outcome_var)]
+edges.extend([(covariate, treatment_var) for covariate in covariates])
+edges.extend([(covariate, outcome_var) for covariate in covariates])
 
-<span class="n">causal_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+causal_graph = nx.DiGraph(edges)
 </pre></div>
 </div>
 </div>
@@ -973,7 +999,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gcm</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">,</span> <span class="n">figure_size</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gcm.util.plot(causal_graph, figure_size=[20, 20])
 </pre></div>
 </div>
 </div>
@@ -990,18 +1016,18 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
 
-<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">treatment_var</span><span class="p">,</span> <span class="n">outcome_var</span><span class="p">]</span>
-<span class="n">cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">covariates</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cols</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+cols = [treatment_var, outcome_var]
+cols.extend(covariates)
+plt.figure(figsize=(10,5))
+for i, col in enumerate(cols):
+    plt.subplot(3,6,i+1)
+    plt.grid(False)
+    plt.hist(df[col])
+    plt.xlabel(col)
+plt.tight_layout()
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1018,11 +1044,11 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">causal_model</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">StructuralCausalModel</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">)</span>
-<span class="n">causal_model</span><span class="o">.</span><span class="n">set_causal_mechanism</span><span class="p">(</span><span class="n">treatment_var</span><span class="p">,</span> <span class="n">gcm</span><span class="o">.</span><span class="n">ClassifierFCM</span><span class="p">(</span><span class="n">gcm</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">create_random_forest_classifier</span><span class="p">()))</span>
-<span class="n">causal_model</span><span class="o">.</span><span class="n">set_causal_mechanism</span><span class="p">(</span><span class="n">outcome_var</span><span class="p">,</span> <span class="n">gcm</span><span class="o">.</span><span class="n">AdditiveNoiseModel</span><span class="p">(</span><span class="n">gcm</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">create_random_forest_regressor</span><span class="p">()))</span>
-<span class="k">for</span> <span class="n">covariate</span> <span class="ow">in</span> <span class="n">covariates</span><span class="p">:</span>
-    <span class="n">causal_model</span><span class="o">.</span><span class="n">set_causal_mechanism</span><span class="p">(</span><span class="n">covariate</span><span class="p">,</span> <span class="n">gcm</span><span class="o">.</span><span class="n">EmpiricalDistribution</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>causal_model = gcm.StructuralCausalModel(causal_graph)
+causal_model.set_causal_mechanism(treatment_var, gcm.ClassifierFCM(gcm.ml.create_random_forest_classifier()))
+causal_model.set_causal_mechanism(outcome_var, gcm.AdditiveNoiseModel(gcm.ml.create_random_forest_regressor()))
+for covariate in covariates:
+    causal_model.set_causal_mechanism(covariate, gcm.EmpiricalDistribution())
 </pre></div>
 </div>
 </div>
@@ -1031,7 +1057,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">astype</span><span class="p">({</span><span class="n">treatment_var</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df = df.astype({treatment_var: str})
 </pre></div>
 </div>
 </div>
@@ -1044,7 +1070,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gcm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">causal_model</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>gcm.fit(causal_model, df)
 </pre></div>
 </div>
 </div>
@@ -1053,7 +1079,7 @@ age, income, family size, education, marital status, etc. We consider 16 covaria
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Fitting causal mechanism of node smcol: 100%|██████████| 18/18 [00:07&lt;00:00,  2.41it/s]
+Fitting causal mechanism of node smcol: 100%|██████████| 18/18 [00:07&lt;00:00,  2.55it/s]
 </pre></div></div>
 </div>
 <p>Before computing CATE, we first divide households into equi-width bins of income percentiles. This allows us to study the impact on various income groups.</p>
@@ -1061,15 +1087,15 @@ Fitting causal mechanism of node smcol: 100%|██████████| 18/
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import numpy as np
 
-<span class="n">percentages</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
-<span class="n">bin_edges</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">bin_edges</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">inc</span><span class="p">,</span> <span class="n">percentages</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
-<span class="n">bin_edges</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># adding 1 to the last edge as last edge is excluded by np.digitize</span>
+percentages = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+bin_edges = [0]
+bin_edges.extend(np.quantile(df.inc, percentages[1:]).tolist())
+bin_edges[-1] += 1 # adding 1 to the last edge as last edge is excluded by np.digitize
 
-<span class="n">groups</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">percentages</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%-</span><span class="si">{</span><span class="n">percentages</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">%&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">percentages</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">group_index_to_group_label</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">groups</span><span class="p">))</span>
+groups = [f&#39;{percentages[i]*100:.0f}%-{percentages[i+1]*100:.0f}%&#39; for i in range(len(percentages)-1)]
+group_index_to_group_label = dict(zip(range(1, len(bin_edges)+1), groups))
 </pre></div>
 </div>
 </div>
@@ -1078,30 +1104,30 @@ Fitting causal mechanism of node smcol: 100%|██████████| 18/
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">47</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>np.random.seed(47)
 
-<span class="k">def</span> <span class="nf">estimate_cate</span><span class="p">():</span>
-    <span class="n">samples</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">interventional_samples</span><span class="p">(</span><span class="n">causal_model</span><span class="p">,</span>
-                                         <span class="p">{</span><span class="n">treatment_var</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">])},</span>
-                                         <span class="n">observed_data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
-    <span class="n">eligible</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">treatment_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
-    <span class="n">ate</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">eligible</span><span class="p">][</span><span class="n">outcome_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">samples</span><span class="p">[</span><span class="o">~</span><span class="n">eligible</span><span class="p">][</span><span class="n">outcome_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">ate</span> <span class="o">=</span> <span class="n">ate</span><span class="p">)</span>
+def estimate_cate():
+    samples = gcm.interventional_samples(causal_model,
+                                         {treatment_var: lambda x: np.random.choice([&#39;0&#39;, &#39;1&#39;])},
+                                         observed_data=df)
+    eligible = samples[treatment_var] == &#39;1&#39;
+    ate = samples[eligible][outcome_var].mean() - samples[~eligible][outcome_var].mean()
+    result = dict(ate = ate)
 
-    <span class="n">group_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">digitize</span><span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;inc&#39;</span><span class="p">],</span> <span class="n">bin_edges</span><span class="p">)</span>
-    <span class="n">samples</span><span class="p">[</span><span class="s1">&#39;group_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">group_indices</span>
+    group_indices = np.digitize(samples[&#39;inc&#39;], bin_edges)
+    samples[&#39;group_index&#39;] = group_indices
 
-    <span class="k">for</span> <span class="n">group_index</span> <span class="ow">in</span> <span class="n">group_index_to_group_label</span><span class="p">:</span>
-        <span class="n">group_samples</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">samples</span><span class="p">[</span><span class="s1">&#39;group_index&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group_index</span><span class="p">]</span>
-        <span class="n">eligible_in_group</span> <span class="o">=</span> <span class="n">group_samples</span><span class="p">[</span><span class="n">treatment_var</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span>
-        <span class="n">cate</span> <span class="o">=</span> <span class="n">group_samples</span><span class="p">[</span><span class="n">eligible_in_group</span><span class="p">][</span><span class="n">outcome_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">group_samples</span><span class="p">[</span><span class="o">~</span><span class="n">eligible_in_group</span><span class="p">][</span><span class="n">outcome_var</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-        <span class="n">result</span><span class="p">[</span><span class="n">group_index_to_group_label</span><span class="p">[</span><span class="n">group_index</span><span class="p">]]</span> <span class="o">=</span> <span class="n">cate</span>
+    for group_index in group_index_to_group_label:
+        group_samples = samples[samples[&#39;group_index&#39;] == group_index]
+        eligible_in_group = group_samples[treatment_var] == &#39;1&#39;
+        cate = group_samples[eligible_in_group][outcome_var].mean() - group_samples[~eligible_in_group][outcome_var].mean()
+        result[group_index_to_group_label[group_index]] = cate
 
-    <span class="k">return</span> <span class="n">result</span>
+    return result
 
-<span class="n">group_to_median</span><span class="p">,</span> <span class="n">group_to_ci</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">confidence_intervals</span><span class="p">(</span><span class="n">estimate_cate</span><span class="p">,</span> <span class="n">num_bootstrap_resamples</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">group_to_median</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">group_to_ci</span><span class="p">)</span>
+group_to_median, group_to_ci = gcm.confidence_intervals(estimate_cate, num_bootstrap_resamples=100)
+print(group_to_median)
+print(group_to_ci)
 </pre></div>
 </div>
 </div>
@@ -1110,7 +1136,7 @@ Fitting causal mechanism of node smcol: 100%|██████████| 18/
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Estimating boostrap interval...: 100%|██████████| 100/100 [01:04&lt;00:00,  1.56it/s]
+Estimating bootstrap interval...: 100%|██████████| 100/100 [01:13&lt;00:00,  1.37it/s]
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1118,8 +1144,8 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-{&#39;ate&#39;: 6559.581991644421, &#39;0%-20%&#39;: 4268.243012289021, &#39;20%-40%&#39;: 3266.0644205175918, &#39;40%-60%&#39;: 5775.894017244456, &#39;60%-80%&#39;: 7569.42564868386, &#39;80%-100%&#39;: 11702.880215309473}
-{&#39;ate&#39;: array([4862.82152804, 8450.79957094]), &#39;0%-20%&#39;: array([2809.41414201, 5914.93242952]), &#39;20%-40%&#39;: array([1418.35705386, 5552.49247233]), &#39;40%-60%&#39;: array([3431.2584738 , 8473.08376102]), &#39;60%-80%&#39;: array([ 4701.67809192, 10501.26499691]), &#39;80%-100%&#39;: array([ 4971.14700717, 18410.78210993])}
+{&#39;ate&#39;: 6203.6212286517075, &#39;0%-20%&#39;: 3924.9407429370467, &#39;20%-40%&#39;: 2932.172044179525, &#39;40%-60%&#39;: 5570.947196354996, &#39;60%-80%&#39;: 7642.554364635681, &#39;80%-100%&#39;: 10776.164810762193}
+{&#39;ate&#39;: array([4522.88097303, 7933.49647605]), &#39;0%-20%&#39;: array([2486.41211432, 5577.65116848]), &#39;20%-40%&#39;: array([ 709.35256384, 5363.87728269]), &#39;40%-60%&#39;: array([3461.11545601, 7970.47200994]), &#39;60%-80%&#39;: array([ 4949.15688156, 10864.40850607]), &#39;80%-100%&#39;: array([ 3826.81801275, 18042.13597879])}
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1135,17 +1161,17 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">groups</span><span class="p">):</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">group_to_ci</span><span class="p">[</span><span class="n">group</span><span class="p">]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">ci</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ci</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">groups</span><span class="p">)),</span> <span class="n">groups</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Income group&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;ATE of 401(k) eligibility on net financial assets&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>fig = plt.figure(figsize=(8,4))
+for x, group in enumerate(groups):
+    ci = group_to_ci[group]
+    plt.plot((x, x), (ci[0], ci[1]), &#39;ro-&#39;, color=&#39;orange&#39;)
+ax = fig.axes[0]
+ax.spines[&#39;right&#39;].set_visible(False)
+ax.spines[&#39;top&#39;].set_visible(False)
+plt.xticks(range(len(groups)), groups)
+plt.xlabel(&#39;Income group&#39;)
+plt.ylabel(&#39;ATE of 401(k) eligibility on net financial assets&#39;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1154,7 +1180,7 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/tmp/ipykernel_30153/1344202636.py:4: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &#34;ro-&#34; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
+/tmp/ipykernel_4671/1344202636.py:4: UserWarning: color is redundantly defined by the &#39;color&#39; keyword argument and the fmt string &#34;ro-&#34; (-&gt; color=&#39;r&#39;). The keyword argument will take precedence.
   plt.plot((x, x), (ci[0], ci[1]), &#39;ro-&#39;, color=&#39;orange&#39;)
 </pre></div></div>
 </div>
@@ -1177,17 +1203,17 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="gcm_counterfactual_medical_dry_eyes.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="gcm_rca_microservice_architecture.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Counterfactual analysis in a medical case using a GCM</p>
+          <p class="prev-next-title">Finding the Root Cause of Elevated Latencies in a Microservice Architecture</p>
       </div>
   </a>
-  <a class='right-next' id="next-link" href="../dowhy.html" title="next page">
+  <a class='right-next' id="next-link" href="gcm_supply_chain_dist_change.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">API reference</p>
+      <p class="prev-next-title">Finding Root Causes of Changes in a Supply Chain</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -1214,7 +1240,7 @@ Estimating boostrap interval...: 100%|██████████| 100/100 [0
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

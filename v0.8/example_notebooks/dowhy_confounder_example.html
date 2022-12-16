@@ -15,6 +15,7 @@
   <title>Confounding Example: Finding causal effects from observed data &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -478,11 +481,11 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <div class="highlight"><pre>
    Treatment    Outcome        w0
-0   1.919104   3.847339 -4.142276
-1   4.072834   7.611567 -2.222995
-2   1.993143   3.852013 -3.982037
-3   4.326839   8.356764 -1.811308
-4   5.248568  11.274360 -0.607042
+0   2.526863   5.152316 -3.676799
+1   9.407585  19.169152  3.691319
+2   2.004237   4.014872 -3.904737
+3   8.169131  16.387200  2.157651
+4   9.436813  19.042320  3.505782
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -599,7 +602,7 @@ No such variable(s) found!
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Causal Estimate is -0.006923217283226535
+Causal Estimate is 1.0150770356289787
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -626,8 +629,8 @@ Causal Estimate is -0.006923217283226535
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-DoWhy estimate is -0.006923217283226535
-Actual true causal effect was 0
+DoWhy estimate is 1.0150770356289787
+Actual true causal effect was 1
 </pre></div></div>
 </div>
 </section>
@@ -652,9 +655,9 @@ Actual true causal effect was 0
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:-0.006923217283226535
-New effect:-0.006907048031150911
-p value:0.9
+Estimated effect:1.0150770356289787
+New effect:1.0150745242605324
+p value:0.96
 
 </pre></div></div>
 </div>
@@ -677,9 +680,9 @@ p value:0.9
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:-0.006923217283226535
-New effect:2.6231687825273297e-05
-p value:0.88
+Estimated effect:1.0150770356289787
+New effect:-1.5768763743473358e-06
+p value:1.0
 
 </pre></div></div>
 </div>
@@ -702,9 +705,9 @@ p value:0.88
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a subset of data
-Estimated effect:-0.006923217283226535
-New effect:-0.006816568234829976
-p value:0.96
+Estimated effect:1.0150770356289787
+New effect:1.0146208518651028
+p value:0.8799999999999999
 
 </pre></div></div>
 </div>
@@ -756,7 +759,6 @@ p value:0.96
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="dowhy_confounder_example.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

@@ -5,16 +5,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-B139P18WHM');
-</script>
-    <title>Root causes of changes in a supply chain &#8212; DoWhy  documentation</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B139P18WHM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-B139P18WHM');
+    </script>
+    
+    <title>Finding Root Causes of Changes in a Supply Chain &#8212; DoWhy  documentation</title>
 <script>
   document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
   document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
@@ -33,6 +34,8 @@
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
 
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
@@ -42,14 +45,18 @@
     <script src="../_static/underscore.js"></script>
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Counterfactual analysis in a medical case using a GCM" href="gcm_counterfactual_medical_dry_eyes.html" />
-    <link rel="prev" title="Root cause analysis (RCA) of latencies in a microservice architecture" href="gcm_rca_microservice_architecture.html" />
+    <link rel="next" title="Counterfactual Analysis in a Medical Case" href="gcm_counterfactual_medical_dry_eyes.html" />
+    <link rel="prev" title="Impact of 401(k) eligibility on net financial assets" href="gcm_401k_analysis.html" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="docsearch:language" content="en">
   </head>
@@ -75,8 +82,9 @@
   
   
   
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-light" alt="Logo image">
+    <img src="../_static/dowhy-logo-small.png" class="logo__image only-dark" alt="Logo image">
   
-    <p class="title logo__title">DoWhy  documentation</p>
   
 </a>
     
@@ -94,7 +102,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="../getting_started/index.html">
-  Getting started
+  Getting Started
  </a>
 </li>
 
@@ -142,18 +150,14 @@
       </div>
       
       <div class="navbar-end-item">
-        
-<div class="dropdown" id="version_switcher">
+        <div class="dropdown" id="version_switcher">
     <button type="button" class="btn btn-sm navbar-btn dropdown-toggle" id="version_switcher_button" data-toggle="dropdown">
-        main-branch
+        main
         <span class="caret"></span>
     </button>
     <div id="version_switcher_menu" class="dropdown-menu list-group-flush py-0" aria-labelledby="version_switcher_button">
         <dl>
             <dt>Releases</dt>
-            <!-- hard-coding the old versions, as no further old version will be added -->
-            <!-- It would be nice if this opened the same page in an older version, but that seems to be overkill
-                 right now. Therefore defaulting to the starting page (index). -->
             <dd><a href="/dowhy/v0.8/index.html">v0.8</a></dd>
             <dd><a href="/dowhy/v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="/dowhy/v0.7/index.html">v0.7</a></dd>
@@ -163,12 +167,11 @@
             <dd><a href="/dowhy/v0.4/index.html">v0.4</a></dd>
             <dd><a href="/dowhy/v0.2/index.html">v0.2</a></dd>
             <dd><a href="/dowhy/v0.1.1-alpha/index.html">v0.1.1-alpha</a></dd>
-            <dd><a href="/dowhy/v0.1-alpha/index.html">v0.1-alpha</a></dd>
-        </dl>
+        </dl>        
         <dl>
             <dt>Branches</dt>
-            <dd><a href="gcm_supply_chain_dist_change.html">main</a></dd>
-        </dl>
+            <dd><a href="">main</a></dd>
+        </dl>        
     </div>
 </div>
       </div>
@@ -192,13 +195,18 @@
   <div class="bd-toc-item active">
     <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Getting started
+  Introductory examples
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="dowhy_simple_example.html">
-   Getting started with DoWhy: A simple example
+   Basic Example for Calculating the Causal Effect
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_basic_example.html">
+   Basic Example for Graphical Causal Model-Based Intervention
   </a>
  </li>
  <li class="toctree-l1">
@@ -212,23 +220,23 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="graph_conditional_independence_refuter.html">
-   Testing Assumptions in model with DoWhy: A simple example
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-simple-iv-example.html">
-   Simple example on using Instrumental Variables method for estimation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="load_graph_example.html">
-   Different ways to load an input graph
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="dowhy_interpreter.html">
    DoWhy: Interpreters for Causal Estimators
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
+   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_mediation_analysis.html">
+   Mediation analysis with DoWhy: Direct and Indirect Effects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy_refuter_notebook.html">
+   Iterating over multiple refutation tests
   </a>
  </li>
  <li class="toctree-l1">
@@ -241,20 +249,47 @@
    Do-sampler Introduction
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Real world-inspired examples
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_basic_example.html">
-   Basic Example for GCM-Based Inference
+  <a class="reference internal" href="DoWhy-The%20Causal%20Story%20Behind%20Hotel%20Booking%20Cancellations.html">
+   Exploring Causes of Hotel Booking Cancellations
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="gcm_draw_samples.html">
-   Basic Example for generating samples from a GCM
+  <a class="reference internal" href="dowhy_example_effect_of_memberrewards_program.html">
+   Estimating the Effect of a Member Rewards Program
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
+   Finding the Root Cause of Elevated Latencies in a Microservice Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Finding Root Causes of Changes in a Supply Chain
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
+   Counterfactual Analysis in a Medical Case
   </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Using benchmark datasets
+  Examples on benchmarks datasets
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -274,6 +309,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="gcm_401k_analysis.html">
+   Impact of 401(k) eligibility on net financial assets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="lalonde_pandas_api.html">
    Lalonde Pandas API Example
   </a>
@@ -281,18 +321,28 @@
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Advanced
+  Miscellaneous
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy-conditional-treatment-effects.html">
-   Conditional Average Treatment Effects (CATE) with DoWhy and EconML
+  <a class="reference internal" href="load_graph_example.html">
+   Different ways to load an input graph
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_mediation_analysis.html">
-   Mediation analysis with DoWhy: Direct and Indirect Effects
+  <a class="reference internal" href="gcm_draw_samples.html">
+   Basic Example for generating samples from a GCM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dowhy-simple-iv-example.html">
+   Simple example on using Instrumental Variables method for estimation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="graph_conditional_independence_refuter.html">
+   Testing Assumptions in model with DoWhy: A simple example
   </a>
  </li>
  <li class="toctree-l1">
@@ -306,33 +356,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="dowhy_refuter_notebook.html">
-   Iterating over multiple refutation tests
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="identifying_effects_using_id_algorithm.html">
    Identifying Effect using ID Algorithm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_rca_microservice_architecture.html">
-   Root cause analysis (RCA) of latencies in a microservice architecture
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Root causes of changes in a supply chain
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_counterfactual_medical_dry_eyes.html">
-   Counterfactual analysis in a medical case using a GCM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gcm_401k_analysis.html">
-   Impact of 401(k) eligibility on net financial assets
   </a>
  </li>
 </ul>
@@ -533,10 +558,11 @@ div.nboutput.container div.prompt > div {
     }
 }
 
-/* disable scrollbars on prompts */
+/* disable scrollbars and line breaks on prompts */
 div.nbinput.container div.prompt pre,
 div.nboutput.container div.prompt pre {
     overflow: hidden;
+    white-space: pre;
 }
 
 /* input/output area */
@@ -679,11 +705,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<section id="Root-causes-of-changes-in-a-supply-chain">
-<h1>Root causes of changes in a supply chain<a class="headerlink" href="#Root-causes-of-changes-in-a-supply-chain" title="Permalink to this heading"></a></h1>
+<section id="Finding-Root-Causes-of-Changes-in-a-Supply-Chain">
+<h1>Finding Root Causes of Changes in a Supply Chain<a class="headerlink" href="#Finding-Root-Causes-of-Changes-in-a-Supply-Chain" title="Permalink to this heading"></a></h1>
 <p>In a supply chain, the number of units of each product in the inventory that is available for shipment is crucial to fulfill customers’ demand faster. For this reason, retailers continuously buy products anticipating customers’ demand in the future.</p>
 <p>Suppose that each week a retailer submits purchase orders (POs) to vendors taking into account future demands for products and capacity constraints to consider for demands. The vendors will then confirm whether they can fulfill some or all of the retailer’s purchase orders. Once confirmed by the vendors and agreed by the retailer, products are then sent to the retailer. All of the confirmed POs, however, may not arrive at once.</p>
-<p><img alt="4e45e563da6e46ac8be3e5f332734e09" class="no-scaled-link" src="../_images/supply-chain.png" style="width: 800px;" /></p>
+<p><img alt="e97320b0bda346da8dc0722ff1dc48f5" class="no-scaled-link" src="../_images/supply-chain.png" style="width: 800px;" /></p>
 <section id="Week-over-week-changes">
 <h2>Week-over-week changes<a class="headerlink" href="#Week-over-week-changes" title="Permalink to this heading"></a></h2>
 <p>For this case study, we consider synthetic data inspired from a real-world use case in supply chain. Let us look at data over two weeks, <em>w1</em> and <em>w2</em> in particular.</p>
@@ -691,9 +717,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;supply_chain_week_over_week.csv&#39;</span><span class="p">)</span>
+data = pd.read_csv(&#39;supply_chain_week_over_week.csv&#39;)
 </pre></div>
 </div>
 </div>
@@ -701,11 +727,11 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from IPython.display import HTML
 
-<span class="n">data_week1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">week</span> <span class="o">==</span> <span class="s1">&#39;w1&#39;</span><span class="p">]</span>
+data_week1 = data[data.week == &#39;w1&#39;]
 
-<span class="n">HTML</span><span class="p">(</span><span class="n">data_week1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&lt;br/&gt;&#39;</span><span class="p">)</span>
+HTML(data_week1.head().to_html(index=False)+&#39;&lt;br/&gt;&#39;)
 </pre></div>
 </div>
 </div>
@@ -779,9 +805,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_week2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">week</span><span class="o">==</span><span class="s1">&#39;w2&#39;</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_week2 = data[data.week==&#39;w2&#39;]
 
-<span class="n">HTML</span><span class="p">(</span><span class="n">data_week2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;&lt;br/&gt;&#39;</span><span class="p">)</span>
+HTML(data_week2.head().to_html(index=False)+&#39;&lt;br/&gt;&#39;)
 </pre></div>
 </div>
 </div>
@@ -856,22 +882,31 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;week&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()[[</span><span class="s1">&#39;received&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;average received&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.groupby([&#39;week&#39;]).mean()[[&#39;received&#39;]].plot(kind=&#39;bar&#39;, title=&#39;average received&#39;, legend=False);
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/tmp/ipykernel_5537/2641881978.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  data.groupby([&#39;week&#39;]).mean()[[&#39;received&#39;]].plot(kind=&#39;bar&#39;, title=&#39;average received&#39;, legend=False);
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_6_0.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_6_0.png" />
+<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_6_1.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_6_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_week2</span><span class="o">.</span><span class="n">received</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">-</span> <span class="n">data_week1</span><span class="o">.</span><span class="n">received</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data_week2.received.mean() - data_week1.received.mean()
 </pre></div>
 </div>
 </div>
@@ -895,15 +930,24 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;week&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;average&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>data.groupby([&#39;week&#39;]).mean().plot(kind=&#39;bar&#39;, title=&#39;average&#39;, legend=True);
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/tmp/ipykernel_5537/3361261226.py:1: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
+  data.groupby([&#39;week&#39;]).mean().plot(kind=&#39;bar&#39;, title=&#39;average&#39;, legend=True);
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_11_0.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_11_0.png" />
+<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_11_1.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_11_1.png" />
 </div>
 </div>
 <p>We see that the average values of other variables, except <em>constraint</em>, have also increased. While this suggests that some event(s) that changed the average values of other variables could possibly have changed the average value of <em>received</em>, that on itself is not a satisfactory answer. One may also use domain knowledge here to claim that change in the average value of demand could be the main driver, after all demand is a key variable. We will see later that such conclusions can miss other
@@ -920,14 +964,14 @@ causal graph. A causal mechanism of a variable is the conditional distribution o
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
-<span class="kn">import</span> <span class="nn">dowhy.gcm</span> <span class="k">as</span> <span class="nn">gcm</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import networkx as nx
+import dowhy.gcm as gcm
 
-<span class="n">causal_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">([(</span><span class="s1">&#39;demand&#39;</span><span class="p">,</span> <span class="s1">&#39;submitted&#39;</span><span class="p">),</span>
-                           <span class="p">(</span><span class="s1">&#39;constraint&#39;</span><span class="p">,</span> <span class="s1">&#39;submitted&#39;</span><span class="p">),</span>
-                           <span class="p">(</span><span class="s1">&#39;submitted&#39;</span><span class="p">,</span> <span class="s1">&#39;confirmed&#39;</span><span class="p">),</span>
-                           <span class="p">(</span><span class="s1">&#39;confirmed&#39;</span><span class="p">,</span> <span class="s1">&#39;received&#39;</span><span class="p">)])</span>
-<span class="n">gcm</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">)</span>
+causal_graph = nx.DiGraph([(&#39;demand&#39;, &#39;submitted&#39;),
+                           (&#39;constraint&#39;, &#39;submitted&#39;),
+                           (&#39;submitted&#39;, &#39;confirmed&#39;),
+                           (&#39;confirmed&#39;, &#39;received&#39;)])
+gcm.util.plot(causal_graph)
 </pre></div>
 </div>
 </div>
@@ -946,48 +990,39 @@ causal graph. A causal mechanism of a variable is the conditional distribution o
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import matplotlib.pyplot as plt
+import numpy as np
 
-<span class="c1"># disabling progress bar to not clutter the output here</span>
-<span class="n">gcm</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">disable_progress_bars</span><span class="p">()</span>
+# disabling progress bar to not clutter the output here
+gcm.config.disable_progress_bars()
 
-<span class="c1"># setting random seed for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+# setting random seed for reproducibility
+np.random.seed(10)
 
-<span class="n">causal_model</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">StructuralCausalModel</span><span class="p">(</span><span class="n">causal_graph</span><span class="p">)</span>
+causal_model = gcm.StructuralCausalModel(causal_graph)
 
-<span class="c1"># Automatically assign appropriate causal models to each node in graph</span>
-<span class="n">gcm</span><span class="o">.</span><span class="n">auto</span><span class="o">.</span><span class="n">assign_causal_mechanisms</span><span class="p">(</span><span class="n">causal_model</span><span class="p">,</span> <span class="n">data_week1</span><span class="p">)</span>
+# Automatically assign appropriate causal models to each node in graph
+gcm.auto.assign_causal_mechanisms(causal_model, data_week1)
 
-<span class="c1"># call the API for attributing change in the average value of `received`</span>
-<span class="n">contributions</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">distribution_change</span><span class="p">(</span><span class="n">causal_model</span><span class="p">,</span>
-                                        <span class="n">data_week1</span><span class="p">,</span>
-                                        <span class="n">data_week2</span><span class="p">,</span>
-                                        <span class="s1">&#39;received&#39;</span><span class="p">,</span>
-                                        <span class="n">num_samples</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
-                                        <span class="n">difference_estimation_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+# call the API for attributing change in the average value of `received`
+contributions = gcm.distribution_change(causal_model,
+                                        data_week1,
+                                        data_week2,
+                                        &#39;received&#39;,
+                                        num_samples=2000,
+                                        difference_estimation_func=lambda x1, x2 : np.mean(x2) - np.mean(x1))
 
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">contributions</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">contributions</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Contribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+plt.bar(contributions.keys(), contributions.values())
+plt.ylabel(&#39;Contribution&#39;)
+plt.show()
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_17_1.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_17_1.png" />
+<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_17_0.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_17_0.png" />
 </div>
 </div>
 <p>These point estimates suggest that changes in the causal mechanisms of <em>demand</em> and <em>confirmed</em> are the main drivers of the change in the average value of <em>received</em> between two weeks. It would be risky, however, to draw conclusions from these point estimates. Therefore, we compute the bootstrap confidence interval for each attribution.</p>
@@ -995,57 +1030,30 @@ causal graph. A causal mechanism of a variable is the conditional distribution o
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median_contribs</span><span class="p">,</span> <span class="n">uncertainty_contribs</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">confidence_intervals</span><span class="p">(</span>
-    <span class="n">gcm</span><span class="o">.</span><span class="n">bootstrap_sampling</span><span class="p">(</span><span class="n">gcm</span><span class="o">.</span><span class="n">distribution_change</span><span class="p">,</span>
-                           <span class="n">causal_model</span><span class="p">,</span>
-                           <span class="n">data_week1</span><span class="p">,</span>
-                           <span class="n">data_week2</span><span class="p">,</span>
-                           <span class="s1">&#39;received&#39;</span><span class="p">,</span>
-                           <span class="n">num_samples</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
-                           <span class="n">difference_estimation_func</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x1</span><span class="p">)),</span>
-    <span class="n">confidence_level</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span>
-    <span class="n">num_bootstrap_resamples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>median_contribs, uncertainty_contribs = gcm.confidence_intervals(
+    gcm.bootstrap_sampling(gcm.distribution_change,
+                           causal_model,
+                           data_week1,
+                           data_week2,
+                           &#39;received&#39;,
+                           num_samples=2000,
+                           difference_estimation_func=lambda x1, x2 : np.mean(x2) - np.mean(x1)),
+    confidence_level=0.95,
+    num_bootstrap_resamples=10)
 
-<span class="n">yerr_plus</span> <span class="o">=</span> <span class="p">[</span><span class="n">uncertainty_contribs</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">median_contribs</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">median_contribs</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-<span class="n">yerr_minus</span> <span class="o">=</span> <span class="p">[</span><span class="n">median_contribs</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">-</span> <span class="n">uncertainty_contribs</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">median_contribs</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">median_contribs</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">median_contribs</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">yerr_minus</span><span class="p">,</span> <span class="n">yerr_plus</span><span class="p">]),</span> <span class="n">ecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Contribution&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+yerr_plus = [uncertainty_contribs[node][1] - median_contribs[node] for node in median_contribs.keys()]
+yerr_minus = [median_contribs[node] - uncertainty_contribs[node][0] for node in median_contribs.keys()]
+plt.bar(median_contribs.keys(), median_contribs.values(), yerr=np.array([yerr_minus, yerr_plus]), ecolor=&#39;black&#39;)
+plt.ylabel(&#39;Contribution&#39;)
+plt.show()
 </pre></div>
 </div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-/__w/dowhy/dowhy/dowhy/gcm/distribution_change.py:242: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
-  joint_data = old_data.append(new_data, ignore_index=True, sort=True)
-</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_19_1.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_19_1.png" />
+<img alt="../_images/example_notebooks_gcm_supply_chain_dist_change_19_0.png" src="../_images/example_notebooks_gcm_supply_chain_dist_change_19_0.png" />
 </div>
 </div>
 <p>Whereas the <span class="math notranslate nohighlight">\(95\%\)</span> confidence intervals for the contributions of <em>demand</em> and <em>confirmed</em> are above <span class="math notranslate nohighlight">\(0\)</span>, those of other nodes are close to <span class="math notranslate nohighlight">\(0\)</span>. Overall, these results suggest that changes in the causal mechanisms of <em>demand</em> and <em>confirmed</em> are the drivers for the observed change in the <em>received</em> quantity week-over-week. Causal mechanisms can change in a real-world system, for instance, after deploying a new subsystem with a different algorithm. In fact, these results are
@@ -1062,34 +1070,34 @@ value of demand mean from <span class="math notranslate nohighlight">\(2\)</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import secrets
 
-<span class="n">ASINS</span> <span class="o">=</span> <span class="p">[</span><span class="n">secrets</span><span class="o">.</span><span class="n">token_hex</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">)]</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">buying_data</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">demand_mean</span><span class="p">):</span>
-    <span class="n">constraint</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">demand</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">demand_mean</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">submitted</span> <span class="o">=</span> <span class="n">demand</span> <span class="o">-</span> <span class="n">constraint</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">confirmed</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">submitted</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="n">received</span> <span class="o">=</span> <span class="n">beta</span> <span class="o">*</span> <span class="n">confirmed</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">asin</span><span class="o">=</span><span class="n">ASINS</span><span class="p">,</span>
-                              <span class="n">demand</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">demand</span><span class="p">),</span>
-                              <span class="n">constraint</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">constraint</span><span class="p">),</span>
-                              <span class="n">submitted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">submitted</span><span class="p">),</span>
-                              <span class="n">confirmed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">confirmed</span><span class="p">),</span>
-                              <span class="n">received</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">received</span><span class="p">)))</span>
+ASINS = [secrets.token_hex(5).upper() for i in range(1000)]
+import numpy as np
+def buying_data(alpha, beta, demand_mean):
+    constraint = np.random.gamma(1, scale=1, size=1000)
+    demand = np.random.gamma(demand_mean, scale=1, size=1000)
+    submitted = demand - constraint + np.random.gamma(1, scale=1, size=1000)
+    confirmed = alpha * submitted + np.random.gamma(0.1, scale=1, size=1000)
+    received = beta * confirmed + np.random.gamma(0.1, scale=1, size=1000)
+    return pd.DataFrame(dict(asin=ASINS,
+                              demand=np.round(demand),
+                              constraint=np.round(constraint),
+                              submitted = np.round(submitted),
+                              confirmed = np.round(confirmed),
+                              received = np.round(received)))
 
 
-<span class="c1"># we change the parameters alpha and demand_mean between weeks</span>
-<span class="n">data_week1</span> <span class="o">=</span> <span class="n">buying_data</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">demand_mean</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">data_week1</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;w1&#39;</span>
-<span class="n">data_week2</span> <span class="o">=</span> <span class="n">buying_data</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">demand_mean</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">data_week2</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;w2&#39;</span>
+# we change the parameters alpha and demand_mean between weeks
+data_week1 = buying_data(1, 1, demand_mean=2)
+data_week1[&#39;week&#39;] = &#39;w1&#39;
+data_week2 = buying_data(2, 1, demand_mean=4)
+data_week2[&#39;week&#39;] = &#39;w2&#39;
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">data_week1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data_week2</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1"># write data to a csv file</span>
-<span class="c1"># data.to_csv(&#39;supply_chain_week_over_week.csv&#39;, index=False)</span>
+data = data_week1.append(data_week2, ignore_index=True)
+# write data to a csv file
+# data.to_csv(&#39;supply_chain_week_over_week.csv&#39;, index=False)
 </pre></div>
 </div>
 </div>
@@ -1098,7 +1106,7 @@ value of demand mean from <span class="math notranslate nohighlight">\(2\)</span
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/tmp/ipykernel_30990/2721469738.py:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+/tmp/ipykernel_5537/2721469738.py:26: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
   data = data_week1.append(data_week2, ignore_index=True)
 </pre></div></div>
 </div>
@@ -1113,17 +1121,17 @@ value of demand mean from <span class="math notranslate nohighlight">\(2\)</span
               <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-  <a class='left-prev' id="prev-link" href="gcm_rca_microservice_architecture.html" title="previous page">
+  <a class='left-prev' id="prev-link" href="gcm_401k_analysis.html" title="previous page">
       <i class="fas fa-angle-left"></i>
       <div class="prev-next-info">
           <p class="prev-next-subtitle">previous</p>
-          <p class="prev-next-title">Root cause analysis (RCA) of latencies in a microservice architecture</p>
+          <p class="prev-next-title">Impact of 401(k) eligibility on net financial assets</p>
       </div>
   </a>
   <a class='right-next' id="next-link" href="gcm_counterfactual_medical_dry_eyes.html" title="next page">
   <div class="prev-next-info">
       <p class="prev-next-subtitle">next</p>
-      <p class="prev-next-title">Counterfactual analysis in a medical case using a GCM</p>
+      <p class="prev-next-title">Counterfactual Analysis in a Medical Case</p>
   </div>
   <i class="fas fa-angle-right"></i>
   </a>
@@ -1150,7 +1158,7 @@ value of demand mean from <span class="math notranslate nohighlight">\(2\)</span
   
   <div class="footer-item">
     <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.1.1.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 5.3.0.<br>
 </p>
   </div>
   

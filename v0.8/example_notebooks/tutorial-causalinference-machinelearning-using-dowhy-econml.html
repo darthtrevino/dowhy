@@ -15,6 +15,7 @@
   <title>Tutorial on Causal Inference and its Connections to Machine Learning (Using DoWhy+EconML) &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -611,9 +614,9 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W4,W1])
+─────(E[y|W1,W2,W0,W4,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W4,W1,U) = P(y|v0,W0,W3,W2,W4,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W0,W4,W3,U) = P(y|v0,W1,W2,W0,W4,W3)
 
 ### Estimand : 2
 Estimand name: iv
@@ -621,9 +624,9 @@ Estimand expression:
  ⎡                              -1⎤
  ⎢    d        ⎛    d          ⎞  ⎥
 E⎢─────────(y)⋅⎜─────────([v₀])⎟  ⎥
- ⎣d[Z₀  Z₁]    ⎝d[Z₀  Z₁]      ⎠  ⎦
-Estimand assumption 1, As-if-random: If U→→y then ¬(U →→{Z0,Z1})
-Estimand assumption 2, Exclusion: If we remove {Z0,Z1}→{v0}, then ¬({Z0,Z1}→y)
+ ⎣d[Z₁  Z₀]    ⎝d[Z₁  Z₀]      ⎠  ⎦
+Estimand assumption 1, As-if-random: If U→→y then ¬(U →→{Z1,Z0})
+Estimand assumption 2, Exclusion: If we remove {Z1,Z0}→{v0}, then ¬({Z1,Z0}→y)
 
 ### Estimand : 3
 Estimand name: frontdoor
@@ -660,16 +663,16 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W4,W1])
+─────(E[y|W1,W2,W0,W4,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W4,W1,U) = P(y|v0,W0,W3,W2,W4,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W0,W4,W3,U) = P(y|v0,W1,W2,W0,W4,W3)
 
 ## Realized estimand
-b: y~v0+W0+W3+W2+W4+W1
+b: y~v0+W1+W2+W0+W4+W3
 Target units: ate
 
 ## Estimate
-Mean value: 9.979009166420362
+Mean value: 10.00912056089701
 
 </pre></div></div>
 </div>
@@ -698,8 +701,8 @@ Mean value: 9.979009166420362
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2022-09-01 17:24:35.468589: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
-2022-09-01 17:24:35.468631: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2022-09-14 19:45:43.321452: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-09-14 19:45:43.321513: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -716,17 +719,17 @@ Estimand type: nonparametric-ate
 Estimand name: backdoor
 Estimand expression:
   d
-─────(E[y|W0,W3,W2,W4,W1])
+─────(E[y|W1,W2,W0,W4,W3])
 d[v₀]
-Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W0,W3,W2,W4,W1,U) = P(y|v0,W0,W3,W2,W4,W1)
+Estimand assumption 1, Unconfoundedness: If U→{v0} and U→y then P(y|v0,W1,W2,W0,W4,W3,U) = P(y|v0,W1,W2,W0,W4,W3)
 
 ## Realized estimand
-b: y~v0+W0+W3+W2+W4+W1 |
+b: y~v0+W1+W2+W0+W4+W3 |
 Target units: ate
 
 ## Estimate
-Mean value: 9.989824417463343
-Effect estimates: [9.98982442 9.98982442 9.98982442 ... 9.98982442 9.98982442 9.98982442]
+Mean value: 9.956642481960037
+Effect estimates: [9.95664248 9.95664248 9.95664248 ... 9.95664248 9.95664248 9.95664248]
 
 </pre></div></div>
 </div>
@@ -750,9 +753,9 @@ estimate value of 0 when the action variable is replaced by a random variable, i
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:9.979009166420362
-New effect:-0.004244767587108494
-p value:0.98
+Estimated effect:10.00912056089701
+New effect:-0.0007420069184512296
+p value:0.96
 
 </pre></div></div>
 </div>
@@ -804,11 +807,11 @@ than learning a new toolkit. The power of EconML is that you can now implement t
 <div class="output_area docutils container">
 <div class="highlight"><pre>
    Treatment    Outcome        w0         s        w1
-0   8.295970  16.576912 -1.202139  5.327319  1.067769
-1   6.966276  13.856490 -0.237412  5.060261  1.045942
-2  20.116093  40.441777 -3.891030  6.669894 -1.229040
-3  16.260562  32.794466  3.119581  3.938307  0.783420
-4  18.423440  36.841329  3.537143  2.319664 -0.463505
+0   6.468918  14.078262  0.373383  1.095632  1.764948
+1   7.924310  15.991506  1.401907  9.324200  0.077120
+2   7.295800  15.418348  1.102882  1.297908  0.977967
+3  12.479396  25.186899  2.529687  1.787435  0.217359
+4   8.480663  18.735084 -1.169533  5.317601  3.380256
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -912,9 +915,9 @@ b: Outcome~Treatment+w1+w0
 Target units: ate
 
 ## Estimate
-Mean value: 1.9983857231086422
+Mean value: 1.9987468264688593
 
-Causal Estimate is 1.9983857231086422
+Causal Estimate is 1.9987468264688593
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -970,8 +973,8 @@ b: Outcome~Treatment+w1+w0 |
 Target units: ate
 
 ## Estimate
-Mean value: 1.1295060374041677
-Effect estimates: [1.12950604 1.12950604 1.12950604 ... 1.12950604 1.12950604 1.12950604]
+Mean value: 1.0770899800380724
+Effect estimates: [1.07708998 1.07708998 1.07708998 ... 1.07708998 1.07708998 1.07708998]
 
 </pre></div></div>
 </div>
@@ -994,9 +997,9 @@ Effect estimates: [1.12950604 1.12950604 1.12950604 ... 1.12950604 1.12950604 1.
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Add a random common cause
-Estimated effect:1.1295060374041677
-New effect:1.1942755253383301
-p value:0.06
+Estimated effect:1.0770899800380724
+New effect:1.1160703512648749
+p value:0.22
 
 </pre></div></div>
 </div>
@@ -1017,9 +1020,9 @@ p value:0.06
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Refute: Use a Placebo Treatment
-Estimated effect:1.1295060374041677
-New effect:-7.349286594374548e-05
-p value:0.44754807512562045
+Estimated effect:1.0770899800380724
+New effect:-0.0001791078811085711
+p value:0.32125246856011325
 
 </pre></div></div>
 </div>
@@ -1127,7 +1130,6 @@ refutation methods that can check the robustness of the estimate.</p>
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="../../v0.7.1/index.html">v0.7.1</a></dd>
             <dd><a href="tutorial-causalinference-machinelearning-using-dowhy-econml.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>

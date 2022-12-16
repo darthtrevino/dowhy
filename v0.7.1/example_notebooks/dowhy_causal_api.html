@@ -15,6 +15,7 @@
   <title>Demo for the DoWhy causal API &mdash; DoWhy  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -24,6 +25,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -474,33 +477,33 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>2.112003</td>
-      <td>True</td>
-      <td>6.185237</td>
+      <td>0.326689</td>
+      <td>False</td>
+      <td>0.448556</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.184925</td>
-      <td>False</td>
-      <td>-1.578231</td>
+      <td>-0.906599</td>
+      <td>True</td>
+      <td>2.325172</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.952604</td>
+      <td>0.378685</td>
       <td>False</td>
-      <td>1.449819</td>
+      <td>-1.157150</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.946551</td>
-      <td>True</td>
-      <td>8.404735</td>
+      <td>-0.299435</td>
+      <td>False</td>
+      <td>0.630886</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.356712</td>
+      <td>1.042586</td>
       <td>True</td>
-      <td>5.772946</td>
+      <td>2.949594</td>
     </tr>
     <tr>
       <th>...</th>
@@ -510,33 +513,33 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>0.915931</td>
+      <td>0.770774</td>
       <td>True</td>
-      <td>5.927939</td>
+      <td>5.430327</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>-1.097095</td>
-      <td>False</td>
-      <td>-1.231371</td>
+      <td>-0.586816</td>
+      <td>True</td>
+      <td>5.585402</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>0.607962</td>
-      <td>True</td>
-      <td>2.862744</td>
+      <td>0.722458</td>
+      <td>False</td>
+      <td>1.299977</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>0.680794</td>
+      <td>-0.395364</td>
       <td>True</td>
-      <td>5.167180</td>
+      <td>4.492349</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>0.383996</td>
+      <td>-0.586639</td>
       <td>True</td>
-      <td>5.125728</td>
+      <td>2.965871</td>
     </tr>
   </tbody>
 </table>
@@ -660,43 +663,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.043345</td>
+      <td>-0.114414</td>
       <td>False</td>
-      <td>1.343102</td>
-      <td>0.067201</td>
-      <td>14.880738</td>
+      <td>0.806617</td>
+      <td>0.521814</td>
+      <td>1.916392</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.471761</td>
+      <td>-0.437425</td>
       <td>False</td>
-      <td>2.576858</td>
-      <td>0.022312</td>
-      <td>44.818637</td>
+      <td>-1.844901</td>
+      <td>0.527280</td>
+      <td>1.896524</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.471761</td>
+      <td>0.908197</td>
       <td>False</td>
-      <td>2.576858</td>
-      <td>0.022312</td>
-      <td>44.818637</td>
+      <td>1.566832</td>
+      <td>0.504479</td>
+      <td>1.982241</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>-1.023744</td>
+      <td>0.180203</td>
       <td>False</td>
-      <td>-1.114682</td>
-      <td>0.948635</td>
-      <td>1.054147</td>
+      <td>-1.473251</td>
+      <td>0.516823</td>
+      <td>1.934897</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.312429</td>
+      <td>-0.919758</td>
       <td>False</td>
-      <td>0.256365</td>
-      <td>0.033813</td>
-      <td>29.574846</td>
+      <td>-1.201705</td>
+      <td>0.535431</td>
+      <td>1.867655</td>
     </tr>
     <tr>
       <th>...</th>
@@ -708,43 +711,43 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>1.043345</td>
+      <td>-0.924271</td>
       <td>False</td>
-      <td>1.343102</td>
-      <td>0.067201</td>
-      <td>14.880738</td>
+      <td>-0.188714</td>
+      <td>0.535507</td>
+      <td>1.867390</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>0.841934</td>
+      <td>1.820202</td>
       <td>False</td>
-      <td>0.626565</td>
-      <td>0.110067</td>
-      <td>9.085411</td>
+      <td>1.088118</td>
+      <td>0.489009</td>
+      <td>2.044950</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>1.134521</td>
+      <td>0.039937</td>
       <td>False</td>
-      <td>1.508177</td>
-      <td>0.053396</td>
-      <td>18.728101</td>
+      <td>-1.274895</td>
+      <td>0.519200</td>
+      <td>1.926041</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>-1.000468</td>
+      <td>0.035028</td>
       <td>False</td>
-      <td>-2.114149</td>
-      <td>0.945505</td>
-      <td>1.057636</td>
+      <td>0.371365</td>
+      <td>0.519283</td>
+      <td>1.925732</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>-0.295329</td>
+      <td>-1.157552</td>
       <td>False</td>
-      <td>-1.419593</td>
-      <td>0.723427</td>
-      <td>1.382309</td>
+      <td>0.901272</td>
+      <td>0.539442</td>
+      <td>1.853767</td>
     </tr>
   </tbody>
 </table>
@@ -792,43 +795,43 @@ div.rendered_html tbody tr:hover {
   <tbody>
     <tr>
       <th>0</th>
-      <td>-1.213307</td>
+      <td>2.356333</td>
       <td>True</td>
-      <td>4.183742</td>
-      <td>0.031532</td>
-      <td>31.713741</td>
+      <td>6.847476</td>
+      <td>0.520077</td>
+      <td>1.922793</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>3.812234</td>
+      <td>1.841864</td>
       <td>True</td>
-      <td>5.742081</td>
-      <td>0.999957</td>
-      <td>1.000043</td>
+      <td>6.748936</td>
+      <td>0.511358</td>
+      <td>1.955578</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.736457</td>
+      <td>-0.758494</td>
       <td>True</td>
-      <td>4.128071</td>
-      <td>0.859004</td>
-      <td>1.164139</td>
+      <td>4.397192</td>
+      <td>0.467292</td>
+      <td>2.139988</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.613649</td>
+      <td>-0.741826</td>
       <td>True</td>
-      <td>6.301445</td>
-      <td>0.984644</td>
-      <td>1.015595</td>
+      <td>5.669855</td>
+      <td>0.467574</td>
+      <td>2.138699</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.199173</td>
+      <td>-2.428560</td>
       <td>True</td>
-      <td>7.112640</td>
-      <td>0.590337</td>
-      <td>1.693947</td>
+      <td>2.266709</td>
+      <td>0.439216</td>
+      <td>2.276786</td>
     </tr>
     <tr>
       <th>...</th>
@@ -840,43 +843,43 @@ div.rendered_html tbody tr:hover {
     </tr>
     <tr>
       <th>995</th>
-      <td>0.486798</td>
+      <td>-1.083720</td>
       <td>True</td>
-      <td>6.304761</td>
-      <td>0.757153</td>
-      <td>1.320736</td>
+      <td>5.126413</td>
+      <td>0.461803</td>
+      <td>2.165426</td>
     </tr>
     <tr>
       <th>996</th>
-      <td>-0.232262</td>
+      <td>-0.411489</td>
       <td>True</td>
-      <td>5.387088</td>
-      <td>0.311675</td>
-      <td>3.208466</td>
+      <td>3.131912</td>
+      <td>0.473158</td>
+      <td>2.113458</td>
     </tr>
     <tr>
       <th>997</th>
-      <td>0.406203</td>
+      <td>-2.217379</td>
       <td>True</td>
-      <td>6.780357</td>
-      <td>0.715221</td>
-      <td>1.398170</td>
+      <td>2.438822</td>
+      <td>0.442748</td>
+      <td>2.258620</td>
     </tr>
     <tr>
       <th>998</th>
-      <td>1.148272</td>
+      <td>-1.247205</td>
       <td>True</td>
-      <td>6.450302</td>
-      <td>0.948439</td>
-      <td>1.054364</td>
+      <td>4.836007</td>
+      <td>0.459047</td>
+      <td>2.178427</td>
     </tr>
     <tr>
       <th>999</th>
-      <td>1.604908</td>
+      <td>-0.586639</td>
       <td>True</td>
-      <td>5.928425</td>
-      <td>0.984285</td>
-      <td>1.015965</td>
+      <td>2.965871</td>
+      <td>0.470196</td>
+      <td>2.126771</td>
     </tr>
   </tbody>
 </table>
@@ -900,7 +903,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 5.08001475529476$</div></div>
+$\displaystyle 5.08778423567129$</div></div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
@@ -916,7 +919,7 @@ $\displaystyle 5.08001475529476$</div></div>
 </div>
 <div class="output_area docutils container">
 <div class="math notranslate nohighlight">
-$\displaystyle 0.116153750272971$</div></div>
+$\displaystyle 0.102090330103608$</div></div>
 </div>
 <p>Comparing to the estimate from OLS.</p>
 <div class="nbinput docutils container">
@@ -937,25 +940,25 @@ $\displaystyle 0.116153750272971$</div></div>
 <table class="simpletable">
 <caption>OLS Regression Results</caption>
 <tr>
-  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.964</td>
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared (uncentered):</th>      <td>   0.934</td>
 </tr>
 <tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.963</td>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared (uncentered):</th> <td>   0.934</td>
 </tr>
 <tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>1.317e+04</td>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th>          <td>   7076.</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 01 Sep 2022</td> <th>  Prob (F-statistic):</th>           <td>  0.00</td>
+  <th>Date:</th>             <td>Wed, 14 Sep 2022</td> <th>  Prob (F-statistic):</th>           <td>  0.00</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>16:33:08</td>     <th>  Log-Likelihood:    </th>          <td> -1405.3</td>
+  <th>Time:</th>                 <td>18:55:14</td>     <th>  Log-Likelihood:    </th>          <td> -1395.1</td>
 </tr>
 <tr>
-  <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th>          <td>   2815.</td>
+  <th>No. Observations:</th>      <td>  1000</td>      <th>  AIC:               </th>          <td>   2794.</td>
 </tr>
 <tr>
-  <th>Df Residuals:</th>          <td>   998</td>      <th>  BIC:               </th>          <td>   2824.</td>
+  <th>Df Residuals:</th>          <td>   998</td>      <th>  BIC:               </th>          <td>   2804.</td>
 </tr>
 <tr>
   <th>Df Model:</th>              <td>     2</td>      <th>                     </th>              <td> </td>
@@ -969,24 +972,24 @@ $\displaystyle 0.116153750272971$</div></div>
    <td></td>     <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>
 </tr>
 <tr>
-  <th>x1</th> <td>    0.7189</td> <td>    0.040</td> <td>   17.957</td> <td> 0.000</td> <td>    0.640</td> <td>    0.798</td>
+  <th>x1</th> <td>    0.7558</td> <td>    0.031</td> <td>   24.243</td> <td> 0.000</td> <td>    0.695</td> <td>    0.817</td>
 </tr>
 <tr>
-  <th>x2</th> <td>    5.0809</td> <td>    0.059</td> <td>   85.788</td> <td> 0.000</td> <td>    4.965</td> <td>    5.197</td>
+  <th>x2</th> <td>    5.0264</td> <td>    0.045</td> <td>  111.891</td> <td> 0.000</td> <td>    4.938</td> <td>    5.115</td>
 </tr>
 </table>
 <table class="simpletable">
 <tr>
-  <th>Omnibus:</th>       <td> 0.414</td> <th>  Durbin-Watson:     </th> <td>   1.962</td>
+  <th>Omnibus:</th>       <td> 0.256</td> <th>  Durbin-Watson:     </th> <td>   2.046</td>
 </tr>
 <tr>
-  <th>Prob(Omnibus):</th> <td> 0.813</td> <th>  Jarque-Bera (JB):  </th> <td>   0.468</td>
+  <th>Prob(Omnibus):</th> <td> 0.880</td> <th>  Jarque-Bera (JB):  </th> <td>   0.322</td>
 </tr>
 <tr>
-  <th>Skew:</th>          <td> 0.046</td> <th>  Prob(JB):          </th> <td>   0.791</td>
+  <th>Skew:</th>          <td> 0.031</td> <th>  Prob(JB):          </th> <td>   0.851</td>
 </tr>
 <tr>
-  <th>Kurtosis:</th>      <td> 2.948</td> <th>  Cond. No.          </th> <td>    3.16</td>
+  <th>Kurtosis:</th>      <td> 2.938</td> <th>  Cond. No.          </th> <td>    1.48</td>
 </tr>
 </table><br/><br/>Notes:<br/>[1] R² is computed without centering (uncentered) since the model does not contain a constant.<br/>[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div>
 </div>
@@ -1036,7 +1039,6 @@ $\displaystyle 0.116153750272971$</div></div>
             <dd><a href="../../v0.7/index.html">v0.7</a></dd>
             <dd><a href="dowhy_causal_api.html">v0.7.1</a></dd>
             <dd><a href="../../v0.8/index.html">v0.8</a></dd>
-            <dd><a href="../../v0.8.0-test/index.html">v0.8.0-test</a></dd>
             <!-- TODO: add mechanism to add new version here. Probably just render them in from generate_docs.sh. -->
         </dl>
         <dl>
